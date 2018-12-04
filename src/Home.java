@@ -9,6 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -23,38 +24,41 @@ public class Home extends Application {
 	    Pane root = new Pane();
 		root.setPrefHeight(800);
 		root.setPrefWidth(600);
+		Pane root2 = new Pane();
+		root2.setPrefHeight(600);
+		root2.setPrefWidth(600);
+		Scene scene2 = new Scene(root2);
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Test1");
-		Button btn = new Button("Hello");
+		
+		Button btn = new Button("START");
+		Font font = new Font("Thonburi", 20);
+		btn.setFont(font);
 		
 		Canvas canvas = new Canvas(600,800);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root.getChildren().addAll(canvas,btn);
 		btn.setPrefSize(100, 50);
+		btn.setStyle(" -fx-border-color: transparent; -fx-border-width: 0;-fx-background-radius: 0;"
+				+ "-fx-background-color: transparent; -fx-font-family: Thonburi;"
+				+ "-fx-font-size: 20;-fx-text-fill: #828282;");
 		btn.setLayoutX(250);btn.setLayoutY(650);
+		btn.setOnAction(e -> {
+			primaryStage.setScene(scene2);
+		});
 		setBackGround(gc);
 //		drawString(gc);
-//		String img = "file:res/Park.jpg";
-//		drawButton(gc);
+		String img = "file:res/KingTower Main.png";
+		drawImage(gc, img);
 
-		
-		
-		
-		
-		
 		primaryStage.show();	
-	}
-
-	private void drawButton(GraphicsContext gc) {
-		Button btn = new Button("Hello");
-		
 	}
 
 	private void drawImage(GraphicsContext gc,String img) {
 		System.out.println(img);
-		Image park = new Image(img);
-		gc.drawImage(park, 60, 250);
+		Image pic = new Image(img);
+		gc.drawImage(pic, 0, 0);
 		
 	}
 
