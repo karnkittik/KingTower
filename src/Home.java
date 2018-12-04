@@ -10,6 +10,8 @@ public class Home extends Application {
 	public void start(Stage primaryStage) {
 		Button n = new Button("Hello");
 		
+||||||| merged common ancestors
+		
 	}
 
 	public static void main(String[] args) {
