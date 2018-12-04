@@ -9,9 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -24,37 +22,56 @@ public class Home extends Application {
 	    Pane root = new Pane();
 		root.setPrefHeight(800);
 		root.setPrefWidth(600);
-		Pane root2 = new Pane();
-		root2.setPrefHeight(800);
-		root2.setPrefWidth(600);
-		Scene scene2 = new Scene(root2);
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Test1");
+		
+		Pane game = new Pane();
+		game.setPrefHeight(800);
+		game.setPrefWidth(600);
+		
+		Pane setting = new SettingPane();
+		
+		Scene Setting = new Scene(setting); 
+		Scene Game = new Scene(game);
+		Scene Main = new Scene(root);
+		primaryStage.setScene(Main);
+		primaryStage.setTitle("Main Menu");
+		
 		
 		Button btn = new Button("START");
+		Button btn2 = new Button("SETTINGS");
+		
 		Font font = new Font("Thonburi", 20);
-		btn.setFont(font);
+		btn.setFont(font); btn2.setFont(font);
 		
 		Canvas canvas = new Canvas(600,800);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		root.getChildren().addAll(canvas,btn);
-		btn.setPrefSize(100, 50);
+		
+		root.getChildren().addAll(canvas,btn,btn2);
+		btn.setPrefSize(400, 50);
 		btn.setStyle(" -fx-border-color: transparent; -fx-border-width: 0;-fx-background-radius: 0;"
 				+ "-fx-background-color: transparent; -fx-font-family: Thonburi;"
-				+ "-fx-font-size: 20;-fx-text-fill: #828282;");
-		btn.setLayoutX(250);btn.setLayoutY(650);
+				+ "-fx-font-size: 70; -fx-text-fill: black;");
+		btn.setLayoutX(100);btn.setLayoutY(550);
 		btn.setOnAction(e -> {
-			primaryStage.setScene(scene2);
+			primaryStage.setScene(Game);
 		});
+		
+		btn2.setPrefSize(400, 50);
+		btn2.setStyle(" -fx-border-color: transparent; -fx-border-width: 0;-fx-background-radius: 0;"
+				+ "-fx-background-color: transparent; -fx-font-family: Thonburi;"
+				+ "-fx-font-size: 40; -fx-text-fill: red;");
+		btn2.setLayoutX(100);btn2.setLayoutY(650);
+		btn2.setOnAction(e -> {
+			primaryStage.setScene(Setting);
+		});
+
 		setBackGround(gc);
+		
 //		drawString(gc);
-		String img = "file:res/KingTower Main.png";
+		String img = "file:res/mainmenu.jpeg";
 		drawImage(gc, img);
 
 		primaryStage.show();	
 	}
-
 	private void drawImage(GraphicsContext gc,String img) {
 		System.out.println(img);
 		Image pic = new Image(img);
