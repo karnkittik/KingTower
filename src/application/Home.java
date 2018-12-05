@@ -1,3 +1,4 @@
+package application;
 
 
 import javax.swing.text.Position;
@@ -8,12 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import logic.GameLogic;
 
 public class Home extends Application {
  
@@ -27,41 +31,69 @@ public class Home extends Application {
 		game.setPrefHeight(800);
 		game.setPrefWidth(600);
 		
-		Pane setting = new SettingPane();
 		
-		Scene Setting = new Scene(setting); 
 		Scene Game = new Scene(game);
 		Scene Main = new Scene(root);
 		primaryStage.setScene(Main);
 		primaryStage.setTitle("Main Menu");
 		
 		
-		Button btn = new Button("START");
-		Button btn2 = new Button("SETTINGS");
+		Hyperlink btn = new Hyperlink("START");
+		Hyperlink btn2 = new Hyperlink("SETTINGS");
 		
-		Font font = new Font("Thonburi", 20);
-		btn.setFont(font); btn2.setFont(font);
+		Hyperlink easy = new Hyperlink("EASY");
+		Hyperlink medium = new Hyperlink("MEDIUM");
+		Hyperlink hard = new Hyperlink("HARD");
+		HBox pane = new HBox(0);
+		pane.setAlignment(Pos.CENTER);
+		pane.getChildren().addAll(easy,medium,hard);
+		easy.setStyle("-fx-font-family: Thonburi;"
+				+ "-fx-font-size: 25; -fx-text-fill: black;");
+		medium.setStyle("-fx-font-family: Thonburi;"
+				+ "-fx-font-size: 25; -fx-text-fill: black;");
+		hard.setStyle("-fx-font-family: Thonburi;"
+				+ "-fx-font-size: 25; -fx-text-fill: black;");
+		pane.setLayoutX(120);pane.setLayoutY(660);
+		pane.setVisible(false); pane.setDisable(true);
+		easy.setOnAction(e ->{
+			GameLogic.setGameMode(1);
+			pane.setDisable(true);pane.setVisible(false);
+			btn2.setDisable(false);btn2.setVisible(true);
+		});
+		medium.setOnAction(e ->{
+			GameLogic.setGameMode(2);
+			pane.setDisable(true);pane.setVisible(false);
+			btn2.setDisable(false);btn2.setVisible(true);
+		});
+		hard.setOnAction(e ->{
+			GameLogic.setGameMode(3);
+			pane.setDisable(true);pane.setVisible(false);
+			btn2.setDisable(false);btn2.setVisible(true);
+		});
+
+		//Font font = new Font("Thonburi", 20);
+		//btn.setFont(font); btn2.setFont(font);
+		
 		
 		Canvas canvas = new Canvas(600,800);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		
-		root.getChildren().addAll(canvas,btn,btn2);
-		btn.setPrefSize(400, 50);
-		btn.setStyle(" -fx-border-color: transparent; -fx-border-width: 0;-fx-background-radius: 0;"
-				+ "-fx-background-color: transparent; -fx-font-family: Thonburi;"
+		root.getChildren().addAll(canvas,btn,btn2,pane);
+//		btn.setPrefSize(400, 50);
+		btn.setStyle("-fx-font-family: Thonburi;"
 				+ "-fx-font-size: 70; -fx-text-fill: black;");
 		btn.setLayoutX(100);btn.setLayoutY(550);
 		btn.setOnAction(e -> {
 			primaryStage.setScene(Game);
 		});
 		
-		btn2.setPrefSize(400, 50);
-		btn2.setStyle(" -fx-border-color: transparent; -fx-border-width: 0;-fx-background-radius: 0;"
-				+ "-fx-background-color: transparent; -fx-font-family: Thonburi;"
+//		btn2.setPrefSize(400, 50);
+		btn2.setStyle("-fx-font-family: Thonburi;"
 				+ "-fx-font-size: 40; -fx-text-fill: red;");
 		btn2.setLayoutX(100);btn2.setLayoutY(650);
 		btn2.setOnAction(e -> {
-			primaryStage.setScene(Setting);
+			btn2.setDisable(true);btn2.setVisible(false);	
+			pane.setVisible(true); pane.setDisable(false);			
 		});
 
 		setBackGround(gc);
@@ -72,6 +104,7 @@ public class Home extends Application {
 
 		primaryStage.show();	
 	}
+
 	private void drawImage(GraphicsContext gc,String img) {
 		System.out.println(img);
 		Image pic = new Image(img);
