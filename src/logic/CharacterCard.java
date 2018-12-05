@@ -4,6 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class CharacterCard extends HBox{
 	private String name;
@@ -12,6 +13,7 @@ public class CharacterCard extends HBox{
 	private int hp,maxhp;
 	private int cd;
 	private String img;
+	private static ButtonLane one,two,three,four,five;
 	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, String img) {
 		super();
 		this.name = name;
@@ -25,6 +27,15 @@ public class CharacterCard extends HBox{
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Image pic =  new Image(img);
 		gc.drawImage(pic, 0, 0);
+		VBox allbutton = new VBox();
+		one = new ButtonLane("1");
+		two = new ButtonLane("2");
+		three = new ButtonLane("3");
+		four = new ButtonLane("4");
+		five = new ButtonLane("5");
+		allbutton.getChildren().addAll(one,two,three,four,five);
+		this.getChildren().add(allbutton);
+		
 	}
 	public String getName() {
 		return name;

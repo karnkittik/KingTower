@@ -33,7 +33,7 @@ public class Home extends Application {
 		Scene homescene = new Scene(home);
 		primaryStage.setScene(homescene);
 		primaryStage.setTitle("Main Menu");
-		primaryStage.setResizable(false);
+	    primaryStage.setResizable(false);
 		
 		
 		Hyperlink start = new Hyperlink("START"); start.setAlignment(Pos.CENTER);
