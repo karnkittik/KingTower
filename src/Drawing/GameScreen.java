@@ -9,7 +9,7 @@ public class GameScreen extends Canvas{
 	public GameScreen() {
 		super(600,800);
 		GraphicsContext gc = getGraphicsContext2D();
-		String img = "file:res/wallpaper3.png";
+		String img = "file:res/1.png";
 		draw(gc,img);
 	}
 
