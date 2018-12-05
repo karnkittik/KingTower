@@ -3,20 +3,15 @@ package logic;
 public class Character {
 
 	private String name;
-	private int speed;
 	private int power;
 	private String imagePath;
 	private int hp;
 	private int maxHp;
 	private int activePoint;
 	
-
-	private final static int LIMIT = 10000; 
-
-	public Character(String name, int maxHp, int speed, int power, String imagePath) {
+	public Character(String name, int maxHp,int power, String imagePath) {
 		super();
 		this.name = name;
-		this.speed = speed;
 		this.power = power;
 		this.imagePath = imagePath;
 		this.maxHp = maxHp;
@@ -35,10 +30,6 @@ public class Character {
 	
 	public String getName() {
 		return name;
-	}
-
-	public int getSpeed() {
-		return speed;
 	}
 
 	public int getPower() {
@@ -69,10 +60,6 @@ public class Character {
 		this.activePoint = activePoint;
 	}
 
-	public static int getLimit() {
-		return LIMIT;
-	}
-
 	public boolean isDead() {
 		return this.hp <= 0;
 	}
@@ -81,7 +68,4 @@ public class Character {
 		return String.format("%d/%d", this.hp, this.maxHp);
 	}
 
-	public boolean isReady() {
-		return this.activePoint >= Character.getLimit();
-	}
 }
