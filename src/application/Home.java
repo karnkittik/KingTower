@@ -40,6 +40,7 @@ public class Home extends Application {
 		Hyperlink easy = new Hyperlink("EASY");
 		Hyperlink medium = new Hyperlink("MEDIUM");
 		Hyperlink hard = new Hyperlink("HARD");
+		Hyperlink back = new Hyperlink("BACK");
 		HBox menu = new HBox(0);
 		menu.setPrefWidth(400);
 		menu.setAlignment(Pos.CENTER);
@@ -52,31 +53,40 @@ public class Home extends Application {
 //		hard.setStyle("-fx-font-family: Thonburi;"
 //				+ "-fx-font-size: 25; -fx-text-fill: black;");
 		easy.setFont(small);medium.setFont(small);hard.setFont(small);
-		
+		easy.setDisable(true);medium.setDisable(true);hard.setDisable(true);
+		easy.setVisible(false);medium.setVisible(false);hard.setVisible(false);
 		menu.setLayoutX(100);menu.setLayoutY(660);
-		menu.setVisible(false); menu.setDisable(true);
-		
+		back.setLayoutX(0);back.setLayoutY(740);
+		back.setPrefWidth(600);back.setAlignment(Pos.CENTER);
+		back.setStyle(" -fx-border-width: 0; -fx-font-family: Thonburi;" + 
+				"    -fx-font-size: 25;" + 
+				"    -fx-text-fill: white;" );
+		back.setVisible(false);back.setDisable(true);
+		back.setOnAction(e -> {
+			easy.setDisable(true);medium.setDisable(true);hard.setDisable(true);
+			easy.setVisible(false);medium.setVisible(false);hard.setVisible(false);
+			setting.setDisable(false);setting.setVisible(true);
+			back.setVisible(false);back.setDisable(true);
+		});
 		easy.setOnAction(e ->{
 			GameLogic.setGameMode(1);
-			menu.setDisable(true);menu.setVisible(false);
-			setting.setDisable(false);setting.setVisible(true);
+			setting.setDisable(false);setting.setVisible(false);
 		});
 		medium.setOnAction(e ->{
 			GameLogic.setGameMode(2);
-			menu.setDisable(true);menu.setVisible(false);
-			setting.setDisable(false);setting.setVisible(true);
+			setting.setDisable(false);setting.setVisible(false);
 		});
 		hard.setOnAction(e ->{
 			GameLogic.setGameMode(3);
-			menu.setDisable(true);menu.setVisible(false);
-			setting.setDisable(false);setting.setVisible(true);
+			//menu.setDisable(true);menu.setVisible(false);
+			setting.setDisable(false);setting.setVisible(false);
 		});
 
 		
-		home.getChildren().addAll(start	,setting ,menu);
+		home.getChildren().addAll(menu,  back, start,setting );
 		
 		start.setPrefSize(400, 50);
-		start.setStyle("-fx-font-family: Thonburi;"
+		start.setStyle("-fx-border-width: 0; -fx-font-family: Thonburi;"
 				+ "-fx-font-size: 70; -fx-text-fill: black;");
 		start.setLayoutX(100);start.setLayoutY(550);
 		start.setOnAction(e -> {
@@ -84,12 +94,15 @@ public class Home extends Application {
 		});
 		
 		setting.setPrefSize(400, 50);
-		setting.setStyle("-fx-font-family: Thonburi;"
+		setting.setStyle(" -fx-border-width: 0; -fx-font-family: Thonburi;"
 				+ "-fx-font-size: 40; -fx-text-fill: red;");
 		setting.setLayoutX(100);setting.setLayoutY(650);
 		setting.setOnAction(e -> {
 			setting.setDisable(true);setting.setVisible(false);	
-			menu.setVisible(true); menu.setDisable(false);			
+			easy.setVisible(true);easy.setDisable(false);
+			medium.setVisible(true);medium.setDisable(false);
+			hard.setVisible(true);hard.setDisable(false);
+			back.setVisible(true);back.setDisable(false);
 		});
 
 
