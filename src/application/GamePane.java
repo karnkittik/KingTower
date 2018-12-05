@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
 public class GamePane extends Pane{
-	private final static String img = "file:res/wallpaper2.png";
+	private final static String img = "file:res/wallpaper3.png";
 	public GamePane() {
 		super();
 		super.setPrefSize(600, 800);
