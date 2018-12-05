@@ -1,8 +1,6 @@
 package application;
 
 
-import javax.swing.text.Position;
-
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,6 +11,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -40,11 +39,14 @@ public class Home extends Application {
 		
 		Hyperlink btn = new Hyperlink("START");
 		Hyperlink btn2 = new Hyperlink("SETTINGS");
-		
+		btn.setAlignment(Pos.CENTER);
+		btn2.setAlignment(Pos.CENTER);
 		Hyperlink easy = new Hyperlink("EASY");
 		Hyperlink medium = new Hyperlink("MEDIUM");
 		Hyperlink hard = new Hyperlink("HARD");
+		
 		HBox pane = new HBox(0);
+		pane.setPrefWidth(400);
 		pane.setAlignment(Pos.CENTER);
 		pane.getChildren().addAll(easy,medium,hard);
 		easy.setStyle("-fx-font-family: Thonburi;"
@@ -53,7 +55,7 @@ public class Home extends Application {
 				+ "-fx-font-size: 25; -fx-text-fill: black;");
 		hard.setStyle("-fx-font-family: Thonburi;"
 				+ "-fx-font-size: 25; -fx-text-fill: black;");
-		pane.setLayoutX(120);pane.setLayoutY(660);
+		pane.setLayoutX(100);pane.setLayoutY(660);
 		pane.setVisible(false); pane.setDisable(true);
 		easy.setOnAction(e ->{
 			GameLogic.setGameMode(1);
@@ -77,9 +79,9 @@ public class Home extends Application {
 		
 		Canvas canvas = new Canvas(600,800);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		
+
 		root.getChildren().addAll(canvas,btn,btn2,pane);
-//		btn.setPrefSize(400, 50);
+		btn.setPrefSize(400, 50);
 		btn.setStyle("-fx-font-family: Thonburi;"
 				+ "-fx-font-size: 70; -fx-text-fill: black;");
 		btn.setLayoutX(100);btn.setLayoutY(550);
@@ -87,7 +89,7 @@ public class Home extends Application {
 			primaryStage.setScene(Game);
 		});
 		
-//		btn2.setPrefSize(400, 50);
+		btn2.setPrefSize(400, 50);
 		btn2.setStyle("-fx-font-family: Thonburi;"
 				+ "-fx-font-size: 40; -fx-text-fill: red;");
 		btn2.setLayoutX(100);btn2.setLayoutY(650);
