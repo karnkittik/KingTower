@@ -7,7 +7,7 @@ public class ButtonLane extends Button {
 	private boolean ready;
 	public ButtonLane(String name) {
 		super(name);
-		this.setPrefSize(50	, 20);
+		this.setPrefSize(55	, 20);
 		setName(name);
 		setReady(true);
 	}

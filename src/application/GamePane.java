@@ -16,7 +16,7 @@ public class GamePane extends Pane{
 		this.getChildren().add(game);	
 		CharacterPane cp = new CharacterPane();
 		this.getChildren().add(cp);
-		cp.setLayoutX(0);cp.setLayoutY(667);
+		cp.setLayoutX(10);cp.setLayoutY(667);
 	}
 	
 }

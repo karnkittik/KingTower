@@ -1,5 +1,6 @@
 package logic;
 
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -15,24 +16,25 @@ public class CharacterCard extends HBox{
 	private String img;
 	private static ButtonLane one,two,three,four,five;
 	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, String img) {
-		super();
+		super(10);
 		this.name = name;
 		this.damage = damage;
 		this.speed = speed;
 		this.maxhp = maxhp;
 		this.cd = cd;
 		this.img = img;
+		this.setAlignment(Pos.CENTER);
 		Canvas canvas = new Canvas(80,120);
 		this.getChildren().add(canvas);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Image pic =  new Image(img);
 		gc.drawImage(pic, 0, 0);
 		VBox allbutton = new VBox();
-		one = new ButtonLane("1");
-		two = new ButtonLane("2");
-		three = new ButtonLane("3");
-		four = new ButtonLane("4");
-		five = new ButtonLane("5");
+		one = new ButtonLane("Lane 1");
+		two = new ButtonLane("Lane 2");
+		three = new ButtonLane("Lane 3");
+		four = new ButtonLane("Lane 4");
+		five = new ButtonLane("Lane 5");
 		allbutton.getChildren().addAll(one,two,three,four,five);
 		this.getChildren().add(allbutton);
 		
