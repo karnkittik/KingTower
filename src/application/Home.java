@@ -44,13 +44,14 @@ public class Home extends Application {
 		menu.setPrefWidth(400);
 		menu.setAlignment(Pos.CENTER);
 		menu.getChildren().addAll(easy,medium,hard);
-		
-		easy.setStyle("-fx-font-family: Thonburi;"
-				+ "-fx-font-size: 25; -fx-text-fill: black;");
-		medium.setStyle("-fx-font-family: Thonburi;"
-				+ "-fx-font-size: 25; -fx-text-fill: black;");
-		hard.setStyle("-fx-font-family: Thonburi;"
-				+ "-fx-font-size: 25; -fx-text-fill: black;");
+		Font small = new Font("Thonburi",25);
+//		easy.setStyle("-fx-font-family: Thonburi;"
+//				+ "-fx-font-size: 25; -fx-text-fill: black;");
+//		medium.setStyle("-fx-font-family: Thonburi;"
+//				+ "-fx-font-size: 25; -fx-text-fill: black;");
+//		hard.setStyle("-fx-font-family: Thonburi;"
+//				+ "-fx-font-size: 25; -fx-text-fill: black;");
+		easy.setFont(small);medium.setFont(small);hard.setFont(small);
 		
 		menu.setLayoutX(100);menu.setLayoutY(660);
 		menu.setVisible(false); menu.setDisable(true);
@@ -71,8 +72,6 @@ public class Home extends Application {
 			setting.setDisable(false);setting.setVisible(true);
 		});
 
-		//Font font = new Font("Thonburi", 20);
-		//btn.setFont(font); btn2.setFont(font);
 		
 		home.getChildren().addAll(start	,setting ,menu);
 		

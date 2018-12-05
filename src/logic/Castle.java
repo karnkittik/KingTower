@@ -9,8 +9,15 @@ public class Castle {
 	private int x,y;
 	private int width,height;
 	
-	public Castle(int x,int y,int width,int height) {
-		
+	public Castle(int x,int y,int width,int height,int maxhp,int speed,int damage) {
+		setDamage(damage);
+		setHp(maxhp);
+		setMaxhp(maxhp);
+		setWidth(width);
+		setHeight(height);
+		setSpeed(speed);
+		setX(x);
+		setY(y);
 	}
 
 	public int getHp() {
