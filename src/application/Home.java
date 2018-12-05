@@ -53,7 +53,7 @@ public class Home extends Application {
 //		hard.setStyle("-fx-font-family: Thonburi;"
 //				+ "-fx-font-size: 25; -fx-text-fill: black;");
 		easy.setFont(small);medium.setFont(small);hard.setFont(small);
-		easy.setDisable(true);medium.setDisable(true);hard.setDisable(true);
+		easy.setDisable(true);medium.setDisable(false);hard.setDisable(false);
 		easy.setVisible(false);medium.setVisible(false);hard.setVisible(false);
 		menu.setLayoutX(100);menu.setLayoutY(660);
 		back.setLayoutX(0);back.setLayoutY(740);
@@ -63,25 +63,30 @@ public class Home extends Application {
 				"    -fx-text-fill: white;" );
 		back.setVisible(false);back.setDisable(true);
 		back.setOnAction(e -> {
-			easy.setDisable(true);medium.setDisable(true);hard.setDisable(true);
 			easy.setVisible(false);medium.setVisible(false);hard.setVisible(false);
 			setting.setDisable(false);setting.setVisible(true);
 			back.setVisible(false);back.setDisable(true);
 		});
 		easy.setOnAction(e ->{
 			GameLogic.setGameMode(1);
+			easy.setDisable(true);medium.setDisable(false);hard.setDisable(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 		medium.setOnAction(e ->{
 			GameLogic.setGameMode(2);
+			easy.setDisable(false);medium.setDisable(true);hard.setDisable(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 		hard.setOnAction(e ->{
 			GameLogic.setGameMode(3);
+			easy.setDisable(false);medium.setDisable(false);hard.setDisable(true);
 			//menu.setDisable(true);menu.setVisible(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 
+		easy.setStyle("-fx-border-width: 0;");
+		medium.setStyle("-fx-border-width: 0;");
+		hard.setStyle("-fx-border-width: 0;");
 		
 		home.getChildren().addAll(menu,  back, start,setting );
 		
@@ -99,9 +104,7 @@ public class Home extends Application {
 		setting.setLayoutX(100);setting.setLayoutY(650);
 		setting.setOnAction(e -> {
 			setting.setDisable(true);setting.setVisible(false);	
-			easy.setVisible(true);easy.setDisable(false);
-			medium.setVisible(true);medium.setDisable(false);
-			hard.setVisible(true);hard.setDisable(false);
+			easy.setVisible(true);medium.setVisible(true);hard.setVisible(true);
 			back.setVisible(true);back.setDisable(false);
 		});
 
