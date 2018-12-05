@@ -26,9 +26,7 @@ public class Home extends Application {
 		root.setPrefHeight(800);
 		root.setPrefWidth(600);
 		
-		Pane game = new Pane();
-		game.setPrefHeight(800);
-		game.setPrefWidth(600);
+		Pane game = new GamePane();
 		
 		
 		Scene Game = new Scene(game);
