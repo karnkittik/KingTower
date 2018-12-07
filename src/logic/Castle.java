@@ -3,19 +3,19 @@ package logic;
 public class Castle {
 	private int hp;
 	private int maxhp;
-	private int speed;
+	private static int speed = 105;
 	private int damage;
 	private int activePoint;
 	private int x,y;
 	private int width,height;
+	private final static int LIMIT = 10000; 
 	
-	public Castle(int x,int y,int width,int height,int maxhp,int speed,int damage) {
+	public Castle(int x,int y,int width,int height,int maxhp, int damage) {
 		setDamage(damage);
 		setHp(maxhp);
 		setMaxhp(maxhp);
 		setWidth(width);
 		setHeight(height);
-		setSpeed(speed);
 		setX(x);
 		setY(y);
 	}
@@ -36,12 +36,12 @@ public class Castle {
 		this.maxhp = maxhp;
 	}
 
-	public int getSpeed() {
+	public static int getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public static void setSpeed(int sp) {
+		speed = sp;
 	}
 
 	public int getDamage() {
@@ -90,6 +90,10 @@ public class Castle {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public static int getLimit() {
+		return LIMIT;
 	}
 	
 }

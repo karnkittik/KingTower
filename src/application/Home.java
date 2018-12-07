@@ -69,17 +69,17 @@ public class Home extends Application {
 			back.setVisible(false);back.setDisable(true);
 		});
 		easy.setOnAction(e ->{
-			GameLogic.setGameMode(1);
+			//GameLogic.setGameMode(1);
 			easy.setDisable(true);medium.setDisable(false);hard.setDisable(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 		medium.setOnAction(e ->{
-			GameLogic.setGameMode(2);
+			//GameLogic.setGameMode(2);
 			easy.setDisable(false);medium.setDisable(true);hard.setDisable(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 		hard.setOnAction(e ->{
-			GameLogic.setGameMode(3);
+			//GameLogic.setGameMode(3);
 			easy.setDisable(false);medium.setDisable(false);hard.setDisable(true);
 			//menu.setDisable(true);menu.setVisible(false);
 			setting.setDisable(false);setting.setVisible(false);

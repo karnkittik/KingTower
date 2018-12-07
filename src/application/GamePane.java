@@ -14,9 +14,16 @@ public class GamePane extends Pane{
 		this.setPrefSize(600, 800);
 		GameScreen game = new GameScreen();
 		this.getChildren().add(game);	
+		
 		CharacterPane cp = new CharacterPane();
 		this.getChildren().add(cp);
 		cp.setLayoutX(10);cp.setLayoutY(667);
 	}
+
+	public static void updateUI() {
+		
+	}
+
+	
 	
 }
