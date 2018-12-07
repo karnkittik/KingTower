@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.List;
+
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.ProgressBar;
@@ -16,7 +18,7 @@ public class CoolDownBar extends ProgressBar{
 			setProgress(0);
 			
 		}
-		public void update() {
+		public void update(ButtonLane one,ButtonLane two,ButtonLane three,ButtonLane four,ButtonLane five,List<ButtonLane> a,List<ButtonLane> all) {
 			Thread thread = new Thread(()->{
 				while(true) {
 					try {
@@ -32,7 +34,18 @@ public class CoolDownBar extends ProgressBar{
 						ready = true;
 						System.out.println("finish");
 						if(isReady()) {
-							owner.getOne().setDisable(false);
+							//row
+							for(ButtonLane i:a) {
+								if(i.isReady()) {i.setDisable(false);} 
+							}
+							setVisible(false);//progress disappear
+							//column
+							one.setDisable(false);two.setDisable(false);three.setDisable(false);four.setDisable(false);five.setDisable(false);
+							one.setReady(true);two.setReady(true);three.setReady(true);four.setReady(true);five.setReady(true);
+							//row
+							for(ButtonLane i:a) {
+								if(i.isReady()) {i.setDisable(false);} 
+							}
 							setProgress(0);
 							break;
 						}

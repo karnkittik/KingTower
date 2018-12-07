@@ -1,5 +1,8 @@
 package logic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,6 +14,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class CharacterCard extends HBox{
+	private static List<ButtonLane> allbtn1 = new ArrayList<ButtonLane>();
+	private static List<ButtonLane> allbtn2 = new ArrayList<ButtonLane>();
+	private static List<ButtonLane> allbtn3 = new ArrayList<ButtonLane>();
+	private static List<ButtonLane> allbtn4 = new ArrayList<ButtonLane>();
+	private static List<ButtonLane> allbtn5 = new ArrayList<ButtonLane>();
+	private static List<ButtonLane> all = new ArrayList<ButtonLane>();
 	private String name;
 	private int damage;
 	private int speed;
@@ -18,6 +27,7 @@ public class CharacterCard extends HBox{
 	private int cd;
 	private String imgCharacter;
 	private String imgCard;
+	private static boolean bone,btwo,bthree,bfour,bfive;
 	private ButtonLane one,two,three,four,five;
 	private CoolDownBar cb;
 	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, String imgCharacter,String imgCard) {
@@ -41,21 +51,61 @@ public class CharacterCard extends HBox{
 		gc.drawImage(pic, 0, 0);
 		VBox allbutton = new VBox();
 		
-		
-		one = new ButtonLane("Lane 1",1,name);
+		one = new ButtonLane("Lane 1",1,name);allbtn1.add(one);all.add(one);
 		one.setOnAction(e->{
 			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			one.setDisable(true);
-			cb.update();
+			for(ButtonLane a:allbtn1) {a.setDisable(true); a.setReady(false);}
+			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
+			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			cb.update(one,two,three,four,five,allbtn1,all);
 		});
-		two = new ButtonLane("Lane 2",2,name);
-		three = new ButtonLane("Lane 3",3,name);
-		four = new ButtonLane("Lane 4",4,name);
-		five = new ButtonLane("Lane 5",5,name);
-		
+		two = new ButtonLane("Lane 2",2,name);allbtn2.add(two);all.add(two);
+		two.setOnAction(e->{
+			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Lane.addAllcharacter(character);
+			cb.setReady(false);
+			cb.setVisible(true);
+			for(ButtonLane a:allbtn2) {a.setDisable(true); a.setReady(false);}
+			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
+			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			cb.update(one,two,three,four,five,allbtn2,all);
+		});
+		three = new ButtonLane("Lane 3",3,name);allbtn3.add(three);all.add(three);
+		three.setOnAction(e->{
+			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Lane.addAllcharacter(character);
+			cb.setReady(false);
+			cb.setVisible(true);
+			for(ButtonLane a:allbtn3) {a.setDisable(true); a.setReady(false);}
+			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
+			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			cb.update(one,two,three,four,five,allbtn3,all);
+		});
+		four = new ButtonLane("Lane 4",4,name);allbtn4.add(four);all.add(four);
+		four.setOnAction(e->{
+			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Lane.addAllcharacter(character);
+			cb.setReady(false);
+			cb.setVisible(true);
+			for(ButtonLane a:allbtn4) {a.setDisable(true); a.setReady(false);}
+			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
+			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			cb.update(one,two,three,four,five,allbtn4,all);
+		});
+		five = new ButtonLane("Lane 5",5,name);allbtn5.add(five);all.add(five);
+		five.setOnAction(e->{
+			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Lane.addAllcharacter(character);
+			cb.setReady(false);
+			cb.setVisible(true);
+			for(ButtonLane a:allbtn5) {a.setDisable(true); a.setReady(false);}
+			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
+			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			cb.update(one,two,three,four,five,allbtn5,all);
+		});
 		allbutton.getChildren().addAll(one,two,three,four,five);
 		this.getChildren().add(allbutton);
 		
