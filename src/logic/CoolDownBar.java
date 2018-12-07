@@ -34,17 +34,15 @@ public class CoolDownBar extends ProgressBar{
 						ready = true;
 						System.out.println("finish");
 						if(isReady()) {
-							//row
-							for(ButtonLane i:a) {
-								if(i.isReady()) {i.setDisable(false);} 
-							}
 							setVisible(false);//progress disappear
 							//column
-							one.setDisable(false);two.setDisable(false);three.setDisable(false);four.setDisable(false);five.setDisable(false);
-							one.setReady(true);two.setReady(true);three.setReady(true);four.setReady(true);five.setReady(true);
-							//row
 							for(ButtonLane i:a) {
-								if(i.isReady()) {i.setDisable(false);} 
+								i.setReady(i.isReady()-1);
+							}
+							//one.setDisable(false);two.setDisable(false);three.setDisable(false);four.setDisable(false);five.setDisable(false);
+							one.setReady(one.isReady()-1);two.setReady(two.isReady()-1);three.setReady(three.isReady()-1);four.setReady(four.isReady()-1);five.setReady(five.isReady()-1);
+							for(ButtonLane i:all) {
+								if(i.isReady()==0) i.setDisable(false);
 							}
 							setProgress(0);
 							break;

@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 
 public class ButtonLane extends Button {
 	private String name;
-	private boolean ready;
+	private int ready;
 	private int lane;
 	private String character;
 	public ButtonLane(String name,int lane,String character) {
@@ -12,7 +12,7 @@ public class ButtonLane extends Button {
 		this.setPrefSize(60	, 20);
 		setName(name);
 		setLane(lane);
-		setReady(true);
+		setReady(0);
 		
 	}
 	public String getName() {
@@ -21,10 +21,10 @@ public class ButtonLane extends Button {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean isReady() {
+	public int isReady() {
 		return ready;
 	}
-	public void setReady(boolean ready) {
+	public void setReady(int ready) {
 		this.ready = ready;
 	}
 	public int getLane() {

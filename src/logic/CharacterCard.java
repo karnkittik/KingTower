@@ -57,9 +57,9 @@ public class CharacterCard extends HBox{
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			for(ButtonLane a:allbtn1) {a.setDisable(true); a.setReady(false);}
+			for(ButtonLane a:allbtn1) {a.setDisable(true); a.setReady(a.isReady()+1);}
 			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
-			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
 			cb.update(one,two,three,four,five,allbtn1,all);
 		});
 		two = new ButtonLane("Lane 2",2,name);allbtn2.add(two);all.add(two);
@@ -68,9 +68,9 @@ public class CharacterCard extends HBox{
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			for(ButtonLane a:allbtn2) {a.setDisable(true); a.setReady(false);}
+			for(ButtonLane a:allbtn2) {a.setDisable(true); a.setReady(a.isReady()+1);}
 			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
-			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
 			cb.update(one,two,three,four,five,allbtn2,all);
 		});
 		three = new ButtonLane("Lane 3",3,name);allbtn3.add(three);all.add(three);
@@ -79,9 +79,9 @@ public class CharacterCard extends HBox{
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			for(ButtonLane a:allbtn3) {a.setDisable(true); a.setReady(false);}
+			for(ButtonLane a:allbtn3) {a.setDisable(true); a.setReady(a.isReady()+1);}
 			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
-			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
 			cb.update(one,two,three,four,five,allbtn3,all);
 		});
 		four = new ButtonLane("Lane 4",4,name);allbtn4.add(four);all.add(four);
@@ -90,9 +90,9 @@ public class CharacterCard extends HBox{
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			for(ButtonLane a:allbtn4) {a.setDisable(true); a.setReady(false);}
+			for(ButtonLane a:allbtn4) {a.setDisable(true); a.setReady(a.isReady()+1);}
 			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
-			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
 			cb.update(one,two,three,four,five,allbtn4,all);
 		});
 		five = new ButtonLane("Lane 5",5,name);allbtn5.add(five);all.add(five);
@@ -101,9 +101,9 @@ public class CharacterCard extends HBox{
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			for(ButtonLane a:allbtn5) {a.setDisable(true); a.setReady(false);}
+			for(ButtonLane a:allbtn5) {a.setDisable(true); a.setReady(a.isReady()+1);}
 			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
-			one.setReady(false);two.setReady(false);three.setReady(false);four.setReady(false);five.setReady(false);
+			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
 			cb.update(one,two,three,four,five,allbtn5,all);
 		});
 		allbutton.getChildren().addAll(one,two,three,four,five);
