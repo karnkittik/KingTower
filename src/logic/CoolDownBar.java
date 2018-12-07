@@ -18,13 +18,13 @@ public class CoolDownBar extends ProgressBar{
 			setProgress(0);
 			
 		}
-		public void update(ButtonLane one,ButtonLane two,ButtonLane three,ButtonLane four,ButtonLane five,List<ButtonLane> a,List<ButtonLane> all) {
+		public void update(ButtonLane one,ButtonLane two,ButtonLane three,ButtonLane four,ButtonLane five,List<ButtonLane> a,List<ButtonLane> all,int cd) {
 			Thread thread = new Thread(()->{
 				while(true) {
 					try {
 						Thread.sleep(100);
 						Platform.runLater(()->{
-							setProgress(getProgress()+0.02);
+							setProgress(getProgress()+(0.02*5)/15); // cd/250
 						});
 					
 					}catch(InterruptedException e){
