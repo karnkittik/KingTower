@@ -1,8 +1,5 @@
 package application;
 
-
-
-
 import Drawing.GameScreen;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -17,7 +14,7 @@ import logic.CharacterCard;
 import logic.Lane;
 import logic.WhiteCastle;
 
-public class GamePane extends Pane{
+public class GamePane extends Pane {
 	private static int currentTime;
 	private static AnimationTimer animationTimer;
 	private static long lastTimeTriggered;
@@ -38,14 +35,11 @@ public class GamePane extends Pane{
 	}
 
 	public static void startGameloop() {
-//		gc.setFill(Color.ALICEBLUE);
-//		gc.fillRect(0, 0, 20, 20);
 		Castle c1 = new WhiteCastle(54, 210, 110, 250);
 		Castle c2 = new WhiteCastle(250, 260, 110, 250);
 		Castle c3 = new WhiteCastle(432, 210, 110, 250);
 		Castle c4 = new BlackCastle(150, 160, 110, 250);
 		Castle c5 = new BlackCastle(345, 160, 110, 250);
-	
 		
 		Lane l1 = new Lane(80, 460, 60, 200, Color.BURLYWOOD);
 		Lane l2 = new Lane(275, 510, 60, 150, Color.BURLYWOOD);
@@ -56,14 +50,19 @@ public class GamePane extends Pane{
 		for(Lane l : Lane.getAllLane()) {
 			l.draw(gc);
 		}
+		
 		for(Castle c : Castle.getAllCastle()) {
 			c.draw(gc);
 		}
+		
+		for(ButtonLane btn:CharacterCard.getAll()) {
+			btn.setDisable(true);
+		}
+		
 		startTimer();
 
 	}
 	
-
 	public static boolean isTimeOut() {
 		return timeOut;
 	}
@@ -73,7 +72,7 @@ public class GamePane extends Pane{
 	}
 
 	private static void startTimer() {
-		currentTime = 6;
+		currentTime = 121;
 		lastTimeTriggered = -1;
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		animationTimer = new AnimationTimer() {
@@ -86,6 +85,11 @@ public class GamePane extends Pane{
 				if (now - lastTimeTriggered >= 1000000000) //1 second
 				{
 					currentTime--;
+					if(currentTime==120) {
+						for(ButtonLane btn:CharacterCard.getAll()) {
+							btn.setDisable(false);
+						}
+					}
 					if(currentTime==0) {
 						drawCurrentTimeString(gc,Color.RED);
 						for(ButtonLane btn:CharacterCard.getAll()) {
@@ -95,16 +99,15 @@ public class GamePane extends Pane{
 						setTimeOut(true);
 						System.out.println("timeout");
 						this.stop();
+						animationTimer.stop();
 					}else if(currentTime<=3&&currentTime>=1) {
 						drawCurrentTimeString(gc,Color.YELLOW);
 					}else {drawCurrentTimeString(gc,Color.WHITE);}
-					animationTimer.stop();
 					lastTimeTriggered = now;
 				}
 			}
 		};
 		animationTimer.start();
-		//animationTimer.stop();
 		
 	}
 
