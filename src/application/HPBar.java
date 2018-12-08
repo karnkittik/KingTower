@@ -9,7 +9,7 @@ import logic.Castle;
 public class HPBar extends ProgressBar {
 
 	public HPBar() {
-		super(0.5);
+		super(1);
 		this.setPrefWidth(100);
 	}
 	
