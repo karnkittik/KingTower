@@ -5,8 +5,10 @@ import java.util.List;
 
 import Drawing.Drawable;
 import Drawing.Eraseable;
+import application.HPBar;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 
 public class Castle implements Drawable,Eraseable{
 	private int hp;
@@ -16,6 +18,7 @@ public class Castle implements Drawable,Eraseable{
 	private int activePoint;
 	private int x,y;
 	private int width,height;
+	private HPBar hpbar;
 	private final static int LIMIT = 5000; 
 	private String img;
 	private static List<Castle> allCastle = new ArrayList<Castle>();
@@ -28,8 +31,24 @@ public class Castle implements Drawable,Eraseable{
 		setImg(img);
 		setX(x);
 		setY(y);
+		hpbar = new HPBar();
+		hpbar.setLayoutX(x+5);
+		hpbar.setLayoutY(y+140);
 		allCastle.add(this);
 	}
+
+	public HPBar getHpbar() {
+		return hpbar;
+	}
+
+	public void setHpbar(HPBar hpbar) {
+		this.hpbar = hpbar;
+	}
+	
+//	public void drawHPBar(Pane pane) {
+//		hpbar.setLayoutX(x+5);
+//		hpbar.setLayoutY(y+140);
+//	}
 
 	@Override
 	public void draw(GraphicsContext gc) {

@@ -19,17 +19,20 @@ public class GamePane extends Pane {
 	private static AnimationTimer animationTimer;
 	private static long lastTimeTriggered;
 	private static Canvas canvas = new Canvas(600,800);
+	private static Pane pane = new Pane();
 	private static boolean timeOut;
 	private static GraphicsContext gc = canvas.getGraphicsContext2D();
 	public GamePane() {
 		super();
 		this.setPrefSize(600, 800);
 		GameScreen game = new GameScreen();
-		this.getChildren().add(game);	
+		this.getChildren().add(game);
 		this.getChildren().add(canvas);
+		this.getChildren().add(pane);
 		CharacterPane cp = new CharacterPane();
 		this.getChildren().add(cp);
 		cp.setLayoutX(10);cp.setLayoutY(667);
+		
 		timeOut = false;
 		startGameloop();
 	}
@@ -53,6 +56,7 @@ public class GamePane extends Pane {
 		
 		for(Castle c : Castle.getAllCastle()) {
 			c.draw(gc);
+			pane.getChildren().add(c.getHpbar());
 		}
 		
 		for(ButtonLane btn:CharacterCard.getAll()) {
