@@ -1,6 +1,13 @@
 package logic;
 
-public class Castle {
+import java.util.ArrayList;
+import java.util.List;
+
+import Drawing.Eraseable;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+
+public class Castle implements Drawable,Eraseable{
 	private int hp;
 	private int maxhp;
 	private static int speed = 105;
@@ -8,9 +15,10 @@ public class Castle {
 	private int activePoint;
 	private int x,y;
 	private int width,height;
-	private final static int LIMIT = 10000; 
-	
-	public Castle(int x,int y,int width,int height,int maxhp, int damage) {
+	private final static int LIMIT = 5000; 
+	private String img;
+	private static List<Castle> allCastle = new ArrayList<Castle>();
+	public Castle(int x,int y,int width,int height,int maxhp, int damage,String img) {
 		setDamage(damage);
 		setHp(maxhp);
 		setMaxhp(maxhp);
@@ -18,6 +26,26 @@ public class Castle {
 		setHeight(height);
 		setX(x);
 		setY(y);
+		allCastle.add(this);
+	}
+
+	@Override
+	public void draw(GraphicsContext gc, String img, int x, int y) {
+		Image pic = new Image(img);
+		gc.drawImage(pic, x, y);	
+	}
+
+	@Override
+	public void erase(GraphicsContext gc) {
+		gc.clearRect(x, y, width, height);
+		
+	}
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public int getHp() {
@@ -94,6 +122,14 @@ public class Castle {
 
 	public static int getLimit() {
 		return LIMIT;
+	}
+
+	public static List<Castle> getAllCastle() {
+		return allCastle;
+	}
+
+	public static void setAllCastle(List<Castle> allCastle) {
+		Castle.allCastle = allCastle;
 	}
 	
 }

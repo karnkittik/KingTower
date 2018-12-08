@@ -3,7 +3,11 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lane {
+import Drawing.Eraseable;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+
+public class Lane implements Drawable, Eraseable {
 	private static List<Character> allcharacter = new ArrayList<Character>();
 	private int x,y,width,height;
 	private String color;
@@ -14,6 +18,17 @@ public class Lane {
 		this.width = width;
 		this.height = height;
 		this.color = color;
+	}
+	@Override
+	public void draw(GraphicsContext gc, String img, int x, int y) {
+		Image pic = new Image(img);
+		gc.drawImage(pic, x, y);	
+	}
+
+	@Override
+	public void erase(GraphicsContext gc) {
+		gc.clearRect(x, y, width, height);
+		
 	}
 	public static List<Character> getAllcharacter() {
 		return allcharacter;
@@ -51,6 +66,7 @@ public class Lane {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	
 	
 	
 }
