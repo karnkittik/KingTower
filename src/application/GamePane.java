@@ -13,6 +13,7 @@ import logic.Castle;
 import logic.CharacterCard;
 import logic.Lane;
 import logic.WhiteCastle;
+import logic.Character;
 
 public class GamePane extends Pane {
 	private static int currentTime;
@@ -38,25 +39,33 @@ public class GamePane extends Pane {
 	}
 
 	public static void startGameloop() {
-		Castle c1 = new WhiteCastle(54, 210, 110, 250);
-		Castle c2 = new WhiteCastle(250, 260, 110, 250);
-		Castle c3 = new WhiteCastle(432, 210, 110, 250);
-		Castle c4 = new BlackCastle(150, 160, 110, 250);
-		Castle c5 = new BlackCastle(345, 160, 110, 250);
+		Castle c1 = new WhiteCastle(54, 210, 110, 250);	
+		Castle c2 = new BlackCastle(150, 160, 110, 250);
+		Castle c3 = new WhiteCastle(250, 260, 110, 250);
+		Castle c4 = new BlackCastle(345, 160, 110, 250);
+		Castle c5 = new WhiteCastle(432, 210, 110, 250);
+	
 		
-		Lane l1 = new Lane(80, 460, 60, 200, Color.BURLYWOOD);
-		Lane l2 = new Lane(275, 510, 60, 150, Color.BURLYWOOD);
-		Lane l3 = new Lane(450, 460, 60, 200, Color.BURLYWOOD);
-		Lane l4 = new Lane(180, 410, 60, 250, Color.BURLYWOOD);
-		Lane l5 = new Lane(370, 410, 60, 250, Color.BURLYWOOD);
+		Lane l1 = new Lane(80, 460, 60, 200, Color.BURLYWOOD);		
+		Lane l2 = new Lane(180, 410, 60, 250, Color.BURLYWOOD);
+		Lane l3 = new Lane(275, 510, 60, 150, Color.BURLYWOOD);		
+		Lane l4 = new Lane(370, 410, 60, 250, Color.BURLYWOOD);
+		Lane l5 = new Lane(450, 460, 60, 200, Color.BURLYWOOD);
+
+
 			
 		for(Lane l : Lane.getAllLane()) {
 			l.draw(gc);
 		}
 		
+		pane.getChildren().add(c1.getHpbar());
+		pane.getChildren().add(c2.getHpbar());
+		pane.getChildren().add(c3.getHpbar());
+		pane.getChildren().add(c4.getHpbar());
+		pane.getChildren().add(c5.getHpbar());
+		
 		for(Castle c : Castle.getAllCastle()) {
 			c.draw(gc);
-			pane.getChildren().add(c.getHpbar());
 		}
 		
 		for(ButtonLane btn:CharacterCard.getAll()) {
@@ -127,6 +136,24 @@ public class GamePane extends Pane {
 		
 	}
 
-	
+	public void drawScalableRectAnimation(GraphicsContext gc,Character character) {
+		final long startNanoTime = System.nanoTime();
+		new AnimationTimer() {
+			double distance = 0;
+
+			public void handle(long currentNanoTime) {
+				double t = ((currentNanoTime - startNanoTime) / 1000000000.0) % 3;
+				distance += character.getSpeed()*t;
+				character.erase(gc);
+				character.setY(distance);
+				character.draw(gc);
+				if(distance>=character.getLength()) {
+					character.setTerminate(true);
+					//effect
+					stop();
+				}
+			}
+		}.start();
+	}
 	
 }
