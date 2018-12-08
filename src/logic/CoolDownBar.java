@@ -2,6 +2,7 @@ package logic;
 
 import java.util.List;
 
+import application.GamePane;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.ProgressBar;
@@ -22,9 +23,13 @@ public class CoolDownBar extends ProgressBar{
 			Thread thread = new Thread(()->{
 				while(true) {
 					try {
+						if(GamePane.isTimeOut()) {
+							setVisible(false);
+							break;
+						}
 						Thread.sleep(100);
 						Platform.runLater(()->{
-							setProgress(getProgress()+(0.02*5)/15); // cd/250
+							setProgress(getProgress()+(0.02*5)/cd); // cd/250
 						});
 					
 					}catch(InterruptedException e){

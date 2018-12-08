@@ -27,7 +27,6 @@ public class CharacterCard extends HBox{
 	private int cd;
 	private String imgCharacter;
 	private String imgCard;
-	private static boolean bone,btwo,bthree,bfour,bfive;
 	private ButtonLane one,two,three,four,five;
 	private CoolDownBar cb;
 	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, String imgCharacter,String imgCard) {
@@ -187,6 +186,12 @@ public class CharacterCard extends HBox{
 	}
 	public void setFive(ButtonLane five) {
 		this.five = five;
+	}
+	public static List<ButtonLane> getAll() {
+		return all;
+	}
+	public static void setAll(List<ButtonLane> all) {
+		CharacterCard.all = all;
 	}
 	
 	

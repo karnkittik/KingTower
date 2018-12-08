@@ -3,6 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import Drawing.Drawable;
 import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -24,13 +25,14 @@ public class Castle implements Drawable,Eraseable{
 		setMaxhp(maxhp);
 		setWidth(width);
 		setHeight(height);
+		setImg(img);
 		setX(x);
 		setY(y);
 		allCastle.add(this);
 	}
 
 	@Override
-	public void draw(GraphicsContext gc, String img, int x, int y) {
+	public void draw(GraphicsContext gc) {
 		Image pic = new Image(img);
 		gc.drawImage(pic, x, y);	
 	}
@@ -131,5 +133,6 @@ public class Castle implements Drawable,Eraseable{
 	public static void setAllCastle(List<Castle> allCastle) {
 		Castle.allCastle = allCastle;
 	}
-	
+
+
 }
