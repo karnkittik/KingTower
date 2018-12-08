@@ -97,6 +97,7 @@ public class Home extends Application {
 		start.setLayoutX(100);start.setLayoutY(550);
 		start.setOnAction(e -> {
 			primaryStage.setScene(Game);
+			GamePane.startGameloop();
 		});
 		
 		setting.setPrefSize(400, 50);

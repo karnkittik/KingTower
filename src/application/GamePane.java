@@ -18,6 +18,13 @@ public class GamePane extends Pane{
 		CharacterPane cp = new CharacterPane();
 		this.getChildren().add(cp);
 		cp.setLayoutX(10);cp.setLayoutY(667);
+		
+		startGameloop();
+	}
+
+	public static void startGameloop() {
+		
+		
 	}
 
 	public static void updateUI() {
