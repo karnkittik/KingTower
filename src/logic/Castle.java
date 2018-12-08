@@ -21,7 +21,9 @@ public class Castle implements Drawable,Eraseable{
 	private HPBar hpbar;
 	private final static int LIMIT = 5000; 
 	private String img;
+	private Character enemy;
 	private static List<Castle> allCastle = new ArrayList<Castle>();
+	private static List<Castle> activeCastle = new ArrayList<Castle>();
 	public Castle(int x,int y,int width,int height,int maxhp, int damage,String img) {
 		setDamage(damage);
 		setHp(maxhp);
@@ -31,11 +33,20 @@ public class Castle implements Drawable,Eraseable{
 		setImg(img);
 		setX(x);
 		setY(y);
+		setEnemy(null);
 		hpbar = new HPBar();
 		hpbar.setLayoutX(x+5);
 		hpbar.setLayoutY(y+140);
 		allCastle.add(this);
 	}
+	public Character getEnemy() {
+		return enemy;
+	}
+
+	public void setEnemy(Character enemy) {
+		this.enemy = enemy;
+	}
+
 
 	public HPBar getHpbar() {
 		return hpbar;
@@ -151,6 +162,13 @@ public class Castle implements Drawable,Eraseable{
 
 	public static void setAllCastle(List<Castle> allCastle) {
 		Castle.allCastle = allCastle;
+	}
+	public static List<Castle> getActiveCastle() {
+		return activeCastle;
+	}
+
+	public static void setActiveCastle(List<Castle> activeCastle) {
+		Castle.activeCastle = activeCastle;
 	}
 
 

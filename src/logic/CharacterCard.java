@@ -29,6 +29,7 @@ public class CharacterCard extends HBox{
 	private String imgCard;
 	private ButtonLane one,two,three,four,five;
 	private CoolDownBar cb;
+	private static List<Character> allCaharacter = new ArrayList<Character>();
 	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, String imgCharacter,String imgCard) {
 		super(10);
 		this.name = name;
@@ -52,7 +53,8 @@ public class CharacterCard extends HBox{
 		
 		one = new ButtonLane("Lane 1",1,name);allbtn1.add(one);all.add(one);
 		one.setOnAction(e->{
-			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Character character = new Character(70,260,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Castle.getAllCastle().get(0).setEnemy(character);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
@@ -63,7 +65,7 @@ public class CharacterCard extends HBox{
 		});
 		two = new ButtonLane("Lane 2",2,name);allbtn2.add(two);all.add(two);
 		two.setOnAction(e->{
-			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Character character = new Character(170,160,250,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
@@ -74,7 +76,8 @@ public class CharacterCard extends HBox{
 		});
 		three = new ButtonLane("Lane 3",3,name);allbtn3.add(three);all.add(three);
 		three.setOnAction(e->{
-			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Character character = new Character(265,360,150,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
@@ -85,7 +88,7 @@ public class CharacterCard extends HBox{
 		});
 		four = new ButtonLane("Lane 4",4,name);allbtn4.add(four);all.add(four);
 		four.setOnAction(e->{
-			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Character character = new Character(360,160,250,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
@@ -96,7 +99,7 @@ public class CharacterCard extends HBox{
 		});
 		five = new ButtonLane("Lane 5",5,name);allbtn5.add(five);all.add(five);
 		five.setOnAction(e->{
-			Character character = new Character(name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Character character = new Character(440,260,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
