@@ -239,6 +239,12 @@ public class CharacterCard extends HBox{
 	public static void setAllbtn5(List<ButtonLane> allbtn5) {
 		CharacterCard.allbtn5 = allbtn5;
 	}
+	public CoolDownBar getCb() {
+		return cb;
+	}
+	public void setCb(CoolDownBar cb) {
+		this.cb = cb;
+	}
 	
 	
 	
