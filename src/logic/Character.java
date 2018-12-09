@@ -68,7 +68,9 @@ public class Character extends Entity implements Drawable,Eraseable{
 		if(target instanceof BlackCastle) {
 			target.setImg(RenderableHolder.getBlackCastlefire());
 		}
-		RenderableHolder.getExplosionSound().play();
+		if(name.equals("Grey")) RenderableHolder.getGreysound().play();
+		else if(name.equals("Red")) RenderableHolder.getRedsound().play();
+		else RenderableHolder.getBluesound().play();
 		setDestroyed(true);
 	}
 	

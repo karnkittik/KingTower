@@ -29,7 +29,9 @@ public class RenderableHolder {
 	private static Image blackCastlemorefire;
 	private static Image bar;
 	private static Image main;
-	private static AudioClip  explosionSound;
+	private static AudioClip  greysound;
+	private static AudioClip  redsound;
+	private static AudioClip  bluesound;
 	
 	static {
 		loadResource();
@@ -113,12 +115,6 @@ public class RenderableHolder {
 	public static void setBar(Image bar) {
 		RenderableHolder.bar = bar;
 	}
-	public static AudioClip getExplosionSound() {
-		return explosionSound;
-	}
-	public static void setExplosionSound(AudioClip explosionSound) {
-		RenderableHolder.explosionSound = explosionSound;
-	}
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
 //		comparator = (IRenderable o1, IRenderable o2) -> {
@@ -145,7 +141,9 @@ public class RenderableHolder {
 		blackCastlefire = new Image(ClassLoader.getSystemResource("blackfire.png").toString());
 		blackCastlemorefire = new Image(ClassLoader.getSystemResource("blackdestroy.png").toString());
 		bar = new Image(ClassLoader.getSystemResource("Bar.png").toString());
-		explosionSound = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
+		greysound = new AudioClip(ClassLoader.getSystemResource("greysound.wav").toString());
+		redsound = new AudioClip(ClassLoader.getSystemResource("redsound.wav").toString());
+		bluesound = new AudioClip(ClassLoader.getSystemResource("bluesound.wav").toString());
 		main = new Image(ClassLoader.getSystemResource("mainmenu.jpeg").toString());
 	}
 	public void add(IRenderable entity) {
@@ -174,5 +172,23 @@ public class RenderableHolder {
 	}
 	public static void setMain(Image main) {
 		RenderableHolder.main = main;
+	}
+	public static AudioClip getRedsound() {
+		return redsound;
+	}
+	public static void setRedsound(AudioClip redsound) {
+		RenderableHolder.redsound = redsound;
+	}
+	public static AudioClip getBluesound() {
+		return bluesound;
+	}
+	public static void setBluesound(AudioClip bluesound) {
+		RenderableHolder.bluesound = bluesound;
+	}
+	public static AudioClip getGreysound() {
+		return greysound;
+	}
+	public static void setGreysound(AudioClip greysound) {
+		RenderableHolder.greysound = greysound;
 	}
 }
