@@ -58,12 +58,6 @@ public class GamePane extends Pane {
 		this.gs = gs;
 	}
 
-	public void startGameloop() {
-		startTimer();
-
-	}
-	
-	
 
 	public static boolean isTimeOut() {
 		return timeOut;
@@ -73,7 +67,7 @@ public class GamePane extends Pane {
 		GamePane.timeOut = timeOut;
 	}
 
-	private static void startTimer() {
+	public void startTimer() {
 		currentTime = 60;
 		lastTimeTriggered = -1;
 		GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -106,9 +100,9 @@ public class GamePane extends Pane {
 						}
 						setTimeOut(true);
 						System.out.println("timeout");
-						this.stop();
+						stop();
 						timeOut=true;
-						animationTimer.stop();
+						//animationTimer.stop();
 					}else if(currentTime<=3&&currentTime>=1) {
 						drawCurrentTimeString(gc,Color.YELLOW);
 					}else {drawCurrentTimeString(gc,Color.WHITE);}

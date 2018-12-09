@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import application.GamePane;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import logic.Castle;
@@ -14,7 +15,7 @@ public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 	
 	private List<IRenderable> entities;
-	private Comparator<IRenderable> comparator;
+//	private Comparator<IRenderable> comparator;
 	public static Image blueBomb;
 	public static Image redBomb;
 	public static Image greyBomb;
@@ -22,7 +23,12 @@ public class RenderableHolder {
 	public static Image red;
 	public static Image grey;
 	public static Image whiteCastle;
+	public static Image whiteCastlefire;
+	public static Image whiteCastlemorefire;
 	public static Image blackCastle;
+	public static Image blackCastlefire;
+	public static Image blackCastlemorefire;
+	public static Image bar;
 	public static AudioClip  explosionSound;
 	
 	static {
@@ -49,11 +55,15 @@ public class RenderableHolder {
 		red = new Image(ClassLoader.getSystemResource("red.png").toString());
 		grey = new Image(ClassLoader.getSystemResource("grey.png").toString());
 		whiteCastle = new Image(ClassLoader.getSystemResource("White.png").toString());
+		whiteCastlefire = new Image(ClassLoader.getSystemResource("Whitefire.png").toString());
+		whiteCastlemorefire = new Image(ClassLoader.getSystemResource("Whitedestroy.png").toString());
 		blackCastle = new Image(ClassLoader.getSystemResource("Black.png").toString());
+		blackCastlefire = new Image(ClassLoader.getSystemResource("Blackfire.png").toString());
+		blackCastlemorefire = new Image(ClassLoader.getSystemResource("Blackdestroy.png").toString());
 		explosionSound = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
 	}
 	public void add(IRenderable entity) {
-		System.out.println("add");
+		//System.out.println("add");
 		entities.add(entity);
 		//Collections.sort(entities, comparator);
 //		for(IRenderable x: entities){
@@ -63,10 +73,11 @@ public class RenderableHolder {
 //		}
 	}
 	public void update() {
-		for (int i = entities.size() - 1; i >= 0; i--) {
-			if (entities.get(i).isDestroyed())
-				entities.remove(i);
-				//System.out.println("d");
+		if(!GamePane.isTimeOut()&& !GamePane.isWin()) {
+			for (int i = entities.size() - 1; i >= 0; i--) {
+				if (entities.get(i).isDestroyed())
+					entities.remove(i);
+			}
 		}
 	}
 	public List<IRenderable> getEntities() {

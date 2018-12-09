@@ -10,7 +10,7 @@ import sharedObject.RenderableHolder;
 
 public class GameLogic {
 	//private static List<Entity> gameObjectContainer;
-	private static int numberCastle = 0;
+	private static int gameMode = 1;
 	private static Castle c1 = new WhiteCastle(60, 210, 110, 250);	
 	private static Castle c2 = new BlackCastle(160, 160, 110, 250);
 	private static Castle c3 = new WhiteCastle(255, 260, 110, 250);
@@ -26,6 +26,14 @@ public class GameLogic {
 	
 	public static Castle getC1() {
 		return c1;
+	}
+
+	public static int getGameMode() {
+		return gameMode;
+	}
+
+	public static void setGameMode(int gameMode) {
+		GameLogic.gameMode = gameMode;
 	}
 
 	public static void setC1(Castle c1) {

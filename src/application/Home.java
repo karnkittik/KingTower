@@ -3,14 +3,18 @@ package application;
 
 import Drawing.GameScreen;
 import Drawing.HomeScreen;
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -74,19 +78,18 @@ public class Home extends Application {
 			back.setVisible(false);back.setDisable(true);
 		});
 		easy.setOnAction(e ->{
-			//GameLogic.setGameMode(1);
+			GameLogic.setGameMode(1);
 			easy.setDisable(true);medium.setDisable(false);hard.setDisable(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 		medium.setOnAction(e ->{
-			//GameLogic.setGameMode(2);
+			GameLogic.setGameMode(2);
 			easy.setDisable(false);medium.setDisable(true);hard.setDisable(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 		hard.setOnAction(e ->{
-			//GameLogic.setGameMode(3);
+			GameLogic.setGameMode(3);
 			easy.setDisable(false);medium.setDisable(false);hard.setDisable(true);
-			//menu.setDisable(true);menu.setVisible(false);
 			setting.setDisable(false);setting.setVisible(false);
 		});
 
@@ -102,21 +105,34 @@ public class Home extends Application {
 		start.setLayoutX(100);start.setLayoutY(550);
 		start.setOnAction(e -> {
 			primaryStage.setScene(Game);
-			
-			gamepane.startGameloop();
-			
-			
+			gamepane.startTimer();
+
 			AnimationTimer animation = new AnimationTimer() {
 				public void handle(long now) {
-					//System.out.println("k");;
 					if(GamePane.isTimeOut()) {
-						this.stop();
-						//alert
+						Platform.runLater(() -> {
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setContentText("So sad that you can't destroy King Tower!");
+							alert.setHeaderText("You are DEFEATED!");
+							alert.setTitle("Game Result");
+							alert.show();
+							
+						});
+						stop();
+					}else if(GamePane.isWin()) {
+						Platform.runLater(() -> {
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setContentText("Congratulations! King Tower is destroyed!");
+							alert.setHeaderText("You are VICTORIOUS!");
+							alert.setTitle("Game Result");
+							alert.show();
+						});
+						stop();
+					}else {
+						gamepane.getGs().paintComponent();
+						gamelogic.logicUpdate();
+						RenderableHolder.getInstance().update();
 					}
-					gamepane.getGs().paintComponent();
-//gamepane.getHPpane().HPUpdate();
-					gamelogic.logicUpdate();
-					RenderableHolder.getInstance().update();
 				}
 			};
 			animation.start();
