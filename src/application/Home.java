@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import logic.GameLogic;
 
 
 public class Home extends Application {
@@ -27,13 +28,18 @@ public class Home extends Application {
 	    Pane home = new Pane();
 	    home.setPrefSize(600, 800);
 		HomeScreen homescreen = new HomeScreen();
+		home.getChildren().add(homescreen);
+		
 		GamePane gamescreen = new GamePane();
 		Scene Game = new Scene(gamescreen);
-		home.getChildren().add(homescreen);
+		
 		Scene homescene = new Scene(home);
 		primaryStage.setScene(homescene);
-		primaryStage.setTitle("Main Menu");
+		primaryStage.setTitle("KingTower");
 	    primaryStage.setResizable(false);
+	    
+	    GameLogic gamelogic = new GameLogic();
+	    
 		
 		
 		Hyperlink start = new Hyperlink("START"); start.setAlignment(Pos.CENTER);
@@ -47,12 +53,7 @@ public class Home extends Application {
 		menu.setAlignment(Pos.CENTER);
 		menu.getChildren().addAll(easy,medium,hard);
 		Font small = new Font("Thonburi",25);
-//		easy.setStyle("-fx-font-family: Thonburi;"
-//				+ "-fx-font-size: 25; -fx-text-fill: black;");
-//		medium.setStyle("-fx-font-family: Thonburi;"
-//				+ "-fx-font-size: 25; -fx-text-fill: black;");
-//		hard.setStyle("-fx-font-family: Thonburi;"
-//				+ "-fx-font-size: 25; -fx-text-fill: black;");
+
 		easy.setFont(small);medium.setFont(small);hard.setFont(small);
 		easy.setDisable(true);medium.setDisable(false);hard.setDisable(false);
 		easy.setVisible(false);medium.setVisible(false);hard.setVisible(false);

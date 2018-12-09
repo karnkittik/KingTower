@@ -5,7 +5,7 @@ import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Character implements Drawable,Eraseable{
+public class Character extends Entity implements Drawable,Eraseable{
 	//private Castle target;
 
 	private String name;

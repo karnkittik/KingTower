@@ -129,7 +129,7 @@ public class GamePane extends Pane {
 		
 	}
 
-	public static void updateUI() {
+	public static void paint() {
 		
 	}
 
