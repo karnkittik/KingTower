@@ -28,12 +28,12 @@ public class CharacterCard extends HBox{
 	private int speed;
 	private int hp,maxhp;
 	private int cd;
-	private String imgCharacter;
-	private String imgCard;
+	private Image imgCharacter;
+	private Image imgCard;
 	private ButtonLane one,two,three,four,five;
 	private CoolDownBar cb;
 	private static List<Character> allCaharacter = new ArrayList<Character>();
-	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, String imgCharacter,String imgCard) {
+	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, Image imgCharacter,Image imgCard) {
 		super(10);
 		this.name = name;
 		this.damage = damage;
@@ -50,8 +50,8 @@ public class CharacterCard extends HBox{
 		sp.getChildren().addAll(canvas,cb);
 		this.getChildren().add(sp);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		Image pic =  new Image(imgCard);
-		gc.drawImage(pic, 0, 0);
+
+		gc.drawImage(imgCard, 0, 0);
 		VBox allbutton = new VBox();
 		
 		one = new ButtonLane("Lane 1",1,name);allbtn1.add(one);all.add(one);
@@ -155,16 +155,16 @@ public class CharacterCard extends HBox{
 	public void setCd(int cd) {
 		this.cd = cd;
 	}
-	public String getImgCharacter() {
+	public Image getImgCharacter() {
 		return imgCharacter;
 	}
-	public void setImgCharacter(String imgCharacter) {
+	public void setImgCharacter(Image imgCharacter) {
 		this.imgCharacter = imgCharacter;
 	}
-	public String getImgCard() {
+	public Image getImgCard() {
 		return imgCard;
 	}
-	public void setImgCard(String imgCard) {
+	public void setImgCard(Image imgCard) {
 		this.imgCard = imgCard;
 	}
 	public ButtonLane getOne() {

@@ -4,6 +4,7 @@ import Drawing.Drawable;
 import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import sharedObject.RenderableHolder;
 
 public class Character extends Entity implements Drawable,Eraseable{
 	//private Castle target;
@@ -14,12 +15,12 @@ public class Character extends Entity implements Drawable,Eraseable{
 	private int hp,maxhp;
 	private int cd;
 	private double x,y,length;
-	private String imgCharacter;
-	private String imgCard;
+	private Image imgCharacter;
+	private Image imgCard;
 	private boolean terminate;
 	private Castle target;
 	public Character(double x,double y,double length,String name, int damage, int speed,int maxhp, 
-		int cd, String imgCharacter,String imgCard) {
+		int cd, Image imgCharacter,Image imgCard) {
 		this.x = x;
 		this.y = y;
 		this.length = length;
@@ -54,23 +55,20 @@ public class Character extends Entity implements Drawable,Eraseable{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		Image pic = new Image(imgCharacter);
-		//System.out.println("draww");
-		gc.drawImage(pic, x, y);
-		//erase(gc);
+		gc.drawImage(imgCharacter, x, y);
 		setY(getY()-1);	
 	}
 	
 	public void crash(Castle target) {
 		target.setHp(Math.max(target.getHp()-damage, 0));
-//		System.out.println(target.getHp());
-//		System.out.println(target.getMaxhp());
+
 		if(target instanceof WhiteCastle) {
-			target.setImg("file:res/whitefire.png");
+			target.setImg(RenderableHolder.getWhiteCastlefire());
 		}
 		if(target instanceof BlackCastle) {
-			target.setImg("file:res/blackfire.png");
+			target.setImg(RenderableHolder.getBlackCastlefire());
 		}
+		RenderableHolder.getExplosionSound().play();
 		setDestroyed(true);
 	}
 	
@@ -129,16 +127,16 @@ public class Character extends Entity implements Drawable,Eraseable{
 	public void setCd(int cd) {
 		this.cd = cd;
 	}
-	public String getImgCharacter() {
+	public Image getImgCharacter() {
 		return imgCharacter;
 	}
-	public void setImgCharacter(String imgCharacter) {
+	public void setImgCharacter(Image imgCharacter) {
 		this.imgCharacter = imgCharacter;
 	}
-	public String getImgCard() {
+	public Image getImgCard() {
 		return imgCard;
 	}
-	public void setImgCard(String imgCard) {
+	public void setImgCard(Image imgCard) {
 		this.imgCard = imgCard;
 	}
 

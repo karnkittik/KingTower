@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import logic.ButtonLane;
 import logic.GameLogic;
 import logic.HPBar;
+import sharedObject.RenderableHolder;
 
 public class HPPane extends Pane{
 	private HPBar one;
@@ -25,14 +26,12 @@ public class HPPane extends Pane{
 		canvas.setLayoutX(0);canvas.setLayoutY(660);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		getChildren().add(canvas);
-		String img = "file:res/bar.png";
-		Image pic = new Image(img);
-		gc.drawImage(pic, 0, 0);
-		one = GameLogic.getC1().getHpbar();
-		two = GameLogic.getC2().getHpbar();
-		three = GameLogic.getC3().getHpbar();
-		four = GameLogic.getC4().getHpbar();
-		five = GameLogic.getC5().getHpbar();
+		gc.drawImage(RenderableHolder.getBar(),0,0);
+		one = GameLogic.getC1().getHpbar();one.setStyle("-fx-accent:turquoise");
+		two = GameLogic.getC2().getHpbar();two.setStyle("-fx-accent:tomato");
+		three = GameLogic.getC3().getHpbar();three.setStyle("-fx-accent:turquoise");
+		four = GameLogic.getC4().getHpbar();four.setStyle("-fx-accent:tomato");
+		five = GameLogic.getC5().getHpbar();five.setStyle("-fx-accent:turquoise");
 		getChildren().addAll(one,two,three,four,five);
 		one.setLayoutX(GameLogic.getC1().getX()+15);one.setLayoutY(GameLogic.getC1().getY()-30);
 		two.setLayoutX(GameLogic.getC2().getX()+15);two.setLayoutY(GameLogic.getC2().getY()-30);

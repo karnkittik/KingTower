@@ -19,11 +19,11 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	private int width,height;
 	private HPBar hpbar;
 	private final static int LIMIT = 5000; 
-	private String img;
+	private Image img;
 	private boolean dead;
 	private static List<Castle> allCastle = new ArrayList<Castle>();
 	private static List<Castle> activeCastle = new ArrayList<Castle>();
-	public Castle(int x,int y,int width,int height,int maxhp, int damage,String img) {
+	public Castle(int x,int y,int width,int height,int maxhp, int damage,Image img) {
 		setDamage(damage);
 		setHp(maxhp);
 		setMaxhp(maxhp);
@@ -57,8 +57,7 @@ public class Castle extends Entity implements Drawable,Eraseable{
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		Image pic = new Image(img);
-		gc.drawImage(pic, x, y);	
+		gc.drawImage(img, x, y);	
 	}
 
 	@Override
@@ -66,11 +65,11 @@ public class Castle extends Entity implements Drawable,Eraseable{
 		gc.clearRect(x, y, width, height);
 		
 	}
-	public String getImg() {
+	public Image getImg() {
 		return img;
 	}
 
-	public void setImg(String img) {
+	public void setImg(Image img) {
 		this.img = img;
 	}
 
@@ -164,10 +163,7 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	public static void setActiveCastle(List<Castle> activeCastle) {
 		Castle.activeCastle = activeCastle;
 	}
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public void setDestroyed(boolean destroy) {
 		this.destroyed = destroy;

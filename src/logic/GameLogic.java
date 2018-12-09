@@ -16,11 +16,11 @@ public class GameLogic {
 	private static Castle c3 = new WhiteCastle(255, 260, 110, 250);
 	private static Castle c4 = new BlackCastle(350, 160, 110, 250);
 	private static Castle c5 = new WhiteCastle(439, 210, 110, 250);
-	private static Lane l1 = new Lane(80-10, 460, 60+20, 200, Color.BURLYWOOD);		
-	private static Lane l2 = new Lane(180-10, 410, 60+20, 250, Color.BURLYWOOD);
-	private static Lane l3 = new Lane(275-10, 510, 60+20, 150, Color.BURLYWOOD);		
-	private static Lane l4 = new Lane(370-10, 410, 60+20, 250, Color.BURLYWOOD);
-	private static Lane l5 = new Lane(460-10, 460, 60+20, 200, Color.BURLYWOOD);
+	private static Lane l1 = new Lane(80-10, 460, 60+20, 200, Color.DARKGREY);		
+	private static Lane l2 = new Lane(180-10, 410, 60+20, 250, Color.SLATEGRAY);
+	private static Lane l3 = new Lane(275-10, 510, 60+20, 150, Color.DARKGREY);		
+	private static Lane l4 = new Lane(370-10, 410, 60+20, 250, Color.SLATEGRAY);
+	private static Lane l5 = new Lane(460-10, 460, 60+20, 200, Color.DARKGREY);
 	private static CharacterPane cp = new CharacterPane();
 	//private Character bomb1,bomb2,bomb3,bomb4,bomb5,bomb6,bomb7,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,;
 	
@@ -149,7 +149,7 @@ public class GameLogic {
 					//System.out.println("collapse");
 					//System.out.println(numberCastle);
 					((Castle)en).setDead(true);
-					((Castle)en).setImg("file:res/whitedestroy.png");
+					((Castle)en).setImg(RenderableHolder.getWhiteCastlemorefire());
 				}
 			}
 			if(en instanceof BlackCastle) {
@@ -157,7 +157,7 @@ public class GameLogic {
 					//System.out.println("collapse");
 					//System.out.println(numberCastle);
 					((Castle)en).setDead(true);
-					((Castle)en).setImg("file:res/blackdestroy.png");
+					((Castle)en).setImg(RenderableHolder.getBlackCastlemorefire());
 				}
 			}
 		}	

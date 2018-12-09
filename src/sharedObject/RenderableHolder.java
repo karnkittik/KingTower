@@ -15,26 +15,109 @@ public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 	
 	private List<IRenderable> entities;
-//	private Comparator<IRenderable> comparator;
-	public static Image blueBomb;
-	public static Image redBomb;
-	public static Image greyBomb;
-	public static Image blue;
-	public static Image red;
-	public static Image grey;
-	public static Image whiteCastle;
-	public static Image whiteCastlefire;
-	public static Image whiteCastlemorefire;
-	public static Image blackCastle;
-	public static Image blackCastlefire;
-	public static Image blackCastlemorefire;
-	public static Image bar;
-	public static AudioClip  explosionSound;
+	private static Image blueBomb;
+	private static Image redBomb;
+	private static Image greyBomb;
+	private static Image blue;
+	private static Image red;
+	private static Image grey;
+	private static Image whiteCastle;
+	private static Image whiteCastlefire;
+	private static Image whiteCastlemorefire;
+	private static Image blackCastle;
+	private static Image blackCastlefire;
+	private static Image blackCastlemorefire;
+	private static Image bar;
+	private static AudioClip  explosionSound;
 	
 	static {
 		loadResource();
 	}
 	
+	public static Image getBlueBomb() {
+		return blueBomb;
+	}
+	public static void setBlueBomb(Image blueBomb) {
+		RenderableHolder.blueBomb = blueBomb;
+	}
+	public static Image getRedBomb() {
+		return redBomb;
+	}
+	public static void setRedBomb(Image redBomb) {
+		RenderableHolder.redBomb = redBomb;
+	}
+	public static Image getGreyBomb() {
+		return greyBomb;
+	}
+	public static void setGreyBomb(Image greyBomb) {
+		RenderableHolder.greyBomb = greyBomb;
+	}
+	public static Image getBlue() {
+		return blue;
+	}
+	public static void setBlue(Image blue) {
+		RenderableHolder.blue = blue;
+	}
+	public static Image getRed() {
+		return red;
+	}
+	public static void setRed(Image red) {
+		RenderableHolder.red = red;
+	}
+	public static Image getGrey() {
+		return grey;
+	}
+	public static void setGrey(Image grey) {
+		RenderableHolder.grey = grey;
+	}
+	public static Image getWhiteCastle() {
+		return whiteCastle;
+	}
+	public static void setWhiteCastle(Image whiteCastle) {
+		RenderableHolder.whiteCastle = whiteCastle;
+	}
+	public static Image getWhiteCastlefire() {
+		return whiteCastlefire;
+	}
+	public static void setWhiteCastlefire(Image whiteCastlefire) {
+		RenderableHolder.whiteCastlefire = whiteCastlefire;
+	}
+	public static Image getWhiteCastlemorefire() {
+		return whiteCastlemorefire;
+	}
+	public static void setWhiteCastlemorefire(Image whiteCastlemorefire) {
+		RenderableHolder.whiteCastlemorefire = whiteCastlemorefire;
+	}
+	public static Image getBlackCastle() {
+		return blackCastle;
+	}
+	public static void setBlackCastle(Image blackCastle) {
+		RenderableHolder.blackCastle = blackCastle;
+	}
+	public static Image getBlackCastlefire() {
+		return blackCastlefire;
+	}
+	public static void setBlackCastlefire(Image blackCastlefire) {
+		RenderableHolder.blackCastlefire = blackCastlefire;
+	}
+	public static Image getBlackCastlemorefire() {
+		return blackCastlemorefire;
+	}
+	public static void setBlackCastlemorefire(Image blackCastlemorefire) {
+		RenderableHolder.blackCastlemorefire = blackCastlemorefire;
+	}
+	public static Image getBar() {
+		return bar;
+	}
+	public static void setBar(Image bar) {
+		RenderableHolder.bar = bar;
+	}
+	public static AudioClip getExplosionSound() {
+		return explosionSound;
+	}
+	public static void setExplosionSound(AudioClip explosionSound) {
+		RenderableHolder.explosionSound = explosionSound;
+	}
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
 //		comparator = (IRenderable o1, IRenderable o2) -> {
@@ -55,11 +138,12 @@ public class RenderableHolder {
 		red = new Image(ClassLoader.getSystemResource("red.png").toString());
 		grey = new Image(ClassLoader.getSystemResource("grey.png").toString());
 		whiteCastle = new Image(ClassLoader.getSystemResource("White.png").toString());
-		whiteCastlefire = new Image(ClassLoader.getSystemResource("Whitefire.png").toString());
-		whiteCastlemorefire = new Image(ClassLoader.getSystemResource("Whitedestroy.png").toString());
+		whiteCastlefire = new Image(ClassLoader.getSystemResource("whitefire.png").toString());
+		whiteCastlemorefire = new Image(ClassLoader.getSystemResource("whitedestroy.png").toString());
 		blackCastle = new Image(ClassLoader.getSystemResource("Black.png").toString());
-		blackCastlefire = new Image(ClassLoader.getSystemResource("Blackfire.png").toString());
-		blackCastlemorefire = new Image(ClassLoader.getSystemResource("Blackdestroy.png").toString());
+		blackCastlefire = new Image(ClassLoader.getSystemResource("blackfire.png").toString());
+		blackCastlemorefire = new Image(ClassLoader.getSystemResource("blackdestroy.png").toString());
+		bar = new Image(ClassLoader.getSystemResource("Bar.png").toString());
 		explosionSound = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
 	}
 	public void add(IRenderable entity) {
