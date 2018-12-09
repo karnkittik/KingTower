@@ -114,7 +114,7 @@ public class Home extends Application {
 						//alert
 					}
 					gamepane.getGs().paintComponent();
-					gamepane.getHPpane().HPUpdate();
+//gamepane.getHPpane().HPUpdate();
 					gamelogic.logicUpdate();
 					RenderableHolder.getInstance().update();
 				}

@@ -21,7 +21,7 @@ public class GamePane extends Pane {
 	private static AnimationTimer animationTimer;
 	private static long lastTimeTriggered;
 	private static Canvas canvas = new Canvas(600,800);
-	private HPPane HPpane = new HPPane();
+	private HPPane hp = new HPPane();
 	private static boolean timeOut = false;
 	private GameScreen gs;
 	private static CharacterPane cp = new CharacterPane();
@@ -33,8 +33,9 @@ public class GamePane extends Pane {
 		this.getChildren().add(gs);
 		
 		this.getChildren().add(canvas);
+		this.getChildren().add(hp);
 		this.getChildren().add(cp);
-		this.getChildren().add(HPpane);
+		
 		cp.setLayoutX(10);cp.setLayoutY(667);
 		
 		
@@ -42,11 +43,11 @@ public class GamePane extends Pane {
 	}
 	
 	public HPPane getHPpane() {
-		return HPpane;
+		return hp;
 	}
 
 	public void setHPpane(HPPane hPpane) {
-		HPpane = hPpane;
+		hp = hPpane;
 	}
 
 	public GameScreen getGs() {
@@ -73,7 +74,7 @@ public class GamePane extends Pane {
 	}
 
 	private static void startTimer() {
-		currentTime = 61;
+		currentTime = 60;
 		lastTimeTriggered = -1;
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		animationTimer = new AnimationTimer() {
@@ -85,18 +86,18 @@ public class GamePane extends Pane {
 				
 				if (now - lastTimeTriggered >= 1000000000) //1 second
 				{
-					currentTime--;
+					//currentTime--;
 					//System.out.println(currentTime);
 					if(win) {
 						drawCurrentTimeString(gc,Color.ORANGE);
 						this.stop();
 						animationTimer.stop();
-					}
-					if(currentTime==60) {
+					}else if(currentTime==60) {
+						drawCurrentTimeString(gc,Color.WHITE);
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(false);
 						}
-					}
+					}else
 					if(currentTime==0) {
 						drawCurrentTimeString(gc,Color.RED);
 						for(ButtonLane btn:CharacterCard.getAll()) {
@@ -112,6 +113,7 @@ public class GamePane extends Pane {
 						drawCurrentTimeString(gc,Color.YELLOW);
 					}else {drawCurrentTimeString(gc,Color.WHITE);}
 					lastTimeTriggered = now;
+					currentTime--;
 				}
 			}
 		};

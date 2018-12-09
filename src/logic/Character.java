@@ -62,7 +62,9 @@ public class Character extends Entity implements Drawable,Eraseable{
 	}
 	
 	public void crash(Castle target) {
-		target.setHp(Math.max(target.getHp()-damage,0));
+		target.setHp(Math.max(target.getHp()-damage, 0));
+//		System.out.println(target.getHp());
+//		System.out.println(target.getMaxhp());
 		if(target instanceof WhiteCastle) {
 			target.setImg("file:res/whitefire.png");
 		}

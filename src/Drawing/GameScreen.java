@@ -33,7 +33,7 @@ public class GameScreen extends Canvas{
 				entity.draw(gc);
 			}
 		}
-		if(GameLogic.getC2().isDead()&&GameLogic.getC3().isDead()&&
+		if(GameLogic.getC1().isDead()&&GameLogic.getC2().isDead()&&GameLogic.getC3().isDead()&&
 				GameLogic.getC4().isDead()&&GameLogic.getC5().isDead()) {
 //			drawFire(gc);  //bugs
 			GamePane.setWin(true);

@@ -1,33 +1,74 @@
 package application;
 
 
+import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import logic.ButtonLane;
+import logic.GameLogic;
+import logic.HPBar;
 
 public class HPPane extends Pane{
+	private HPBar one;
+	private HPBar two;
+	private HPBar three;
+	private HPBar four;
+	private HPBar five;
 	public HPPane() {
 		super.setPrefSize(600, 800);
-		Pane bar = new Pane();
-		bar.setPrefSize(600, 140);
-		///////////////
-		Canvas canvas = new Canvas(600, 800);
+		Canvas canvas = new Canvas(600, 140);
+		canvas.setLayoutX(0);canvas.setLayoutY(660);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		bar.getChildren().add(canvas);
-		String img = "file:res/blue.png";
+		getChildren().add(canvas);
+		String img = "file:res/bar.png";
 		Image pic = new Image(img);
-		gc.drawImage(pic, 0, 660);
-		///////////////////
-		
-		bar.setLayoutX(0);bar.setLayoutY(200);
-		getChildren().add(bar);
+		gc.drawImage(pic, 0, 0);
+		one = GameLogic.getC1().getHpbar();
+		two = GameLogic.getC2().getHpbar();
+		three = GameLogic.getC3().getHpbar();
+		four = GameLogic.getC4().getHpbar();
+		five = GameLogic.getC5().getHpbar();
+		getChildren().addAll(one,two,three,four,five);
+		one.setLayoutX(GameLogic.getC1().getX()+15);one.setLayoutY(GameLogic.getC1().getY()-30);
+		two.setLayoutX(GameLogic.getC2().getX()+15);two.setLayoutY(GameLogic.getC2().getY()-30);
+		three.setLayoutX(GameLogic.getC3().getX()+15);three.setLayoutY(GameLogic.getC3().getY()-30);
+		four.setLayoutX(GameLogic.getC4().getX()+15);four.setLayoutY(GameLogic.getC4().getY()-30);
+		five.setLayoutX(GameLogic.getC5().getX()+15);five.setLayoutY(GameLogic.getC5().getY()-30);
+		HPUpdate();
 	}
-
 	public void HPUpdate() {
-		System.out.println("hp");
-		
+		Thread thread = new Thread(()->{
+			while(true) {
+				try {
+					Thread.sleep(100);
+					Platform.runLater(()->{
+						one.setProgress((double)GameLogic.getC1().getHp()/GameLogic.getC1().getMaxhp()); 
+						two.setProgress((double)GameLogic.getC2().getHp()/GameLogic.getC2().getMaxhp());
+						three.setProgress((double)GameLogic.getC3().getHp()/GameLogic.getC3().getMaxhp());
+						four.setProgress((double)GameLogic.getC4().getHp()/GameLogic.getC4().getMaxhp());
+						five.setProgress((double)GameLogic.getC5().getHp()/GameLogic.getC5().getMaxhp());
+						if(one.getProgress()==0) one.setVisible(false);
+						if(two.getProgress()==0) two.setVisible(false);
+						if(three.getProgress()==0) three.setVisible(false);
+						if(four.getProgress()==0) four.setVisible(false);
+						if(five.getProgress()==0) five.setVisible(false);
+					});
+				
+				}catch(InterruptedException e){
+				e.printStackTrace();
+				}
+				if(GamePane.isTimeOut()||GamePane.isWin()) 
+				{ 
+					break;
+				}
+			}
+		});
+		thread.start();
+		return;
 	}
 }

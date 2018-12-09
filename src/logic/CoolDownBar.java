@@ -23,7 +23,7 @@ public class CoolDownBar extends ProgressBar{
 			Thread thread = new Thread(()->{
 				while(true) {
 					try {
-						if(GamePane.isTimeOut()) {
+						if(GamePane.isTimeOut()||GamePane.isWin()) {
 							setVisible(false);
 							break;
 						}
