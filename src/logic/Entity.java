@@ -6,7 +6,7 @@ public abstract class Entity implements IRenderable{
 
 	protected double x,y;
 	protected double width,height;
-	protected int z;
+	//protected int z;
 	protected boolean visible,destroyed;
 	protected boolean draw;
 	protected Entity(){
@@ -24,10 +24,6 @@ public abstract class Entity implements IRenderable{
 		return visible;
 	}
 	
-	@Override
-	public int getZ(){
-		return z;
-	}
 	@Override
 	public boolean isDraw() {
 		return draw;

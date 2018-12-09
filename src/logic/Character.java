@@ -52,14 +52,14 @@ public class Character extends CollidableEntity implements Drawable,Eraseable{
 	public void draw(GraphicsContext gc) {
 		Image pic = new Image(imgCharacter);
 		gc.drawImage(pic, x, y);
-		
+		//erase(gc);
+		y=y-1;	
 	}
 	
 	public void crash(Castle target) {
 		target.setHp(Math.max(target.getHp()-damage,0));
 		terminate = true;
-		imgCharacter = "";
-	
+		imgCharacter = "file:res/White.png";
 		destroyed = true;
 		
 	}

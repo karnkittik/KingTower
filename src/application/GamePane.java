@@ -32,7 +32,8 @@ public class GamePane extends Pane {
 		this.getChildren().add(gs);
 		this.getChildren().add(pane);
 		
-		this.getChildren().add(canvas);this.getChildren().add(cp);
+		this.getChildren().add(canvas);
+		this.getChildren().add(cp);
 		cp.setLayoutX(10);cp.setLayoutY(667);
 		
 		timeOut = false;

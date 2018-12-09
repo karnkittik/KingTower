@@ -31,11 +31,11 @@ public class RenderableHolder {
 	
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
-		comparator = (IRenderable o1, IRenderable o2) -> {
-			if (o1.getZ() > o2.getZ())
-				return 1;
-			return -1;
-		};
+//		comparator = (IRenderable o1, IRenderable o2) -> {
+//			if (o1.getZ() > o2.getZ())
+//				return 1;
+//			return -1;
+//		};
 	}
 	public static RenderableHolder getInstance() {
 		return instance;
@@ -55,12 +55,12 @@ public class RenderableHolder {
 	public void add(IRenderable entity) {
 		System.out.println("add");
 		entities.add(entity);
-		Collections.sort(entities, comparator);
-		for(IRenderable x: entities){
-			if(x instanceof Castle) System.out.println("castle");
-			if(x instanceof Character) System.out.println("bomb");
+		//Collections.sort(entities, comparator);
+//		for(IRenderable x: entities){
+//			if(x instanceof Castle) System.out.println("castle");
+//			if(x instanceof Character) System.out.println("bomb");
 			
-		}
+//		}
 	}
 	public void update() {
 		for (int i = entities.size() - 1; i >= 0; i--) {

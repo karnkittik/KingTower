@@ -5,6 +5,7 @@ import java.util.List;
 
 import application.CharacterPane;
 import javafx.scene.paint.Color;
+import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
 public class GameLogic {
@@ -125,7 +126,9 @@ public class GameLogic {
 	
 	public void logicUpdate(){
 		c1.update();c2.update();c3.update();c4.update();c5.update();
-		for(Character bomb:CharacterCard.getAllCaharacter()) {
+		for(IRenderable en : RenderableHolder.getInstance().getEntities()) {
+			if(!(en instanceof Character)) continue;
+			Character bomb = (Character) en;
 			if(!bomb.isDestroyed() && bomb.getTarget().collideWith(bomb)){
 				bomb.crash(bomb.getTarget());
 			}
