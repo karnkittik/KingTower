@@ -17,18 +17,27 @@ public class CharacterPane extends HBox {
 			CharacterCard a = new CharacterCard("Grey", 250, 3, 100, 2, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
 			CharacterCard b = new CharacterCard("Red", 300, 2.5, 100, 4, RenderableHolder.getRedBomb(),RenderableHolder.getRed());
 			CharacterCard c = new CharacterCard("Blue", 350, 2, 100, 8,RenderableHolder.getBlueBomb(), RenderableHolder.getBlue());
+			a.getCb().setStyle("-fx-accent:dimgrey");
+			b.getCb().setStyle("-fx-accent:firebrick");
+			c.getCb().setStyle("-fx-accent:royalblue");
 			this.getChildren().addAll(a,b,c);
 		}
 		else if(GameLogic.getGameMode()==2) { //Checked
 			CharacterCard a = new CharacterCard("Grey", 200, 2.5, 100, 3, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
 			CharacterCard b = new CharacterCard("Red", 250, 2, 100, 5, RenderableHolder.getRedBomb(),RenderableHolder.getRed());
 			CharacterCard c = new CharacterCard("Blue", 300, 1.5, 100, 10,RenderableHolder.getBlueBomb(), RenderableHolder.getBlue());
+			a.getCb().setStyle("-fx-accent:dimgrey");
+			b.getCb().setStyle("-fx-accent:firebrick");
+			c.getCb().setStyle("-fx-accent:royalblue");
 			this.getChildren().addAll(a,b,c);
 		}
 		else if(GameLogic.getGameMode()==3) {
 			CharacterCard a = new CharacterCard("Grey", 150, 2, 100, 3, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
 			CharacterCard b = new CharacterCard("Red", 200, 1.5, 100, 5, RenderableHolder.getRedBomb(),RenderableHolder.getRed());
 			CharacterCard c = new CharacterCard("Blue", 250, 1, 100, 10,RenderableHolder.getBlueBomb(), RenderableHolder.getBlue());
+			a.getCb().setStyle("-fx-accent:dimgrey");
+			b.getCb().setStyle("-fx-accent:firebrick");
+			c.getCb().setStyle("-fx-accent:royalblue");
 			this.getChildren().addAll(a,b,c);
 		}
 	}
