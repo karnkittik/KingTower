@@ -136,12 +136,20 @@ public class GameLogic {
 					((Character)en).crash(((Character)en).getTarget());
 				}
 			}
-			if(en instanceof Castle) {
+			if(en instanceof WhiteCastle) {
 				if(((Castle)en).getHp()==0) {
 					//System.out.println("collapse");
-					numberCastle+=1;
 					//System.out.println(numberCastle);
 					((Castle)en).setDead(true);
+					((Castle)en).setImg("file:res/whitedestroy.png");
+				}
+			}
+			if(en instanceof BlackCastle) {
+				if(((Castle)en).getHp()==0) {
+					//System.out.println("collapse");
+					//System.out.println(numberCastle);
+					((Castle)en).setDead(true);
+					((Castle)en).setImg("file:res/blackdestroy.png");
 				}
 			}
 		}	

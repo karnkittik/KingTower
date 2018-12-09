@@ -1,10 +1,12 @@
 package Drawing;
 
+import application.GamePane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import logic.GameLogic;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
@@ -31,8 +33,20 @@ public class GameScreen extends Canvas{
 				entity.draw(gc);
 			}
 		}
+		if(GameLogic.getC2().isDead()&&GameLogic.getC3().isDead()&&
+				GameLogic.getC4().isDead()&&GameLogic.getC5().isDead()) {
+//			drawFire(gc);  //bugs
+			GamePane.setWin(true);
+		}
 
 	}
+
+//	private void drawFire(GraphicsContext gc) {
+//		String img = "file:res/Superfire.png";
+//		Image pic = new Image(img);
+//		gc.drawImage(pic, 187, 0);
+//		
+//	}
 
 	public static GameScreen getInstance() {
 		return instance;

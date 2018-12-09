@@ -1,10 +1,9 @@
-package application;
+package logic;
 
 import Drawing.Drawable;
 import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ProgressBar;
-import logic.Castle;
 
 public class HPBar extends ProgressBar {
 

@@ -16,11 +16,12 @@ import logic.WhiteCastle;
 import logic.Character;
 
 public class GamePane extends Pane {
+	private static boolean win = false;
 	private static int currentTime;
 	private static AnimationTimer animationTimer;
 	private static long lastTimeTriggered;
 	private static Canvas canvas = new Canvas(600,800);
-	private static HPPane pane = new HPPane();
+	private HPPane HPpane = new HPPane();
 	private static boolean timeOut = false;
 	private GameScreen gs;
 	private static CharacterPane cp = new CharacterPane();
@@ -30,16 +31,24 @@ public class GamePane extends Pane {
 		this.setPrefSize(600, 800);
 		gs = new GameScreen();
 		this.getChildren().add(gs);
-		this.getChildren().add(pane);
 		
 		this.getChildren().add(canvas);
 		this.getChildren().add(cp);
+		this.getChildren().add(HPpane);
 		cp.setLayoutX(10);cp.setLayoutY(667);
 		
 		
 		//startGameloop();
 	}
 	
+	public HPPane getHPpane() {
+		return HPpane;
+	}
+
+	public void setHPpane(HPPane hPpane) {
+		HPpane = hPpane;
+	}
+
 	public GameScreen getGs() {
 		return gs;
 	}
@@ -78,6 +87,11 @@ public class GamePane extends Pane {
 				{
 					currentTime--;
 					//System.out.println(currentTime);
+					if(win) {
+						drawCurrentTimeString(gc,Color.ORANGE);
+						this.stop();
+						animationTimer.stop();
+					}
 					if(currentTime==60) {
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(false);
@@ -116,6 +130,14 @@ public class GamePane extends Pane {
 
 	public static void paint() {
 		
+	}
+
+	public static boolean isWin() {
+		return win;
+	}
+
+	public static void setWin(boolean win) {
+		GamePane.win = win;
 	}
 
 	

@@ -76,6 +76,11 @@ public class Lane extends Entity implements Drawable, Eraseable {
 	public static void setAllLane(List<Lane> allLane) {
 		Lane.allLane = allLane;
 	}
+	@Override
+	public void setDestroyed(boolean destroy) {
+		this.destroyed = destroy;
+		
+	}
 	
 	
 	

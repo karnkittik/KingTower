@@ -5,7 +5,6 @@ import java.util.List;
 
 import Drawing.Drawable;
 import Drawing.Eraseable;
-import application.HPBar;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
