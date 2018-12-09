@@ -25,7 +25,7 @@ public class CharacterCard extends HBox{
 	private static List<ButtonLane> all = new ArrayList<ButtonLane>();
 	private String name;
 	private int damage;
-	private int speed;
+	private double speed;
 	private int hp,maxhp;
 	private int cd;
 	private Image imgCharacter;
@@ -33,7 +33,7 @@ public class CharacterCard extends HBox{
 	private ButtonLane one,two,three,four,five;
 	private CoolDownBar cb;
 	private static List<Character> allCaharacter = new ArrayList<Character>();
-	public CharacterCard(String name, int damage, int speed, int maxhp, int cd, Image imgCharacter,Image imgCard) {
+	public CharacterCard(String name, int damage, double speed, int maxhp, int cd, Image imgCharacter,Image imgCard) {
 		super(10);
 		this.name = name;
 		this.damage = damage;
@@ -131,10 +131,10 @@ public class CharacterCard extends HBox{
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
-	public int getSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
-	public void setSpeed(int speed) {
+	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
 	public int getHp() {

@@ -13,6 +13,7 @@ public class ButtonLane extends Button {
 		setName(name);
 		setLane(lane);
 		setReady(0);
+		setDisable(true);
 		
 	}
 	public String getName() {

@@ -37,10 +37,6 @@ public class Home extends Application {
 		HomeScreen homescreen = new HomeScreen();
 		home.getChildren().add(homescreen);
 		
-		GamePane gamepane = new GamePane();
-		Scene Game = new Scene(gamepane);
-		//GameScreen gs = new GameScreen();
-		//gamepane.getChildren().add(gs);
 		Scene homescene = new Scene(home);
 		primaryStage.setScene(homescene);
 		primaryStage.setTitle("KingTower");
@@ -48,8 +44,6 @@ public class Home extends Application {
 	    
 	    GameLogic gamelogic = new GameLogic();
 	    
-		
-		
 		Hyperlink start = new Hyperlink("START"); start.setAlignment(Pos.CENTER);
 		Hyperlink setting = new Hyperlink("SETTINGS"); setting.setAlignment(Pos.CENTER);
 		Hyperlink easy = new Hyperlink("EASY");
@@ -104,6 +98,10 @@ public class Home extends Application {
 				+ "-fx-font-size: 70; -fx-text-fill: black;");
 		start.setLayoutX(100);start.setLayoutY(550);
 		start.setOnAction(e -> {
+			
+			GamePane gamepane = new GamePane();
+			Scene Game = new Scene(gamepane);
+			
 			primaryStage.setScene(Game);
 			gamepane.startTimer();
 
