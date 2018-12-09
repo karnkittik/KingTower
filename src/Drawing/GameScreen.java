@@ -9,6 +9,7 @@ import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
 public class GameScreen extends Canvas{
+	private static final GameScreen instance = new GameScreen();
 	public GameScreen() {
 		super(600,800);
 		GraphicsContext gc = getGraphicsContext2D();
@@ -30,8 +31,16 @@ public class GameScreen extends Canvas{
 			if (entity.isVisible() && !entity.isDestroyed()) {
 				entity.draw(gc);
 			}
+			else if (entity.isDestroyed()&&!entity.isDraw()) {
+				entity.draw(gc);
+				entity.setDraw(true);
+			}
 		}
 
+	}
+
+	public static GameScreen getInstance() {
+		return instance;
 	}
 	
 }

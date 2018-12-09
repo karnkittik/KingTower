@@ -1,6 +1,5 @@
 package logic;
 
-import logic.Castle;
 
 public abstract class CollidableEntity extends Entity{
 protected int radius;

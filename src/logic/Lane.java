@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-public class Lane implements Drawable, Eraseable {
+public class Lane extends Entity implements Drawable, Eraseable {
 	private static List<Character> allcharacter = new ArrayList<Character>();
 	private static List<Lane> allLane = new ArrayList<Lane>();
 	private int x,y,width,height;

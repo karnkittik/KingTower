@@ -54,8 +54,9 @@ public class CharacterCard extends HBox{
 		one = new ButtonLane("Lane 1",1,name);allbtn1.add(one);all.add(one);
 		one.setOnAction(e->{
 			Character character = new Character(70,260,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			character.setTarget(GameLogic.getC1());
+			
 			GameLogic.addNewObject(character);
-			Castle.getAllCastle().get(0).setEnemy(character);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
 			cb.setVisible(true);
@@ -67,6 +68,8 @@ public class CharacterCard extends HBox{
 		two = new ButtonLane("Lane 2",2,name);allbtn2.add(two);all.add(two);
 		two.setOnAction(e->{
 			Character character = new Character(170,160,250,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			character.setTarget(GameLogic.getC2());
+			
 			GameLogic.addNewObject(character);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
@@ -79,6 +82,8 @@ public class CharacterCard extends HBox{
 		three = new ButtonLane("Lane 3",3,name);allbtn3.add(three);all.add(three);
 		three.setOnAction(e->{
 			Character character = new Character(265,360,150,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			character.setTarget(GameLogic.getC3());
+			
 			GameLogic.addNewObject(character);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
@@ -91,6 +96,8 @@ public class CharacterCard extends HBox{
 		four = new ButtonLane("Lane 4",4,name);allbtn4.add(four);all.add(four);
 		four.setOnAction(e->{
 			Character character = new Character(360,160,250,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			character.setTarget(GameLogic.getC4());
+			
 			GameLogic.addNewObject(character);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
@@ -103,6 +110,8 @@ public class CharacterCard extends HBox{
 		five = new ButtonLane("Lane 5",5,name);allbtn5.add(five);all.add(five);
 		five.setOnAction(e->{
 			Character character = new Character(440,260,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			character.setTarget(GameLogic.getC5());
+			
 			GameLogic.addNewObject(character);
 			Lane.addAllcharacter(character);
 			cb.setReady(false);
@@ -199,6 +208,12 @@ public class CharacterCard extends HBox{
 	}
 	public static void setAll(List<ButtonLane> all) {
 		CharacterCard.all = all;
+	}
+	public static List<Character> getAllCaharacter() {
+		return allCaharacter;
+	}
+	public static void setAllCaharacter(List<Character> allCaharacter) {
+		CharacterCard.allCaharacter = allCaharacter;
 	}
 	
 	

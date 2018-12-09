@@ -5,7 +5,7 @@ import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Character extends Entity implements Drawable,Eraseable{
+public class Character extends CollidableEntity implements Drawable,Eraseable{
 	//private Castle target;
 
 	private String name;
@@ -17,7 +17,10 @@ public class Character extends Entity implements Drawable,Eraseable{
 	private String imgCharacter;
 	private String imgCard;
 	private boolean terminate;
-	public Character(double x,double y,double length,String name, int damage, int speed,int maxhp, int cd, String imgCharacter,String imgCard) {
+	private Castle target;
+	private int collapse =0;
+	public Character(double x,double y,double length,String name, int damage, int speed,int maxhp, 
+			int cd, String imgCharacter,String imgCard) {
 		this.x = x;
 		this.y = y;
 		this.length = length;
@@ -26,7 +29,6 @@ public class Character extends Entity implements Drawable,Eraseable{
 		this.speed = speed;
 		this.hp = maxhp;
 		this.maxhp = maxhp;
-		
 		this.cd = cd;
 		this.imgCharacter = imgCharacter;
 		this.imgCard = imgCard;
@@ -53,6 +55,14 @@ public class Character extends Entity implements Drawable,Eraseable{
 		
 	}
 	
+	public void crash(Castle target) {
+		target.setHp(Math.max(target.getHp()-damage,0));
+		terminate = true;
+		imgCharacter = "";
+	
+		destroyed = true;
+		
+	}
 	
 	public double getX() {
 		return x;
@@ -120,6 +130,14 @@ public class Character extends Entity implements Drawable,Eraseable{
 	}
 	public void setImgCard(String imgCard) {
 		this.imgCard = imgCard;
+	}
+
+	public Castle getTarget() {
+		return target;
+	}
+
+	public void setTarget(Castle target) {
+		this.target = target;
 	}
 	
 	

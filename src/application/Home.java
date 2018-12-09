@@ -1,7 +1,9 @@
 package application;
 
 
+import Drawing.GameScreen;
 import Drawing.HomeScreen;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,6 +21,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import logic.GameLogic;
+import sharedObject.RenderableHolder;
 
 
 public class Home extends Application {
@@ -30,9 +33,10 @@ public class Home extends Application {
 		HomeScreen homescreen = new HomeScreen();
 		home.getChildren().add(homescreen);
 		
-		GamePane gamescreen = new GamePane();
-		Scene Game = new Scene(gamescreen);
-		
+		GamePane gamepane = new GamePane();
+		Scene Game = new Scene(gamepane);
+		//GameScreen gs = new GameScreen();
+		//gamepane.getChildren().add(gs);
 		Scene homescene = new Scene(home);
 		primaryStage.setScene(homescene);
 		primaryStage.setTitle("KingTower");
@@ -98,7 +102,19 @@ public class Home extends Application {
 		start.setLayoutX(100);start.setLayoutY(550);
 		start.setOnAction(e -> {
 			primaryStage.setScene(Game);
-			GamePane.startGameloop();
+			
+			gamepane.startGameloop();
+			
+			
+			AnimationTimer animation = new AnimationTimer() {
+				public void handle(long now) {
+					gamepane.getGs().paintComponent();
+					gamelogic.logicUpdate();
+					RenderableHolder.getInstance().update();
+				}
+			};
+			animation.start();
+			
 		});
 		
 		setting.setPrefSize(400, 50);
@@ -114,7 +130,6 @@ public class Home extends Application {
 
 		primaryStage.show();	
 	}
-
 
 
 	public static void main(String[] args) {

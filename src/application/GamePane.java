@@ -22,57 +22,38 @@ public class GamePane extends Pane {
 	private static Canvas canvas = new Canvas(600,800);
 	private static Pane pane = new Pane();
 	private static boolean timeOut;
+	private GameScreen gs;
+	private static CharacterPane cp = new CharacterPane();
 	private static GraphicsContext gc = canvas.getGraphicsContext2D();
 	public GamePane() {
 		super();
 		this.setPrefSize(600, 800);
-		GameScreen game = new GameScreen();
-		this.getChildren().add(game);
-		this.getChildren().add(canvas);
+		gs = new GameScreen();
+		this.getChildren().add(gs);
 		this.getChildren().add(pane);
-		CharacterPane cp = new CharacterPane();
-		this.getChildren().add(cp);
+		
+		this.getChildren().add(canvas);this.getChildren().add(cp);
 		cp.setLayoutX(10);cp.setLayoutY(667);
 		
 		timeOut = false;
-		startGameloop();
+		//startGameloop();
+	}
+	
+	public GameScreen getGs() {
+		return gs;
 	}
 
-	public static void startGameloop() {
-		Castle c1 = new WhiteCastle(54, 210, 110, 250);	
-		Castle c2 = new BlackCastle(150, 160, 110, 250);
-		Castle c3 = new WhiteCastle(250, 260, 110, 250);
-		Castle c4 = new BlackCastle(345, 160, 110, 250);
-		Castle c5 = new WhiteCastle(432, 210, 110, 250);
-		
-		Lane l1 = new Lane(80, 460, 60, 200, Color.BURLYWOOD);		
-		Lane l2 = new Lane(180, 410, 60, 250, Color.BURLYWOOD);
-		Lane l3 = new Lane(275, 510, 60, 150, Color.BURLYWOOD);		
-		Lane l4 = new Lane(370, 410, 60, 250, Color.BURLYWOOD);
-		Lane l5 = new Lane(450, 460, 60, 200, Color.BURLYWOOD);
-			
-		for(Lane l : Lane.getAllLane()) {
-			l.draw(gc);
-		}
-		pane.getChildren().add(c1.getHpbar());
-		pane.getChildren().add(c2.getHpbar());
-		pane.getChildren().add(c3.getHpbar());
-		pane.getChildren().add(c4.getHpbar());
-		pane.getChildren().add(c5.getHpbar());
+	public void setGs(GameScreen gs) {
+		this.gs = gs;
+	}
 
-		for(Castle c : Castle.getAllCastle()) {
-			c.draw(gc);
-			
-		}
-		
-		for(ButtonLane btn:CharacterCard.getAll()) {
-			btn.setDisable(true);
-		}
-		
+	public void startGameloop() {
 		startTimer();
 
 	}
 	
+	
+
 	public static boolean isTimeOut() {
 		return timeOut;
 	}
@@ -82,7 +63,7 @@ public class GamePane extends Pane {
 	}
 
 	private static void startTimer() {
-		currentTime = 121;
+		currentTime = 11;
 		lastTimeTriggered = -1;
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		animationTimer = new AnimationTimer() {
@@ -95,7 +76,8 @@ public class GamePane extends Pane {
 				if (now - lastTimeTriggered >= 1000000000) //1 second
 				{
 					currentTime--;
-					if(currentTime==120) {
+					System.out.println(currentTime);
+					if(currentTime==10) {
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(false);
 						}
@@ -125,6 +107,7 @@ public class GamePane extends Pane {
 		gc.setFill(color);
 		gc.setFont(new Font(40));
 		gc.clearRect(512, 0, 90, 90);
+		System.out.println(-currentTime);
 		gc.fillText("" +currentTime, 520, 60);
 		
 	}

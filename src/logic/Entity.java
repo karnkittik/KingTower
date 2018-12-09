@@ -8,7 +8,7 @@ public abstract class Entity implements IRenderable{
 	protected double width,height;
 	protected int z;
 	protected boolean visible,destroyed;
-	
+	protected boolean draw;
 	protected Entity(){
 		visible = true;
 		destroyed = false;
@@ -28,4 +28,13 @@ public abstract class Entity implements IRenderable{
 	public int getZ(){
 		return z;
 	}
+	@Override
+	public boolean isDraw() {
+		return draw;
+	}
+	@Override
+	public void setDraw(boolean draw) {
+		this.draw = draw;
+	}
+	
 }

@@ -10,7 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
-public class Castle extends Entity implements Drawable,Eraseable{
+public class Castle extends CollidableEntity implements Drawable,Eraseable{
 	private int hp;
 	private int maxhp;
 	private static int speed = 105;
