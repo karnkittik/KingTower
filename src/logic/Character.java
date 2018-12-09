@@ -11,7 +11,7 @@ public class Character extends Entity implements Drawable,Eraseable{
 
 	private String name;
 	private int damage;
-	private int speed;
+	private double speed;
 	private int hp,maxhp;
 	private int cd;
 	private double x,y,length;
@@ -19,7 +19,7 @@ public class Character extends Entity implements Drawable,Eraseable{
 	private Image imgCard;
 	private boolean terminate;
 	private Castle target;
-	public Character(double x,double y,double length,String name, int damage, int speed,int maxhp, 
+	public Character(double x,double y,double length,String name, int damage, double speed,int maxhp, 
 		int cd, Image imgCharacter,Image imgCard) {
 		this.x = x;
 		this.y = y;
@@ -56,7 +56,7 @@ public class Character extends Entity implements Drawable,Eraseable{
 	@Override
 	public void draw(GraphicsContext gc) {
 		gc.drawImage(imgCharacter, x, y);
-		setY(getY()-1);	
+		setY(getY()-getSpeed());	
 	}
 	
 	public void crash(Castle target) {
@@ -103,10 +103,10 @@ public class Character extends Entity implements Drawable,Eraseable{
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
-	public int getSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
-	public void setSpeed(int speed) {
+	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
 	public int getHp() {

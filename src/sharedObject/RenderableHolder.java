@@ -28,6 +28,7 @@ public class RenderableHolder {
 	private static Image blackCastlefire;
 	private static Image blackCastlemorefire;
 	private static Image bar;
+	private static Image main;
 	private static AudioClip  explosionSound;
 	
 	static {
@@ -145,6 +146,7 @@ public class RenderableHolder {
 		blackCastlemorefire = new Image(ClassLoader.getSystemResource("blackdestroy.png").toString());
 		bar = new Image(ClassLoader.getSystemResource("Bar.png").toString());
 		explosionSound = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
+		main = new Image(ClassLoader.getSystemResource("mainmenu.jpeg").toString());
 	}
 	public void add(IRenderable entity) {
 		//System.out.println("add");
@@ -166,5 +168,11 @@ public class RenderableHolder {
 	}
 	public List<IRenderable> getEntities() {
 		return entities;
+	}
+	public static Image getMain() {
+		return main;
+	}
+	public static void setMain(Image main) {
+		RenderableHolder.main = main;
 	}
 }

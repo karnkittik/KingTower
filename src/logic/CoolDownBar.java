@@ -27,9 +27,9 @@ public class CoolDownBar extends ProgressBar{
 							setVisible(false);
 							break;
 						}
-						Thread.sleep(100);
+						Thread.sleep(10);
 						Platform.runLater(()->{
-							setProgress(getProgress()+(0.02*5)/cd); // cd/250
+							setProgress(getProgress()+(0.002*5)/cd); // cd/250
 						});
 					
 					}catch(InterruptedException e){

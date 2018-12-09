@@ -13,7 +13,6 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	private int hp;
 	private int maxhp;
 	private static int speed = 105;
-	private int damage;
 	private int activePoint;
 	private int x,y;
 	private int width,height;
@@ -23,8 +22,7 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	private boolean dead;
 	private static List<Castle> allCastle = new ArrayList<Castle>();
 	private static List<Castle> activeCastle = new ArrayList<Castle>();
-	public Castle(int x,int y,int width,int height,int maxhp, int damage,Image img) {
-		setDamage(damage);
+	public Castle(int x,int y,int width,int height,int maxhp, Image img) {
 		setHp(maxhp);
 		setMaxhp(maxhp);
 		setWidth(width);
@@ -95,14 +93,6 @@ public class Castle extends Entity implements Drawable,Eraseable{
 
 	public static void setSpeed(int sp) {
 		speed = sp;
-	}
-
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setDamage(int damage) {
-		this.damage = damage;
 	}
 
 	public int getActivePoint() {
