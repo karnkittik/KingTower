@@ -6,8 +6,9 @@ protected int radius;
 	
 	protected boolean collideWith(CollidableEntity other){
 		//return Math.hypot(this.x-other.x, this.y-other.y) <= this.radius+other.radius;
-		if(this.width == 110) //this is Castle
+		if(this instanceof Castle ) //this is Castle
 		{
+			System.out.println(this.y);System.out.println(other.y);
 			return other.y + other.height <= this.y+this.height;
 			
 		}
@@ -15,6 +16,7 @@ protected int radius;
 		{
 			return other.y + other.height >= this.y+this.height;
 		}
+		//return false;
 	}
 
 }

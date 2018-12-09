@@ -3,6 +3,8 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.ws.handler.LogicalHandler;
+
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -56,19 +58,20 @@ public class CharacterCard extends HBox{
 		one.setOnAction(e->{
 			Character character = new Character(70,660,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			character.setTarget(GameLogic.getC1());
-			RenderableHolder.getInstance().add(character);
+			RenderableHolder.getInstance().getEntities().add(character);
 			cb.setReady(false);
 			cb.setVisible(true);
 			for(ButtonLane a:allbtn1) {a.setDisable(true); a.setReady(a.isReady()+1);}
 			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
 			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
 			cb.update(one,two,three,four,five,allbtn1,all,cd);
+
 		});
 		two = new ButtonLane("Lane 2",2,name);allbtn2.add(two);all.add(two);
 		two.setOnAction(e->{
 			Character character = new Character(170,660,250,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			character.setTarget(GameLogic.getC2());
-			RenderableHolder.getInstance().add(character);
+			RenderableHolder.getInstance().getEntities().add(character);
 			cb.setReady(false);
 			cb.setVisible(true);
 			for(ButtonLane a:allbtn2) {a.setDisable(true); a.setReady(a.isReady()+1);}
@@ -80,7 +83,7 @@ public class CharacterCard extends HBox{
 		three.setOnAction(e->{
 			Character character = new Character(265,660,150,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			character.setTarget(GameLogic.getC3());
-			RenderableHolder.getInstance().add(character);
+			RenderableHolder.getInstance().getEntities().add(character);
 			cb.setReady(false);
 			cb.setVisible(true);
 			for(ButtonLane a:allbtn3) {a.setDisable(true); a.setReady(a.isReady()+1);}
@@ -92,7 +95,7 @@ public class CharacterCard extends HBox{
 		four.setOnAction(e->{
 			Character character = new Character(360,660,250,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			character.setTarget(GameLogic.getC4());
-			RenderableHolder.getInstance().add(character);
+			RenderableHolder.getInstance().getEntities().add(character);
 			cb.setReady(false);
 			cb.setVisible(true);
 			for(ButtonLane a:allbtn4) {a.setDisable(true); a.setReady(a.isReady()+1);}
@@ -102,9 +105,9 @@ public class CharacterCard extends HBox{
 		});
 		five = new ButtonLane("Lane 5",5,name);allbtn5.add(five);all.add(five);
 		five.setOnAction(e->{
-			Character character = new Character(440,660,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
+			Character character = new Character(450,660,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			character.setTarget(GameLogic.getC5());
-			RenderableHolder.getInstance().add(character);
+			RenderableHolder.getInstance().getEntities().add(character);
 			cb.setReady(false);
 			cb.setVisible(true);
 			for(ButtonLane a:allbtn5) {a.setDisable(true); a.setReady(a.isReady()+1);}
@@ -205,6 +208,36 @@ public class CharacterCard extends HBox{
 	}
 	public static void setAllCaharacter(List<Character> allCaharacter) {
 		CharacterCard.allCaharacter = allCaharacter;
+	}
+	public static List<ButtonLane> getAllbtn1() {
+		return allbtn1;
+	}
+	public static void setAllbtn1(List<ButtonLane> allbtn1) {
+		CharacterCard.allbtn1 = allbtn1;
+	}
+	public static List<ButtonLane> getAllbtn2() {
+		return allbtn2;
+	}
+	public static void setAllbtn2(List<ButtonLane> allbtn2) {
+		CharacterCard.allbtn2 = allbtn2;
+	}
+	public static List<ButtonLane> getAllbtn3() {
+		return allbtn3;
+	}
+	public static void setAllbtn3(List<ButtonLane> allbtn3) {
+		CharacterCard.allbtn3 = allbtn3;
+	}
+	public static List<ButtonLane> getAllbtn4() {
+		return allbtn4;
+	}
+	public static void setAllbtn4(List<ButtonLane> allbtn4) {
+		CharacterCard.allbtn4 = allbtn4;
+	}
+	public static List<ButtonLane> getAllbtn5() {
+		return allbtn5;
+	}
+	public static void setAllbtn5(List<ButtonLane> allbtn5) {
+		CharacterCard.allbtn5 = allbtn5;
 	}
 	
 	

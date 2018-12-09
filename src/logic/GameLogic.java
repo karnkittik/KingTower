@@ -10,17 +10,17 @@ import sharedObject.RenderableHolder;
 
 public class GameLogic {
 	//private static List<Entity> gameObjectContainer;
-	
-	private static Castle c1 = new WhiteCastle(54, 210, 110, 250);	
-	private static Castle c2 = new BlackCastle(150, 160, 110, 250);
-	private static Castle c3 = new WhiteCastle(250, 260, 110, 250);
-	private static Castle c4 = new BlackCastle(345, 160, 110, 250);
-	private static Castle c5 = new WhiteCastle(432, 210, 110, 250);
-	private static Lane l1 = new Lane(80, 460, 60, 200, Color.BURLYWOOD);		
-	private static Lane l2 = new Lane(180, 410, 60, 250, Color.BURLYWOOD);
-	private static Lane l3 = new Lane(275, 510, 60, 150, Color.BURLYWOOD);		
-	private static Lane l4 = new Lane(370, 410, 60, 250, Color.BURLYWOOD);
-	private static Lane l5 = new Lane(450, 460, 60, 200, Color.BURLYWOOD);
+	private static int numberCastle = 0;
+	private static Castle c1 = new WhiteCastle(60, 210, 110, 250);	
+	private static Castle c2 = new BlackCastle(160, 160, 110, 250);
+	private static Castle c3 = new WhiteCastle(255, 260, 110, 250);
+	private static Castle c4 = new BlackCastle(350, 160, 110, 250);
+	private static Castle c5 = new WhiteCastle(439, 210, 110, 250);
+	private static Lane l1 = new Lane(80-10, 460, 60+20, 200, Color.BURLYWOOD);		
+	private static Lane l2 = new Lane(180-10, 410, 60+20, 250, Color.BURLYWOOD);
+	private static Lane l3 = new Lane(275-10, 510, 60+20, 150, Color.BURLYWOOD);		
+	private static Lane l4 = new Lane(370-10, 410, 60+20, 250, Color.BURLYWOOD);
+	private static Lane l5 = new Lane(460-10, 460, 60+20, 200, Color.BURLYWOOD);
 	private static CharacterPane cp = new CharacterPane();
 	//private Character bomb1,bomb2,bomb3,bomb4,bomb5,bomb6,bomb7,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,;
 	
@@ -125,15 +125,56 @@ public class GameLogic {
 	}
 	
 	public void logicUpdate(){
-		c1.update();c2.update();c3.update();c4.update();c5.update();
+		//int i;
+		//c1.update();c2.update();c3.update();c4.update();c5.update();
 		for(IRenderable en : RenderableHolder.getInstance().getEntities()) {
-			if(!(en instanceof Character)) continue;
-			Character bomb = (Character) en;
-			if(!bomb.isDestroyed() && bomb.getTarget().collideWith(bomb)){
-				bomb.crash(bomb.getTarget());
+//			i =1;
+//			if(en instanceof Character) System.out.println(i++);
+			if(en instanceof Character) {
+				//!((Character)en).isDestroyed() && 
+				if(!((Character)en).isDestroyed() && ((Character)en).collideWith(((Character)en).getTarget())){
+					((Character)en).crash(((Character)en).getTarget());
+				}
+			}
+			if(en instanceof Castle) {
+				if(((Castle)en).getHp()==0) {
+					//System.out.println("collapse");
+					numberCastle+=1;
+					//System.out.println(numberCastle);
+					((Castle)en).setDead(true);
+				}
+			}
+		}	
+		if(GameLogic.getC1().isDead()) {
+			for(ButtonLane one : CharacterCard.getAllbtn1()) 
+			{
+				one.setDisable(true);one.setVisible(false);
 			}
 		}
-		
+		if(GameLogic.getC2().isDead()) {
+			for(ButtonLane two : CharacterCard.getAllbtn2()) 
+			{
+				two.setDisable(true);two.setVisible(false);
+			}
+		}
+		if(GameLogic.getC3().isDead()) {
+			for(ButtonLane three : CharacterCard.getAllbtn3()) 
+			{
+				three.setDisable(true);three.setVisible(false);
+			}
+		}
+		if(GameLogic.getC4().isDead()) {
+			for(ButtonLane four : CharacterCard.getAllbtn4()) 
+			{
+				four.setDisable(true);four.setVisible(false);
+			}
+		}
+		if(GameLogic.getC5().isDead()) {
+			for(ButtonLane five : CharacterCard.getAllbtn5()) 
+			{
+				five.setDisable(true);five.setVisible(false);
+			}
+		}
 	}
 
 	public static CharacterPane getCp() {

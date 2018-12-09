@@ -108,6 +108,11 @@ public class Home extends Application {
 			
 			AnimationTimer animation = new AnimationTimer() {
 				public void handle(long now) {
+					//System.out.println("k");;
+					if(GamePane.isTimeOut()) {
+						this.stop();
+						//alert
+					}
 					gamepane.getGs().paintComponent();
 					gamelogic.logicUpdate();
 					RenderableHolder.getInstance().update();

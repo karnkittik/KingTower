@@ -20,8 +20,8 @@ public class GamePane extends Pane {
 	private static AnimationTimer animationTimer;
 	private static long lastTimeTriggered;
 	private static Canvas canvas = new Canvas(600,800);
-	private static Pane pane = new Pane();
-	private static boolean timeOut;
+	private static HPPane pane = new HPPane();
+	private static boolean timeOut = false;
 	private GameScreen gs;
 	private static CharacterPane cp = new CharacterPane();
 	private static GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -36,7 +36,7 @@ public class GamePane extends Pane {
 		this.getChildren().add(cp);
 		cp.setLayoutX(10);cp.setLayoutY(667);
 		
-		timeOut = false;
+		
 		//startGameloop();
 	}
 	
@@ -64,7 +64,7 @@ public class GamePane extends Pane {
 	}
 
 	private static void startTimer() {
-		currentTime = 11;
+		currentTime = 61;
 		lastTimeTriggered = -1;
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		animationTimer = new AnimationTimer() {
@@ -77,8 +77,8 @@ public class GamePane extends Pane {
 				if (now - lastTimeTriggered >= 1000000000) //1 second
 				{
 					currentTime--;
-					System.out.println(currentTime);
-					if(currentTime==10) {
+					//System.out.println(currentTime);
+					if(currentTime==60) {
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(false);
 						}
@@ -92,6 +92,7 @@ public class GamePane extends Pane {
 						setTimeOut(true);
 						System.out.println("timeout");
 						this.stop();
+						timeOut=true;
 						animationTimer.stop();
 					}else if(currentTime<=3&&currentTime>=1) {
 						drawCurrentTimeString(gc,Color.YELLOW);
@@ -108,7 +109,7 @@ public class GamePane extends Pane {
 		gc.setFill(color);
 		gc.setFont(new Font(40));
 		gc.clearRect(512, 0, 90, 90);
-		System.out.println(-currentTime);
+		//System.out.println(-currentTime);
 		gc.fillText("" +currentTime, 520, 60);
 		
 	}

@@ -5,7 +5,7 @@ import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Character extends CollidableEntity implements Drawable,Eraseable{
+public class Character extends Entity implements Drawable,Eraseable{
 	//private Castle target;
 
 	private String name;
@@ -18,9 +18,8 @@ public class Character extends CollidableEntity implements Drawable,Eraseable{
 	private String imgCard;
 	private boolean terminate;
 	private Castle target;
-	private int collapse =0;
 	public Character(double x,double y,double length,String name, int damage, int speed,int maxhp, 
-			int cd, String imgCharacter,String imgCard) {
+		int cd, String imgCharacter,String imgCard) {
 		this.x = x;
 		this.y = y;
 		this.length = length;
@@ -33,8 +32,13 @@ public class Character extends CollidableEntity implements Drawable,Eraseable{
 		this.imgCharacter = imgCharacter;
 		this.imgCard = imgCard;
 		this.terminate = false;
+		setDestroyed(false);
 	}
-	
+	public boolean collideWith(Castle target) {
+
+		return this.y - target.getY() <= 165;
+
+	}
 	public boolean isTerminate() {
 		return terminate;
 	}
@@ -51,17 +55,18 @@ public class Character extends CollidableEntity implements Drawable,Eraseable{
 	@Override
 	public void draw(GraphicsContext gc) {
 		Image pic = new Image(imgCharacter);
+		//System.out.println("draww");
 		gc.drawImage(pic, x, y);
 		//erase(gc);
-		y=y-1;	
+		setY(getY()-1);	
 	}
 	
 	public void crash(Castle target) {
+		//System.out.println(getY());
 		target.setHp(Math.max(target.getHp()-damage,0));
-		terminate = true;
-		imgCharacter = "file:res/White.png";
-		destroyed = true;
-		
+		//imgCharacter = "file:res/White.png";
+		//System.out.println("crash");
+		setDestroyed(true);
 	}
 	
 	public double getX() {
@@ -138,6 +143,12 @@ public class Character extends CollidableEntity implements Drawable,Eraseable{
 
 	public void setTarget(Castle target) {
 		this.target = target;
+	}
+
+	@Override
+	public void setDestroyed(boolean destroy) {
+		this.destroyed = destroy;
+		
 	}
 	
 	

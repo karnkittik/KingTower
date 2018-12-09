@@ -10,7 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
-public class Castle extends CollidableEntity implements Drawable,Eraseable{
+public class Castle extends Entity implements Drawable,Eraseable{
 	private int hp;
 	private int maxhp;
 	private static int speed = 105;
@@ -21,7 +21,7 @@ public class Castle extends CollidableEntity implements Drawable,Eraseable{
 	private HPBar hpbar;
 	private final static int LIMIT = 5000; 
 	private String img;
-	private Character enemy;
+	private boolean dead;
 	private static List<Castle> allCastle = new ArrayList<Castle>();
 	private static List<Castle> activeCastle = new ArrayList<Castle>();
 	public Castle(int x,int y,int width,int height,int maxhp, int damage,String img) {
@@ -33,19 +33,14 @@ public class Castle extends CollidableEntity implements Drawable,Eraseable{
 		setImg(img);
 		setX(x);
 		setY(y);
-		setEnemy(null);
+		setDead(false);
+		setDestroyed(false);
 		hpbar = new HPBar();
 		hpbar.setLayoutX(x+5);
 		hpbar.setLayoutY(y+140);
 		allCastle.add(this);
 	}
-	public Character getEnemy() {
-		return enemy;
-	}
-
-	public void setEnemy(Character enemy) {
-		this.enemy = enemy;
-	}
+	
 
 
 	public HPBar getHpbar() {
@@ -173,6 +168,19 @@ public class Castle extends CollidableEntity implements Drawable,Eraseable{
 	public void update() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void setDestroyed(boolean destroy) {
+		this.destroyed = destroy;
+		
+	}
+
+	public boolean isDead() {
+		return dead;
+	}
+
+	public void setDead(boolean dead) {
+		this.dead = dead;
 	}
 
 
