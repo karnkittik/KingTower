@@ -5,10 +5,12 @@ import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import logic.ButtonLane;
 import logic.GameLogic;
 import logic.HPBar;
@@ -38,6 +40,19 @@ public class HPPane extends Pane{
 		three.setLayoutX(GameLogic.getC3().getX()+15);three.setLayoutY(GameLogic.getC3().getY()-30);
 		four.setLayoutX(GameLogic.getC4().getX()+15);four.setLayoutY(GameLogic.getC4().getY()-30);
 		five.setLayoutX(GameLogic.getC5().getX()+15);five.setLayoutY(GameLogic.getC5().getY()-30);
+		Label cone = new Label(GameLogic.getC1().getName());
+		cone.setLayoutX(GameLogic.getC1().getX()+52);cone.setLayoutY(GameLogic.getC1().getY()+10);
+		Label ctwo = new Label(GameLogic.getC2().getName());
+		ctwo.setLayoutX(GameLogic.getC2().getX()+52);ctwo.setLayoutY(GameLogic.getC2().getY()+10);
+		Label cthree = new Label(GameLogic.getC3().getName());
+		cthree.setLayoutX(GameLogic.getC3().getX()+55);cthree.setLayoutY(GameLogic.getC3().getY()+10);
+		Label cfour = new Label(GameLogic.getC4().getName());
+		cfour.setLayoutX(GameLogic.getC4().getX()+52);cfour.setLayoutY(GameLogic.getC4().getY()+10);
+		Label cfive = new Label(GameLogic.getC5().getName());
+		cfive.setLayoutX(GameLogic.getC5().getX()+50);cfive.setLayoutY(GameLogic.getC5().getY()+10);
+		ctwo.setStyle("-fx-text-fill: white;");cfour.setStyle("-fx-text-fill: white;");
+		cone.setStyle("-fx-text-fill: blue;");cthree.setStyle("-fx-text-fill: blue;");cfive.setStyle("-fx-text-fill: blue;");
+		getChildren().addAll(cone,ctwo,cthree,cfour,cfive);
 		HPUpdate();
 	}
 

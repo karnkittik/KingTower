@@ -11,11 +11,11 @@ import sharedObject.RenderableHolder;
 public class GameLogic {
 	//private static List<Entity> gameObjectContainer;
 	private static int gameMode = 1;
-	private static Castle c1 = new WhiteCastle(60, 210, 110, 250);	
-	private static Castle c2 = new BlackCastle(160, 160, 110, 250);
-	private static Castle c3 = new WhiteCastle(255, 260, 110, 250);
-	private static Castle c4 = new BlackCastle(350, 160, 110, 250);
-	private static Castle c5 = new WhiteCastle(439, 210, 110, 250);
+	private static Castle c1 = new WhiteCastle(60, 210, 110, 250, "Lauriel");
+	private static Castle c2 = new BlackCastle(160, 160, 110, 250,"Moren");
+	private static Castle c3 = new WhiteCastle(255, 260, 110, 250, "Yorn");
+	private static Castle c4 = new BlackCastle(350, 160, 110, 250, "Illumia");
+	private static Castle c5 = new WhiteCastle(439, 210, 110, 250,"Sephera");
 	private static Lane l1 = new Lane(80-10, 460, 60+20, 200, Color.DARKGREY);		
 	private static Lane l2 = new Lane(180-10, 410, 60+20, 250, Color.SLATEGRAY);
 	private static Lane l3 = new Lane(275-10, 510, 60+20, 150, Color.DARKGREY);		
@@ -116,7 +116,7 @@ public class GameLogic {
 	
 		//Gamepane field = new Field();
 		//RenderableHolder.getInstance().add(field);
-		
+
 		for(ButtonLane btn:CharacterCard.getAll()) {
 			btn.setDisable(true);
 		}

@@ -38,6 +38,10 @@ public class Home extends Application {
 		home.getChildren().add(homescreen);
 		
 		Scene homescene = new Scene(home);
+		primaryStage.setOnCloseRequest(e -> {
+			primaryStage.close();
+			System.exit(0);
+		});
 		primaryStage.setScene(homescene);
 		primaryStage.setTitle("KingTower");
 	    primaryStage.setResizable(false);
@@ -147,8 +151,9 @@ public class Home extends Application {
 			back.setVisible(true);back.setDisable(false);
 		});
 
-
+		
 		primaryStage.show();
+		
 		RenderableHolder.getHomesound().play();
 	}
 

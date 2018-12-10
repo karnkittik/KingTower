@@ -20,6 +20,7 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	private final static int LIMIT = 5000; 
 	private Image img;
 	private boolean dead;
+	private String name;
 	private static List<Castle> allCastle = new ArrayList<Castle>();
 	private static List<Castle> activeCastle = new ArrayList<Castle>();
 	public Castle(int x,int y,int width,int height,int maxhp, Image img) {
@@ -36,6 +37,7 @@ public class Castle extends Entity implements Drawable,Eraseable{
 		hpbar.setLayoutX(x+5);
 		hpbar.setLayoutY(y+140);
 		allCastle.add(this);
+		setName("Castle");
 	}
 	
 
@@ -166,6 +168,18 @@ public class Castle extends Entity implements Drawable,Eraseable{
 
 	public void setDead(boolean dead) {
 		this.dead = dead;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
