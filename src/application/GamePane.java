@@ -24,12 +24,14 @@ public class GamePane extends Pane {
 	private HPPane hp = new HPPane();
 	private static boolean timeOut = false;
 	private GameScreen gs;
-	private static CharacterPane cp = new CharacterPane();
+	private static CharacterPane cp;
 	private static GraphicsContext gc = canvas.getGraphicsContext2D();
 	public GamePane() {
 		super();
 		this.setPrefSize(600, 800);
 		gs = new GameScreen();
+		cp = new CharacterPane();
+		System.out.println("gamepane");
 		this.getChildren().add(gs);
 		
 		this.getChildren().add(canvas);
@@ -37,7 +39,6 @@ public class GamePane extends Pane {
 		this.getChildren().add(cp);
 		
 		cp.setLayoutX(10);cp.setLayoutY(667);
-		
 		
 		//startGameloop();
 	}

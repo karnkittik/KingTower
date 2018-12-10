@@ -17,8 +17,8 @@ public class Character extends Entity implements Drawable,Eraseable{
 	private double x,y,length;
 	private Image imgCharacter;
 	private Image imgCard;
-	private boolean terminate;
 	private Castle target;
+	private ButtonLane owner;
 	public Character(double x,double y,double length,String name, int damage, double speed,int maxhp, 
 		int cd, Image imgCharacter,Image imgCard) {
 		this.x = x;
@@ -32,20 +32,12 @@ public class Character extends Entity implements Drawable,Eraseable{
 		this.cd = cd;
 		this.imgCharacter = imgCharacter;
 		this.imgCard = imgCard;
-		this.terminate = false;
 		setDestroyed(false);
 	}
 	public boolean collideWith(Castle target) {
 
 		return this.y - target.getY() <= 165;
 
-	}
-	public boolean isTerminate() {
-		return terminate;
-	}
-
-	public void setTerminate(boolean terminate) {
-		this.terminate = terminate;
 	}
 
 	@Override
@@ -72,6 +64,7 @@ public class Character extends Entity implements Drawable,Eraseable{
 		else if(name.equals("Red")) RenderableHolder.getRedsound().play();
 		else RenderableHolder.getBluesound().play();
 		setDestroyed(true);
+		owner.setDead(true);
 	}
 	
 	public double getX() {
@@ -154,6 +147,12 @@ public class Character extends Entity implements Drawable,Eraseable{
 	public void setDestroyed(boolean destroy) {
 		this.destroyed = destroy;
 		
+	}
+	public ButtonLane getOwner() {
+		return owner;
+	}
+	public void setOwner(ButtonLane owner) {
+		this.owner = owner;
 	}
 	
 	

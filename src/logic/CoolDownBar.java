@@ -19,7 +19,8 @@ public class CoolDownBar extends ProgressBar{
 			setProgress(0);
 			
 		}
-		public void update(ButtonLane one,ButtonLane two,ButtonLane three,ButtonLane four,ButtonLane five,List<ButtonLane> a,List<ButtonLane> all,int cd) {
+		public void update(ButtonLane one,ButtonLane two,ButtonLane three,ButtonLane four,
+				ButtonLane five,List<ButtonLane> a,List<ButtonLane> all,int cd,String name) {
 			Thread thread = new Thread(()->{
 				while(true) {
 					try {
@@ -35,26 +36,61 @@ public class CoolDownBar extends ProgressBar{
 					}catch(InterruptedException e){
 					e.printStackTrace();
 					}
+					//row
+					if(name.equals("one") && one.isDead()) {
+						System.out.println("dead");
+						for(ButtonLane i:a) {
+							i.setReady(i.isReady()-1);
+						}
+						one.setDead(false);
+					}
+					if(name.equals("two") && two.isDead()) {
+						for(ButtonLane i:a) {
+							i.setReady(i.isReady()-1);
+						}
+						two.setDead(false);
+					}
+					if(name.equals("three" )&& three.isDead()) {
+						for(ButtonLane i:a) {
+							i.setReady(i.isReady()-1);
+						}
+						three.setDead(false);
+					}
+					if(name.equals("four")&& four.isDead()) {
+						for(ButtonLane i:a) {
+							i.setReady(i.isReady()-1);
+						}
+						four.setDead(false);
+					}
+					if(name.equals("five")&& five.isDead()){
+						for(ButtonLane i:a) {
+							i.setReady(i.isReady()-1);
+						}
+						five.setDead(false);
+					}
+					//column
 					if(getProgress()>=1) {
 						ready = true;
 						System.out.println("finish");
 						if(isReady()) {
 							setVisible(false);//progress disappear
-							//column
-							for(ButtonLane i:a) {
-								i.setReady(i.isReady()-1);
-							}
+							
 							//one.setDisable(false);two.setDisable(false);three.setDisable(false);four.setDisable(false);five.setDisable(false);
-							one.setReady(one.isReady()-1);two.setReady(two.isReady()-1);three.setReady(three.isReady()-1);four.setReady(four.isReady()-1);five.setReady(five.isReady()-1);
-							for(ButtonLane i:all) {
-								if(i.isReady()==0) i.setDisable(false);
-							}
+							one.setReady(one.isReady()-1);two.setReady(two.isReady()-1);three.setReady(three.isReady()-1);
+							four.setReady(four.isReady()-1);five.setReady(five.isReady()-1);
 							setProgress(0);
-							break;
 						}
 					}
+					for(ButtonLane i:all) {
+						if(i.isReady()==0) i.setDisable(false);
+					}
+					if(isReady()) {System.out.println("cooldown finish"); break;}
 				}
 				System.out.println("break");
+				System.out.println(a.size());
+				for(ButtonLane k :all) {
+					System.out.print(k.isReady());
+				}
 			});
 			thread.start();
 			return;

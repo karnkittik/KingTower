@@ -28,6 +28,7 @@ public class RenderableHolder {
 	private static Image blackCastlefire;
 	private static Image blackCastlemorefire;
 	private static Image bar;
+	private static Image game;
 	private static Image main;
 	private static AudioClip  greysound;
 	private static AudioClip  redsound;
@@ -128,6 +129,7 @@ public class RenderableHolder {
 	}
 	
 	public static void loadResource() {
+		setGame(new Image(ClassLoader.getSystemResource("1.png").toString()));
 		blueBomb = new Image(ClassLoader.getSystemResource("bluebomb.png").toString());
 		redBomb = new Image(ClassLoader.getSystemResource("redbomb.png").toString());
 		greyBomb = new Image(ClassLoader.getSystemResource("greybomb.png").toString());
@@ -190,5 +192,11 @@ public class RenderableHolder {
 	}
 	public static void setGreysound(AudioClip greysound) {
 		RenderableHolder.greysound = greysound;
+	}
+	public static Image getGame() {
+		return game;
+	}
+	public static void setGame(Image game) {
+		RenderableHolder.game = game;
 	}
 }

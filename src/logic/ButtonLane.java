@@ -7,6 +7,7 @@ public class ButtonLane extends Button {
 	private int ready;
 	private int lane;
 	private String character;
+	private boolean dead;
 	public ButtonLane(String name,int lane,String character) {
 		super(name);
 		this.setPrefSize(60	, 20);
@@ -14,7 +15,7 @@ public class ButtonLane extends Button {
 		setLane(lane);
 		setReady(0);
 		setDisable(true);
-		
+		setDead(false);
 	}
 	public String getName() {
 		return name;
@@ -39,6 +40,12 @@ public class ButtonLane extends Button {
 	}
 	public void setCharacter(String character) {
 		this.character = character;
+	}
+	public boolean isDead() {
+		return dead;
+	}
+	public void setDead(boolean dead) {
+		this.dead = dead;
 	}
 
 }

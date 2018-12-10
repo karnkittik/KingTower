@@ -11,18 +11,16 @@ import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
 public class GameScreen extends Canvas{
-	private static final GameScreen instance = new GameScreen();
+//	private static final GameScreen instance = new GameScreen();
 	public GameScreen() {
 		super(600,800);
 		GraphicsContext gc = getGraphicsContext2D();
-		String img = "file:res/1.png";
+		Image img = RenderableHolder.getGame();
 		draw(gc,img);
 	}
 
-	private void draw(GraphicsContext gc, String img) {
-		Image pic = new Image(img);
-		System.out.println(img);
-		gc.drawImage(pic, 0, 0);
+	private void draw(GraphicsContext gc, Image img) {
+		gc.drawImage(img, 0, 0);
 		
 	}
 	public void paintComponent() {
@@ -48,8 +46,8 @@ public class GameScreen extends Canvas{
 //		
 //	}
 
-	public static GameScreen getInstance() {
-		return instance;
-	}
+//	public static GameScreen getInstance() {
+//		return instance;
+//	}
 	
 }

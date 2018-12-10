@@ -40,26 +40,26 @@ public class HPPane extends Pane{
 		five.setLayoutX(GameLogic.getC5().getX()+15);five.setLayoutY(GameLogic.getC5().getY()-30);
 		HPUpdate();
 	}
-	public void HPUpdate() {
+
+	public void HPUpdate(){
 		Thread thread = new Thread(()->{
 			while(true) {
 				try {
 					Thread.sleep(100);
 					Platform.runLater(()->{
-						one.setProgress((double)GameLogic.getC1().getHp()/GameLogic.getC1().getMaxhp()); 
-						two.setProgress((double)GameLogic.getC2().getHp()/GameLogic.getC2().getMaxhp());
-						three.setProgress((double)GameLogic.getC3().getHp()/GameLogic.getC3().getMaxhp());
-						four.setProgress((double)GameLogic.getC4().getHp()/GameLogic.getC4().getMaxhp());
-						five.setProgress((double)GameLogic.getC5().getHp()/GameLogic.getC5().getMaxhp());
+							one.setProgress((double)GameLogic.getC1().getHp()/GameLogic.getC1().getMaxhp());
+							two.setProgress((double)GameLogic.getC2().getHp()/GameLogic.getC2().getMaxhp());
+							three.setProgress((double)GameLogic.getC3().getHp()/GameLogic.getC3().getMaxhp());
+							four.setProgress((double)GameLogic.getC4().getHp()/GameLogic.getC4().getMaxhp());
+							five.setProgress((double)GameLogic.getC5().getHp()/GameLogic.getC5().getMaxhp());
 						if(one.getProgress()==0) one.setVisible(false);
 						if(two.getProgress()==0) two.setVisible(false);
 						if(three.getProgress()==0) three.setVisible(false);
 						if(four.getProgress()==0) four.setVisible(false);
 						if(five.getProgress()==0) five.setVisible(false);
 					});
-				
 				}catch(InterruptedException e){
-				e.printStackTrace();
+					e.printStackTrace();
 				}
 				if(GamePane.isTimeOut()||GamePane.isWin()) 
 				{ 
@@ -71,3 +71,31 @@ public class HPPane extends Pane{
 		return;
 	}
 }
+// Java program that demonstrates the use of throw 
+//class ThrowExcep 
+//{ 
+//    static void fun() 
+//    { 
+//        try
+//        { 
+//            throw new NullPointerException("demo"); 
+//        } 
+//        catch(NullPointerException e) 
+//        { 
+//            System.out.println("Caught inside fun()."); 
+//            throw e; // rethrowing the exception 
+//        } 
+//    } 
+//  
+//    public static void main(String args[]) 
+//    { 
+//        try
+//        { 
+//            fun(); 
+//        } 
+//        catch(NullPointerException e) 
+//        { 
+//            System.out.println("Caught in main."); 
+//        } 
+//    } 
+//} 

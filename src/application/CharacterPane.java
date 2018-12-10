@@ -20,7 +20,7 @@ public class CharacterPane extends HBox {
 			a.getCb().setStyle("-fx-accent:dimgrey");
 			b.getCb().setStyle("-fx-accent:firebrick");
 			c.getCb().setStyle("-fx-accent:royalblue");
-			this.getChildren().addAll(a,b,c);
+			this.getChildren().addAll(a,b,c);System.out.println("easy");
 		}
 		else if(GameLogic.getGameMode()==2) { //Checked
 			CharacterCard a = new CharacterCard("Grey", 200, 2.5, 100, 3, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
@@ -29,7 +29,7 @@ public class CharacterPane extends HBox {
 			a.getCb().setStyle("-fx-accent:dimgrey");
 			b.getCb().setStyle("-fx-accent:firebrick");
 			c.getCb().setStyle("-fx-accent:royalblue");
-			this.getChildren().addAll(a,b,c);
+			this.getChildren().addAll(a,b,c);System.out.println("medium");
 		}
 		else if(GameLogic.getGameMode()==3) {
 			CharacterCard a = new CharacterCard("Grey", 150, 2, 100, 3, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
@@ -38,7 +38,7 @@ public class CharacterPane extends HBox {
 			a.getCb().setStyle("-fx-accent:dimgrey");
 			b.getCb().setStyle("-fx-accent:firebrick");
 			c.getCb().setStyle("-fx-accent:royalblue");
-			this.getChildren().addAll(a,b,c);
+			this.getChildren().addAll(a,b,c);System.out.println("hard");
 		}
 	}
 }

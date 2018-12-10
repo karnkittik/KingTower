@@ -21,7 +21,6 @@ public class GameLogic {
 	private static Lane l3 = new Lane(275-10, 510, 60+20, 150, Color.DARKGREY);		
 	private static Lane l4 = new Lane(370-10, 410, 60+20, 250, Color.SLATEGRAY);
 	private static Lane l5 = new Lane(460-10, 460, 60+20, 200, Color.DARKGREY);
-	private static CharacterPane cp = new CharacterPane();
 	//private Character bomb1,bomb2,bomb3,bomb4,bomb5,bomb6,bomb7,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,bomb1,;
 	
 	public static Castle getC1() {
@@ -193,11 +192,4 @@ public class GameLogic {
 		}
 	}
 
-	public static CharacterPane getCp() {
-		return cp;
-	}
-
-	public static void setCp(CharacterPane cp) {
-		GameLogic.cp = cp;
-	}
 }
