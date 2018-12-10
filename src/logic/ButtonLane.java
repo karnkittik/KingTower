@@ -10,7 +10,7 @@ public class ButtonLane extends Button {
 	private boolean dead;
 	public ButtonLane(String name,int lane,String character) {
 		super(name);
-		this.setPrefSize(60	, 20);
+		this.setPrefSize(80	, 20);
 		setName(name);
 		setLane(lane);
 		setReady(0);

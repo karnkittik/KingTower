@@ -98,7 +98,7 @@ public class Home extends Application {
 				+ "-fx-font-size: 70; -fx-text-fill: black;");
 		start.setLayoutX(100);start.setLayoutY(550);
 		start.setOnAction(e -> {
-			
+			RenderableHolder.getHomesound().stop();
 			GamePane gamepane = new GamePane();
 			Scene Game = new Scene(gamepane);
 			
@@ -148,7 +148,8 @@ public class Home extends Application {
 		});
 
 
-		primaryStage.show();	
+		primaryStage.show();
+		RenderableHolder.getHomesound().play();
 	}
 
 

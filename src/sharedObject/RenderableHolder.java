@@ -30,9 +30,11 @@ public class RenderableHolder {
 	private static Image bar;
 	private static Image game;
 	private static Image main;
+	private static AudioClip  homesound;
 	private static AudioClip  greysound;
 	private static AudioClip  redsound;
 	private static AudioClip  bluesound;
+	private static AudioClip  gamesound;
 	
 	static {
 		loadResource();
@@ -147,6 +149,8 @@ public class RenderableHolder {
 		redsound = new AudioClip(ClassLoader.getSystemResource("redsound.wav").toString());
 		bluesound = new AudioClip(ClassLoader.getSystemResource("bluesound.wav").toString());
 		main = new Image(ClassLoader.getSystemResource("mainmenu.jpeg").toString());
+		homesound = new AudioClip(ClassLoader.getSystemResource("homesong.mp3").toString());
+		gamesound = new AudioClip(ClassLoader.getSystemResource("gamesong.mp3").toString());
 	}
 	public void add(IRenderable entity) {
 		//System.out.println("add");
@@ -198,5 +202,17 @@ public class RenderableHolder {
 	}
 	public static void setGame(Image game) {
 		RenderableHolder.game = game;
+	}
+	public static AudioClip getHomesound() {
+		return homesound;
+	}
+	public static void setHomesound(AudioClip homesound) {
+		RenderableHolder.homesound = homesound;
+	}
+	public static AudioClip getGamesound() {
+		return gamesound;
+	}
+	public static void setGamesound(AudioClip gamesound) {
+		RenderableHolder.gamesound = gamesound;
 	}
 }

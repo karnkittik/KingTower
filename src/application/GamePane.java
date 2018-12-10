@@ -13,6 +13,7 @@ import logic.Castle;
 import logic.CharacterCard;
 import logic.Lane;
 import logic.WhiteCastle;
+import sharedObject.RenderableHolder;
 import logic.Character;
 
 public class GamePane extends Pane {
@@ -92,8 +93,10 @@ public class GamePane extends Pane {
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(false);
 						}
-					}else
-					if(currentTime==0) {
+					}else if(currentTime==58) {
+						RenderableHolder.getGamesound().play();
+						drawCurrentTimeString(gc,Color.WHITE);	
+					}else if(currentTime==0) {
 						drawCurrentTimeString(gc,Color.RED);
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(true);
