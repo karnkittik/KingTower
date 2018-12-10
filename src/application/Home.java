@@ -95,7 +95,7 @@ public class Home extends Application {
 		medium.setStyle("-fx-border-width: 0;");
 		hard.setStyle("-fx-border-width: 0;");
 		
-		home.getChildren().addAll(menu,  back, start,setting );
+		home.getChildren().addAll(menu,  back, start, setting);
 		
 		start.setPrefSize(400, 50);
 		start.setStyle("-fx-border-width: 0; -fx-font-family: Thonburi;"
@@ -150,10 +150,8 @@ public class Home extends Application {
 			easy.setVisible(true);medium.setVisible(true);hard.setVisible(true);
 			back.setVisible(true);back.setDisable(false);
 		});
-
 		
-		primaryStage.show();
-		
+		primaryStage.show();	
 		RenderableHolder.getHomesound().play();
 	}
 

@@ -6,10 +6,9 @@ public abstract class Entity implements IRenderable{
 
 	protected double x,y;
 	protected double width,height;
-	//protected int z;
 	protected boolean visible,destroyed;
 	protected boolean draw;
-	protected Entity(){
+	protected Entity() {
 		visible = true;
 		destroyed = false;
 	}

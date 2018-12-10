@@ -10,10 +10,12 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Lane extends Entity implements Drawable, Eraseable {
+	
 	private static List<Character> allcharacter = new ArrayList<Character>();
 	private static List<Lane> allLane = new ArrayList<Lane>();
 	private int x,y,width,height;
 	private Color color;
+	
 	public Lane(int x, int y, int width, int height, Color color) {
 		super();
 		this.x = x;
@@ -23,6 +25,7 @@ public class Lane extends Entity implements Drawable, Eraseable {
 		this.color = color;
 		allLane.add(this);
 	}
+	
 	@Override
 	public void draw(GraphicsContext gc) {
 		gc.setFill(color);;
@@ -34,54 +37,66 @@ public class Lane extends Entity implements Drawable, Eraseable {
 		gc.clearRect(x, y, width, height);
 		
 	}
+	
 	public static List<Character> getAllcharacter() {
 		return allcharacter;
 	}
+	
 	public static void addAllcharacter(Character character) {
 		Lane.allcharacter.add(character);
 	}
+	
 	public int getX() {
 		return x;
 	}
+	
 	public void setX(int x) {
 		this.x = x;
 	}
+	
 	public int getY() {
 		return y;
 	}
+	
 	public void setY(int y) {
 		this.y = y;
 	}
+	
 	public int getWidth() {
 		return width;
 	}
+	
 	public void setWidth(int width) {
 		this.width = width;
 	}
+	
 	public int getHeight() {
 		return height;
 	}
+	
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	
 	public Color getColor() {
 		return color;
 	}
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}
+	
 	public static List<Lane> getAllLane() {
 		return allLane;
 	}
+	
 	public static void setAllLane(List<Lane> allLane) {
 		Lane.allLane = allLane;
 	}
+	
 	@Override
 	public void setDestroyed(boolean destroy) {
 		this.destroyed = destroy;
-		
 	}
-	
-	
 	
 }

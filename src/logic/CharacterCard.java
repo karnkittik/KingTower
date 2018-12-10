@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
 
 public class CharacterCard extends HBox{
+	
 	private static List<ButtonLane> allbtn1 = new ArrayList<ButtonLane>();
 	private static List<ButtonLane> allbtn2 = new ArrayList<ButtonLane>();
 	private static List<ButtonLane> allbtn3 = new ArrayList<ButtonLane>();
@@ -33,7 +34,8 @@ public class CharacterCard extends HBox{
 	private ButtonLane one,two,three,four,five;
 	private CoolDownBar cb;
 	private static List<Character> allCaharacter = new ArrayList<Character>();
-	public CharacterCard(String name, int damage, double speed, int maxhp, int cd, Image imgCharacter,Image imgCard) {
+	
+	public CharacterCard(String name, int damage, double speed, int maxhp, int cd, Image imgCharacter, Image imgCard) {
 		super(10);
 		this.name = name;
 		this.damage = damage;
@@ -54,8 +56,7 @@ public class CharacterCard extends HBox{
 		gc.drawImage(imgCard, 0, 0);
 		VBox allbutton = new VBox();
 		
-		one = new ButtonLane("Lauriel",1,name);allbtn1.add(one);System.out.println("one");
-		all.add(one);System.out.println("all");
+		one = new ButtonLane("Lauriel",1,name);allbtn1.add(one);all.add(one);
 		one.setOnAction(e->{
 			Character character = new Character(70,660,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
 			character.setTarget(GameLogic.getC1());character.setOwner(one);
@@ -120,133 +121,173 @@ public class CharacterCard extends HBox{
 		this.getChildren().add(allbutton);
 		
    }
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public int getDamage() {
 		return damage;
 	}
+	
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
+	
 	public double getSpeed() {
 		return speed;
 	}
+	
 	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
+	
 	public int getHp() {
 		return hp;
 	}
+	
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
+	
 	public int getMaxhp() {
 		return maxhp;
 	}
+	
 	public void setMaxhp(int maxhp) {
 		this.maxhp = maxhp;
 	}
+	
 	public int getCd() {
 		return cd;
 	}
+	
 	public void setCd(int cd) {
 		this.cd = cd;
 	}
+	
 	public Image getImgCharacter() {
 		return imgCharacter;
 	}
+	
 	public void setImgCharacter(Image imgCharacter) {
 		this.imgCharacter = imgCharacter;
 	}
+	
 	public Image getImgCard() {
 		return imgCard;
 	}
+	
 	public void setImgCard(Image imgCard) {
 		this.imgCard = imgCard;
 	}
+	
 	public ButtonLane getOne() {
 		return one;
 	}
+	
 	public void setOne(ButtonLane one) {
 		this.one = one;
 	}
+	
 	public ButtonLane getTwo() {
 		return two;
 	}
+	
 	public void setTwo(ButtonLane two) {
 		this.two = two;
 	}
+	
 	public ButtonLane getThree() {
 		return three;
 	}
+	
 	public void setThree(ButtonLane three) {
 		this.three = three;
 	}
+	
 	public ButtonLane getFour() {
 		return four;
 	}
+	
 	public void setFour(ButtonLane four) {
 		this.four = four;
 	}
+	
 	public ButtonLane getFive() {
 		return five;
 	}
+	
 	public void setFive(ButtonLane five) {
 		this.five = five;
 	}
+	
 	public static List<ButtonLane> getAll() {
 		return all;
 	}
+	
 	public static void setAll(List<ButtonLane> all) {
 		CharacterCard.all = all;
 	}
+	
 	public static List<Character> getAllCaharacter() {
 		return allCaharacter;
 	}
+	
 	public static void setAllCaharacter(List<Character> allCaharacter) {
 		CharacterCard.allCaharacter = allCaharacter;
 	}
+	
 	public static List<ButtonLane> getAllbtn1() {
 		return allbtn1;
 	}
+	
 	public static void setAllbtn1(List<ButtonLane> allbtn1) {
 		CharacterCard.allbtn1 = allbtn1;
 	}
+	
 	public static List<ButtonLane> getAllbtn2() {
 		return allbtn2;
 	}
+	
 	public static void setAllbtn2(List<ButtonLane> allbtn2) {
 		CharacterCard.allbtn2 = allbtn2;
 	}
+	
 	public static List<ButtonLane> getAllbtn3() {
 		return allbtn3;
 	}
+	
 	public static void setAllbtn3(List<ButtonLane> allbtn3) {
 		CharacterCard.allbtn3 = allbtn3;
 	}
+	
 	public static List<ButtonLane> getAllbtn4() {
 		return allbtn4;
 	}
+	
 	public static void setAllbtn4(List<ButtonLane> allbtn4) {
 		CharacterCard.allbtn4 = allbtn4;
 	}
+	
 	public static List<ButtonLane> getAllbtn5() {
 		return allbtn5;
 	}
+	
 	public static void setAllbtn5(List<ButtonLane> allbtn5) {
 		CharacterCard.allbtn5 = allbtn5;
 	}
+	
 	public CoolDownBar getCb() {
 		return cb;
 	}
+	
 	public void setCb(CoolDownBar cb) {
 		this.cb = cb;
 	}
-	
-	
 	
 }

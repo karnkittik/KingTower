@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import sharedObject.RenderableHolder;
 
 public class Character extends Entity implements Drawable,Eraseable{
-	//private Castle target;
 
 	private String name;
 	private int damage;
@@ -19,6 +18,7 @@ public class Character extends Entity implements Drawable,Eraseable{
 	private Image imgCard;
 	private Castle target;
 	private ButtonLane owner;
+	
 	public Character(double x,double y,double length,String name, int damage, double speed,int maxhp, 
 		int cd, Image imgCharacter,Image imgCard) {
 		this.x = x;
@@ -35,9 +35,7 @@ public class Character extends Entity implements Drawable,Eraseable{
 		setDestroyed(false);
 	}
 	public boolean collideWith(Castle target) {
-
 		return this.y - target.getY() <= 165;
-
 	}
 
 	@Override
@@ -70,67 +68,87 @@ public class Character extends Entity implements Drawable,Eraseable{
 	public double getX() {
 		return x;
 	}
+	
 	public void setX(double x) {
 		this.x = x;
 	}
+	
 	public double getY() {
 		return y;
 	}
+	
 	public void setY(double y) {
 		this.y = y;
 	}
+	
 	public double getLength() {
 		return length;
 	}
+	
 	public void setLength(double length) {
 		this.length = length;
-
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public int getDamage() {
 		return damage;
 	}
+	
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
+	
 	public double getSpeed() {
 		return speed;
 	}
+	
 	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
+	
 	public int getHp() {
 		return hp;
 	}
+	
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
+	
 	public int getMaxhp() {
 		return maxhp;
 	}
+	
 	public void setMaxhp(int maxhp) {
 		this.maxhp = maxhp;
 	}
+	
 	public int getCd() {
 		return cd;
 	}
+	
 	public void setCd(int cd) {
 		this.cd = cd;
 	}
+	
 	public Image getImgCharacter() {
 		return imgCharacter;
 	}
+	
 	public void setImgCharacter(Image imgCharacter) {
 		this.imgCharacter = imgCharacter;
 	}
+	
 	public Image getImgCard() {
 		return imgCard;
 	}
+	
 	public void setImgCard(Image imgCard) {
 		this.imgCard = imgCard;
 	}
@@ -145,15 +163,15 @@ public class Character extends Entity implements Drawable,Eraseable{
 
 	@Override
 	public void setDestroyed(boolean destroy) {
-		this.destroyed = destroy;
-		
+		this.destroyed = destroy;	
 	}
+	
 	public ButtonLane getOwner() {
 		return owner;
 	}
+	
 	public void setOwner(ButtonLane owner) {
 		this.owner = owner;
 	}
-	
 	
 }

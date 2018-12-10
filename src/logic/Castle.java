@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
 public class Castle extends Entity implements Drawable,Eraseable{
+	
 	private int hp;
 	private int maxhp;
 	private static int speed = 105;
@@ -23,6 +24,7 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	private String name;
 	private static List<Castle> allCastle = new ArrayList<Castle>();
 	private static List<Castle> activeCastle = new ArrayList<Castle>();
+	
 	public Castle(int x,int y,int width,int height,int maxhp, Image img) {
 		setHp(maxhp);
 		setMaxhp(maxhp);
@@ -39,8 +41,6 @@ public class Castle extends Entity implements Drawable,Eraseable{
 		allCastle.add(this);
 		setName("Castle");
 	}
-	
-
 
 	public HPBar getHpbar() {
 		return hpbar;
@@ -49,11 +49,6 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	public void setHpbar(HPBar hpbar) {
 		this.hpbar = hpbar;
 	}
-	
-//	public void drawHPBar(Pane pane) {
-//		hpbar.setLayoutX(x+5);
-//		hpbar.setLayoutY(y+140);
-//	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
@@ -158,8 +153,7 @@ public class Castle extends Entity implements Drawable,Eraseable{
 	
 	@Override
 	public void setDestroyed(boolean destroy) {
-		this.destroyed = destroy;
-		
+		this.destroyed = destroy;	
 	}
 
 	public boolean isDead() {
@@ -170,17 +164,12 @@ public class Castle extends Entity implements Drawable,Eraseable{
 		this.dead = dead;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 }

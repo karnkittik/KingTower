@@ -19,6 +19,5 @@ public class HomeScreen extends Canvas{
 
 	private void draw(GraphicsContext gc) {
 		gc.drawImage(img, 0, 0);
-		
 	}
 }

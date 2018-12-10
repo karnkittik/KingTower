@@ -120,11 +120,6 @@ public class RenderableHolder {
 	}
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
-//		comparator = (IRenderable o1, IRenderable o2) -> {
-//			if (o1.getZ() > o2.getZ())
-//				return 1;
-//			return -1;
-//		};
 	}
 	public static RenderableHolder getInstance() {
 		return instance;
@@ -153,15 +148,9 @@ public class RenderableHolder {
 		gamesound = new AudioClip(ClassLoader.getSystemResource("gamesong.mp3").toString());
 	}
 	public void add(IRenderable entity) {
-		//System.out.println("add");
 		entities.add(entity);
-		//Collections.sort(entities, comparator);
-//		for(IRenderable x: entities){
-//			if(x instanceof Castle) System.out.println("castle");
-//			if(x instanceof Character) System.out.println("bomb");
-			
-//		}
 	}
+	
 	public void update() {
 		if(!GamePane.isTimeOut()&& !GamePane.isWin()) {
 			for (int i = entities.size() - 1; i >= 0; i--) {
@@ -170,49 +159,65 @@ public class RenderableHolder {
 			}
 		}
 	}
+	
 	public List<IRenderable> getEntities() {
 		return entities;
 	}
+	
 	public static Image getMain() {
 		return main;
 	}
+	
 	public static void setMain(Image main) {
 		RenderableHolder.main = main;
 	}
+	
 	public static AudioClip getRedsound() {
 		return redsound;
 	}
+	
 	public static void setRedsound(AudioClip redsound) {
 		RenderableHolder.redsound = redsound;
 	}
+	
 	public static AudioClip getBluesound() {
 		return bluesound;
 	}
+	
 	public static void setBluesound(AudioClip bluesound) {
 		RenderableHolder.bluesound = bluesound;
 	}
+	
 	public static AudioClip getGreysound() {
 		return greysound;
 	}
+	
 	public static void setGreysound(AudioClip greysound) {
 		RenderableHolder.greysound = greysound;
 	}
+	
 	public static Image getGame() {
 		return game;
 	}
+	
 	public static void setGame(Image game) {
 		RenderableHolder.game = game;
 	}
+	
 	public static AudioClip getHomesound() {
 		return homesound;
 	}
+	
 	public static void setHomesound(AudioClip homesound) {
 		RenderableHolder.homesound = homesound;
 	}
+	
 	public static AudioClip getGamesound() {
 		return gamesound;
 	}
+	
 	public static void setGamesound(AudioClip gamesound) {
 		RenderableHolder.gamesound = gamesound;
 	}
+	
 }

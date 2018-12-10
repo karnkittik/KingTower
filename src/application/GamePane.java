@@ -17,31 +17,28 @@ import sharedObject.RenderableHolder;
 import logic.Character;
 
 public class GamePane extends Pane {
-	private static boolean win = false;
+	
 	private static int currentTime;
-	private static AnimationTimer animationTimer;
 	private static long lastTimeTriggered;
-	private static Canvas canvas = new Canvas(600,800);
-	private HPPane hp = new HPPane();
+	private static boolean win = false;
 	private static boolean timeOut = false;
-	private GameScreen gs;
-	private static CharacterPane cp;
+	private static AnimationTimer animationTimer;
+	private static Canvas canvas = new Canvas(600,800);
 	private static GraphicsContext gc = canvas.getGraphicsContext2D();
+	private static CharacterPane cp;
+	private HPPane hp = new HPPane();
+	private GameScreen gs;
+	
 	public GamePane() {
 		super();
 		this.setPrefSize(600, 800);
 		gs = new GameScreen();
 		cp = new CharacterPane();
-		System.out.println("gamepane");
 		this.getChildren().add(gs);
-		
 		this.getChildren().add(canvas);
 		this.getChildren().add(hp);
 		this.getChildren().add(cp);
-		
 		cp.setLayoutX(10);cp.setLayoutY(667);
-		
-		//startGameloop();
 	}
 	
 	public HPPane getHPpane() {
@@ -59,7 +56,6 @@ public class GamePane extends Pane {
 	public void setGs(GameScreen gs) {
 		this.gs = gs;
 	}
-
 
 	public static boolean isTimeOut() {
 		return timeOut;
@@ -82,21 +78,22 @@ public class GamePane extends Pane {
 				
 				if (now - lastTimeTriggered >= 1000000000) //1 second
 				{
-					//currentTime--;
-					//System.out.println(currentTime);
 					if(win) {
 						drawCurrentTimeString(gc,Color.ORANGE);
 						this.stop();
 						animationTimer.stop();
-					}else if(currentTime==60) {
+					}
+					else if(currentTime==60) {
 						drawCurrentTimeString(gc,Color.WHITE);
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(false);
 						}
-					}else if(currentTime==58) {
-						RenderableHolder.getGamesound().play();
-						drawCurrentTimeString(gc,Color.WHITE);	
-					}else if(currentTime==0) {
+					}
+					else if(currentTime==58) {
+						drawCurrentTimeString(gc,Color.WHITE);
+						RenderableHolder.getGamesound().play();	
+					}
+					else if(currentTime==0) {
 						drawCurrentTimeString(gc,Color.RED);
 						for(ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(true);
@@ -106,10 +103,13 @@ public class GamePane extends Pane {
 						System.out.println("timeout");
 						stop();
 						timeOut=true;
-						//animationTimer.stop();
-					}else if(currentTime<=3&&currentTime>=1) {
+					}
+					else if(currentTime<=3&&currentTime>=1) {
 						drawCurrentTimeString(gc,Color.YELLOW);
-					}else {drawCurrentTimeString(gc,Color.WHITE);}
+					}
+					else {
+						drawCurrentTimeString(gc,Color.WHITE);
+					}
 					lastTimeTriggered = now;
 					currentTime--;
 				}
@@ -123,9 +123,7 @@ public class GamePane extends Pane {
 		gc.setFill(color);
 		gc.setFont(new Font(40));
 		gc.clearRect(512, 0, 90, 90);
-		//System.out.println(-currentTime);
 		gc.fillText("" +currentTime, 520, 60);
-		
 	}
 
 	public static void paint() {
@@ -139,7 +137,5 @@ public class GamePane extends Pane {
 	public static void setWin(boolean win) {
 		GamePane.win = win;
 	}
-
-	
 	
 }
