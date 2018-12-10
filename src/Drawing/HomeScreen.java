@@ -14,7 +14,9 @@ public class HomeScreen extends Canvas{
 		GraphicsContext gc = this.getGraphicsContext2D();
 		img = RenderableHolder.getMain();
 		draw(gc);
-		System.out.println("homescreen");
+		
+		//Print Hello
+		System.out.println("! Hello !");
 	}
 
 	private void draw(GraphicsContext gc) {

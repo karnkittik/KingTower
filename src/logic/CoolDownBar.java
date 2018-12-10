@@ -40,40 +40,43 @@ public class CoolDownBar extends ProgressBar{
 					}
 					//row
 					if(name.equals("one") && one.isDead()) {
-						System.out.println("dead");
 						for(ButtonLane i:a) {
 							i.setReady(i.isReady()-1);
 						}
 						one.setDead(false);
+						System.out.println("Lauriel has been attacked");
 					}
 					if(name.equals("two") && two.isDead()) {
 						for(ButtonLane i:a) {
 							i.setReady(i.isReady()-1);
 						}
 						two.setDead(false);
+						System.out.println("Moren has been attacked");
 					}
 					if(name.equals("three" )&& three.isDead()) {
 						for(ButtonLane i:a) {
 							i.setReady(i.isReady()-1);
 						}
 						three.setDead(false);
+						System.out.println("Yorn has been attacked");
 					}
 					if(name.equals("four")&& four.isDead()) {
 						for(ButtonLane i:a) {
 							i.setReady(i.isReady()-1);
 						}
 						four.setDead(false);
+						System.out.println("Illumia has been attacked");
 					}
 					if(name.equals("five")&& five.isDead()){
 						for(ButtonLane i:a) {
 							i.setReady(i.isReady()-1);
 						}
 						five.setDead(false);
+						System.out.println("Sephera has been attacked");
 					}
 					//column
 					if(getProgress()>=1) {
 						ready = true;
-						System.out.println("finish");
 						if(isReady()) {
 							setVisible(false);//progress disappear
 							one.setReady(one.isReady()-1);two.setReady(two.isReady()-1);three.setReady(three.isReady()-1);
@@ -85,9 +88,6 @@ public class CoolDownBar extends ProgressBar{
 						if(i.isReady()==0) i.setDisable(false);
 					}
 					if(isReady()) {break;}
-				}
-				for(ButtonLane k :all) {
-					System.out.print(k.isReady());
 				}
 			});
 			thread.start();

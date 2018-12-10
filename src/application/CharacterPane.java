@@ -10,7 +10,7 @@ public class CharacterPane extends HBox {
 	
 	public CharacterPane() {
 		super(10);
-		System.out.println(GameLogic.getGameMode());
+		
 		//String name, int damage, double speed, int maxhp, int cd, String imgCharacter,String imgCard)
 		if(GameLogic.getGameMode()==1) {
 			CharacterCard a = new CharacterCard("Grey", 250, 3, 100, 2, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
@@ -19,7 +19,8 @@ public class CharacterPane extends HBox {
 			a.getCb().setStyle("-fx-accent:dimgrey");
 			b.getCb().setStyle("-fx-accent:firebrick");
 			c.getCb().setStyle("-fx-accent:royalblue");
-			this.getChildren().addAll(a,b,c);System.out.println("easy");
+			this.getChildren().addAll(a,b,c);
+			System.out.println("GameMode : Easy");
 		}
 		else if(GameLogic.getGameMode()==2) {
 			CharacterCard a = new CharacterCard("Grey", 200, 2.5, 100, 3, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
@@ -28,7 +29,8 @@ public class CharacterPane extends HBox {
 			a.getCb().setStyle("-fx-accent:dimgrey");
 			b.getCb().setStyle("-fx-accent:firebrick");
 			c.getCb().setStyle("-fx-accent:royalblue");
-			this.getChildren().addAll(a,b,c);System.out.println("medium");
+			this.getChildren().addAll(a,b,c);
+			System.out.println("GameMode : Medium");
 		}
 		else if(GameLogic.getGameMode()==3) {
 			CharacterCard a = new CharacterCard("Grey", 150, 2, 100, 3, RenderableHolder.getGreyBomb(),RenderableHolder.getGrey());
@@ -37,7 +39,8 @@ public class CharacterPane extends HBox {
 			a.getCb().setStyle("-fx-accent:dimgrey");
 			b.getCb().setStyle("-fx-accent:firebrick");
 			c.getCb().setStyle("-fx-accent:royalblue");
-			this.getChildren().addAll(a,b,c);System.out.println("hard");
+			this.getChildren().addAll(a,b,c);
+			System.out.println("GameMode : Hard");
 		}
 	}
 }

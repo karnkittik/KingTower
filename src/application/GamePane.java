@@ -100,7 +100,7 @@ public class GamePane extends Pane {
 							btn.setReady(0);
 						}
 						setTimeOut(true);
-						System.out.println("timeout");
+						System.out.println("! Time Up !");
 						stop();
 						timeOut=true;
 					}
