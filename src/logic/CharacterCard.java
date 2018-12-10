@@ -54,7 +54,7 @@ public class CharacterCard extends HBox{
 		this.getChildren().addAll(sp);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		gc.drawImage(imgCard, 0, 0);
-		Font font = Font.font("Times New Roman",FontWeight.BOLD,12);
+		Font font = Font.font("Times New Roman",FontWeight.BOLD,11);
 		gc.setFill(Color.WHITE);
 		gc.setFont(font);
 		gc.fillText("CD:" + cd + " DM:" + damage + "\nSP:" + speed, 4, 12);
