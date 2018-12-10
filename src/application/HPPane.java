@@ -46,7 +46,21 @@ public class HPPane extends Pane {
 		four.setLayoutY(GameLogic.getC4().getY() - 30);
 		five.setLayoutX(GameLogic.getC5().getX() + 15);
 		five.setLayoutY(GameLogic.getC5().getY() - 30);
-
+		Label hpOne = new Label(GameLogic.getC1().getHp() + "/" + GameLogic.getC1().getMaxhp());
+		hpOne.setLayoutX(GameLogic.getC1().getX() + 23);
+		hpOne.setLayoutY(GameLogic.getC1().getY() - 29);
+		Label hpTwo = new Label(GameLogic.getC2().getHp() + "/" + GameLogic.getC2().getMaxhp());
+		hpTwo.setLayoutX(GameLogic.getC2().getX() + 23);
+		hpTwo.setLayoutY(GameLogic.getC2().getY() - 29);
+		Label hpThree = new Label(GameLogic.getC3().getHp() + "/" + GameLogic.getC3().getMaxhp());
+		hpThree.setLayoutX(GameLogic.getC3().getX() + 23);
+		hpThree.setLayoutY(GameLogic.getC3().getY() - 29);
+		Label hpFour = new Label(GameLogic.getC4().getHp() + "/" + GameLogic.getC4().getMaxhp());
+		hpFour.setLayoutX(GameLogic.getC4().getX() + 23);
+		hpFour.setLayoutY(GameLogic.getC4().getY() - 29);
+		Label hpFive = new Label(GameLogic.getC5().getHp() + "/" + GameLogic.getC5().getMaxhp());
+		hpFive.setLayoutX(GameLogic.getC5().getX() + 23);
+		hpFive.setLayoutY(GameLogic.getC5().getY() - 29);
 		Label cone = new Label(GameLogic.getC1().getName());
 		cone.setLayoutX(GameLogic.getC1().getX() + 52);
 		cone.setLayoutY(GameLogic.getC1().getY() + 10);
@@ -67,8 +81,8 @@ public class HPPane extends Pane {
 		cone.setStyle("-fx-text-fill : blue;");
 		cthree.setStyle("-fx-text-fill : blue;");
 		cfive.setStyle("-fx-text-fill : blue;");
-		getChildren().addAll(cone, ctwo, cthree, cfour, cfive);
-		HPUpdate();
+		getChildren().addAll(cone, ctwo, cthree, cfour, cfive, hpOne, hpTwo, hpThree, hpFour, hpFive);
+		HPUpdate();hpOne.
 	}
 
 	public void HPUpdate() {
@@ -82,6 +96,7 @@ public class HPPane extends Pane {
 						three.setProgress((double) GameLogic.getC3().getHp() / GameLogic.getC3().getMaxhp());
 						four.setProgress((double) GameLogic.getC4().getHp() / GameLogic.getC4().getMaxhp());
 						five.setProgress((double) GameLogic.getC5().getHp() / GameLogic.getC5().getMaxhp());
+				
 						if (one.getProgress() == 0)
 							one.setVisible(false);
 						if (two.getProgress() == 0)

@@ -2,7 +2,6 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import Drawing.Drawable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -11,7 +10,7 @@ public class Lane extends Entity implements Drawable{
 	
 	private static List<Character> allcharacter = new ArrayList<Character>();
 	private static List<Lane> allLane = new ArrayList<Lane>();
-	private int x,y,width,height;
+	private int x, y, width, height;
 	private Color color;
 	
 	public Lane(int x, int y, int width, int height, Color color) {

@@ -1,9 +1,5 @@
 package logic;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import application.CharacterPane;
 import javafx.scene.paint.Color;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
@@ -16,11 +12,11 @@ public class GameLogic {
 	private static Castle c3 = new WhiteCastle(255, 260, 110, 250, "Yorn");
 	private static Castle c4 = new BlackCastle(350, 160, 110, 250, "Illumia");
 	private static Castle c5 = new WhiteCastle(439, 210, 110, 250,"Sephera");
-	private static Lane l1 = new Lane(80-10, 460, 60+20, 200, Color.DARKGREY);		
-	private static Lane l2 = new Lane(180-10, 410, 60+20, 250, Color.SLATEGRAY);
-	private static Lane l3 = new Lane(275-10, 510, 60+20, 150, Color.DARKGREY);		
-	private static Lane l4 = new Lane(370-10, 410, 60+20, 250, Color.SLATEGRAY);
-	private static Lane l5 = new Lane(460-10, 460, 60+20, 200, Color.DARKGREY);
+	private static Lane l1 = new Lane(70, 460, 80, 200, Color.DARKGREY);		
+	private static Lane l2 = new Lane(170, 410, 80, 250, Color.SLATEGRAY);
+	private static Lane l3 = new Lane(265, 510, 80, 150, Color.DARKGREY);		
+	private static Lane l4 = new Lane(360, 410, 80, 250, Color.SLATEGRAY);
+	private static Lane l5 = new Lane(450, 460, 80, 200, Color.DARKGREY);
 	
 	public static Castle getC1() {
 		return c1;
@@ -111,12 +107,19 @@ public class GameLogic {
 	}
 
 	public GameLogic() {
-		for(ButtonLane btn:CharacterCard.getAll()) {
+		for (ButtonLane btn : CharacterCard.getAll()) {
 			btn.setDisable(true);
 		}
-		
-		addNewObject(c1);addNewObject(c2);addNewObject(c3);addNewObject(c4);addNewObject(c5);
-		addNewObject(l1);addNewObject(l2);addNewObject(l3);addNewObject(l4);addNewObject(l5);
+		addNewObject(c1);
+		addNewObject(c2);
+		addNewObject(c3);
+		addNewObject(c4);
+		addNewObject(c5);
+		addNewObject(l1);
+		addNewObject(l2);
+		addNewObject(l3);
+		addNewObject(l4);
+		addNewObject(l5);
 	}
 	
 	public static void addNewObject(Entity entity) {
@@ -124,53 +127,55 @@ public class GameLogic {
 	}
 	
 	public void logicUpdate() {
-		for(IRenderable en : RenderableHolder.getInstance().getEntities()) {
-			if(en instanceof Character) {
-				if(!((Character)en).isDestroyed() && ((Character)en).collideWith(((Character)en).getTarget())){
+		for (IRenderable en : RenderableHolder.getInstance().getEntities()) {
+			if (en instanceof Character) {
+				if (!((Character)en).isDestroyed() && ((Character)en).collideWith(((Character)en).getTarget())){
 					((Character)en).crash(((Character)en).getTarget());
 				}
 			}
-			if(en instanceof WhiteCastle) {
-				if(((Castle)en).getHp()==0) {
+			if (en instanceof WhiteCastle) {
+				if (((Castle)en).getHp() == 0) {
 					((Castle)en).setDead(true);
 					((Castle)en).setImg(RenderableHolder.getWhiteCastlemorefire());
 				}
 			}
-			if(en instanceof BlackCastle) {
-				if(((Castle)en).getHp()==0) {
+			if (en instanceof BlackCastle) {
+				if (((Castle)en).getHp() == 0) {
 					((Castle)en).setDead(true);
 					((Castle)en).setImg(RenderableHolder.getBlackCastlemorefire());
 				}
 			}
 		}	
-		if(GameLogic.getC1().isDead()) {
-			for(ButtonLane one : CharacterCard.getAllbtn1()) 
-			{
-				one.setDisable(true);one.setVisible(false);
+		if (GameLogic.getC1().isDead()) {
+			for (ButtonLane one : CharacterCard.getAllbtn1()) {
+				one.setDisable(true);
+				one.setVisible(false);
 			}
 		}
-		if(GameLogic.getC2().isDead()) {
-			for(ButtonLane two : CharacterCard.getAllbtn2()) 
-			{
-				two.setDisable(true);two.setVisible(false);
+		if (GameLogic.getC2().isDead()) {
+			for (ButtonLane two : CharacterCard.getAllbtn2()) {
+				two.setDisable(true);
+				two.setVisible(false);
 			}
 		}
-		if(GameLogic.getC3().isDead()) {
-			for(ButtonLane three : CharacterCard.getAllbtn3()) 
-			{
-				three.setDisable(true);three.setVisible(false);
+		if (GameLogic.getC3().isDead()) {
+			for (ButtonLane three : CharacterCard.getAllbtn3()) {
+				three.setDisable(true);
+				three.setVisible(false);
 			}
 		}
-		if(GameLogic.getC4().isDead()) {
-			for(ButtonLane four : CharacterCard.getAllbtn4()) 
+		if (GameLogic.getC4().isDead()) {
+			for (ButtonLane four : CharacterCard.getAllbtn4()) 
 			{
-				four.setDisable(true);four.setVisible(false);
+				four.setDisable(true);
+				four.setVisible(false);
 			}
 		}
-		if(GameLogic.getC5().isDead()) {
-			for(ButtonLane five : CharacterCard.getAllbtn5()) 
+		if (GameLogic.getC5().isDead()) {
+			for (ButtonLane five : CharacterCard.getAllbtn5()) 
 			{
-				five.setDisable(true);five.setVisible(false);
+				five.setDisable(true);
+				five.setVisible(false);
 			}
 		}
 	}

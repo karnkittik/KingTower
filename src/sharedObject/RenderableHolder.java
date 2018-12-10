@@ -1,15 +1,10 @@
 package sharedObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
 import application.GamePane;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
-import logic.Castle;
-import logic.Character;
 
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
@@ -126,7 +121,7 @@ public class RenderableHolder {
 	}
 	
 	public static void loadResource() {
-		setGame(new Image(ClassLoader.getSystemResource("1.png").toString()));
+		game = (new Image(ClassLoader.getSystemResource("1.png").toString()));
 		blueBomb = new Image(ClassLoader.getSystemResource("bluebomb.png").toString());
 		redBomb = new Image(ClassLoader.getSystemResource("redbomb.png").toString());
 		greyBomb = new Image(ClassLoader.getSystemResource("greybomb.png").toString());
@@ -152,7 +147,7 @@ public class RenderableHolder {
 	}
 	
 	public void update() {
-		if(!GamePane.isTimeOut()&& !GamePane.isWin()) {
+		if(!GamePane.isTimeOut() && !GamePane.isWin()) {
 			for (int i = entities.size() - 1; i >= 0; i--) {
 				if (entities.get(i).isDestroyed())
 					entities.remove(i);

@@ -1,6 +1,5 @@
 package logic;
 
-
 import javafx.scene.control.ProgressBar;
 
 public class HPBar extends ProgressBar {

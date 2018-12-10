@@ -80,16 +80,16 @@ public class GamePane extends Pane {
 						animationTimer.stop();
 					} else if (currentTime == 60) {
 						drawCurrentTimeString(gc,Color.WHITE);
-						for (ButtonLane btn:CharacterCard.getAll()) {
+						for (ButtonLane btn : CharacterCard.getAll()) {
 							btn.setDisable(false);
 						}
 					} else if (currentTime == 58) {
-						drawCurrentTimeString(gc,Color.WHITE);
+						drawCurrentTimeString(gc, Color.WHITE);
 						RenderableHolder.getGamesound().play();	
 					}
-					else if(currentTime == 0) {
-						drawCurrentTimeString(gc,Color.RED);
-						for(ButtonLane btn:CharacterCard.getAll()) {
+					else if (currentTime == 0) {
+						drawCurrentTimeString(gc, Color.RED);
+						for (ButtonLane btn:CharacterCard.getAll()) {
 							btn.setDisable(true);
 							btn.setReady(0);
 						}

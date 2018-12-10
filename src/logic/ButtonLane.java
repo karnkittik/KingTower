@@ -12,7 +12,8 @@ public class ButtonLane extends Button {
 	
 	public ButtonLane(String name,int lane,String character) {
 		super(name);
-		this.setPrefSize(80	, 20);
+		this.setPrefSize(80, 20);
+		this.setStyle("-fx-font-size : 12;");
 		setName(name);
 		setLane(lane);
 		setReady(0);
