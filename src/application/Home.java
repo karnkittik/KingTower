@@ -2,7 +2,6 @@ package application;
 
 
 import Drawing.GameScreen;
-import Drawing.HomeScreen;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -33,11 +32,13 @@ public class Home extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 	    Pane home = new Pane();
-	    home.setPrefSize(600, 800);
-		HomeScreen homescreen = new HomeScreen();
-		home.getChildren().add(homescreen);
+	    Canvas canvas = new Canvas(600,800);
+	    GraphicsContext gc = canvas.getGraphicsContext2D();
+	    home.getChildren().add(canvas);
+	    Image img = RenderableHolder.getMain();
+	    gc.drawImage(img, 0, 0);
 		
-		Scene homescene = new Scene(home);
+		Scene homescene = new Scene(home,600,800);
 		primaryStage.setOnCloseRequest(e -> {
 			primaryStage.close();
 			System.exit(0);
