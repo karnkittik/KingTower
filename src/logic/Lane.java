@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Drawing.Drawable;
-import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-public class Lane extends Entity implements Drawable, Eraseable {
+public class Lane extends Entity implements Drawable{
 	
 	private static List<Character> allcharacter = new ArrayList<Character>();
 	private static List<Lane> allLane = new ArrayList<Lane>();
@@ -30,12 +28,6 @@ public class Lane extends Entity implements Drawable, Eraseable {
 	public void draw(GraphicsContext gc) {
 		gc.setFill(color);;
 		gc.fillRect(x, y, width, height);
-	}
-
-	@Override
-	public void erase(GraphicsContext gc) {
-		gc.clearRect(x, y, width, height);
-		
 	}
 	
 	public static List<Character> getAllcharacter() {

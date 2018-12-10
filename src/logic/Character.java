@@ -1,12 +1,11 @@
 package logic;
 
 import Drawing.Drawable;
-import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import sharedObject.RenderableHolder;
 
-public class Character extends Entity implements Drawable,Eraseable{
+public class Character extends Entity implements Drawable{
 
 	private String name;
 	private int damage;
@@ -39,18 +38,13 @@ public class Character extends Entity implements Drawable,Eraseable{
 	}
 
 	@Override
-	public void erase(GraphicsContext gc) {
-		gc.clearRect(x, y, 80, 120);
-		
-	}
-	@Override
 	public void draw(GraphicsContext gc) {
 		gc.drawImage(imgCharacter, x, y);
-		setY(getY()-getSpeed());	
+		setY(getY() - getSpeed());	
 	}
 	
 	public void crash(Castle target) {
-		target.setHp(Math.max(target.getHp()-damage, 0));
+		target.setHp(Math.max(target.getHp() - damage, 0));
 
 		if(target instanceof WhiteCastle) {
 			target.setImg(RenderableHolder.getWhiteCastlefire());

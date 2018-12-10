@@ -2,18 +2,13 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.ws.handler.LogicalHandler;
-
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
 
 public class CharacterCard extends HBox{
@@ -31,7 +26,7 @@ public class CharacterCard extends HBox{
 	private int cd;
 	private Image imgCharacter;
 	private Image imgCard;
-	private ButtonLane one,two,three,four,five;
+	private ButtonLane one, two, three, four, five;
 	private CoolDownBar cb;
 	private static List<Character> allCaharacter = new ArrayList<Character>();
 	
@@ -48,7 +43,7 @@ public class CharacterCard extends HBox{
 		StackPane sp = new StackPane();
 		cb = new CoolDownBar(this);
 		cb.setPrefWidth(50);
-		Canvas canvas = new Canvas(80,120);
+		Canvas canvas = new Canvas(80, 120);
 		sp.getChildren().addAll(canvas,cb);
 		this.getChildren().add(sp);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -56,30 +51,58 @@ public class CharacterCard extends HBox{
 		gc.drawImage(imgCard, 0, 0);
 		VBox allbutton = new VBox();
 		
-		one = new ButtonLane("Lauriel",1,name);allbtn1.add(one);all.add(one);
+		one = new ButtonLane("Lauriel", 1, name); 
+		allbtn1.add(one); 
+		all.add(one);
 		one.setOnAction(e->{
-			Character character = new Character(70,660,200,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
-			character.setTarget(GameLogic.getC1());character.setOwner(one);
+			Character character = new Character(70, 660, 200, name, damage, speed, maxhp, cd, imgCharacter, imgCard);
+			character.setTarget(GameLogic.getC1());
+			character.setOwner(one);
 			RenderableHolder.getInstance().getEntities().add(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			for(ButtonLane a:allbtn1) {a.setDisable(true); a.setReady(a.isReady()+1);}
-			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
-			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
-			cb.update(one,two,three,four,five,allbtn1,all,cd,"one");
+			for(ButtonLane a:allbtn1) {
+				a.setDisable(true); 
+				a.setReady(a.isReady() + 1);
+			}
+			one.setDisable(true);
+			two.setDisable(true);
+			three.setDisable(true);
+			four.setDisable(true);
+			five.setDisable(true);
+			one.setReady(one.isReady() + 1);
+			two.setReady(two.isReady()+ 1);
+			three.setReady(three.isReady()+ 1);
+			four.setReady(four.isReady() + 1);
+			five.setReady(five.isReady() + 1);
+			cb.update(one, two, three, four, five, allbtn1, all, cd, "one");
 
 		});
-		two = new ButtonLane("Moren",2,name);allbtn2.add(two);all.add(two);
+		two = new ButtonLane("Moren",2,name);
+		allbtn2.add(two);
+		all.add(two);
 		two.setOnAction(e->{
-			Character character = new Character(170,660,250,name,damage,speed,maxhp,cd,imgCharacter,imgCard);
-			character.setTarget(GameLogic.getC2());character.setOwner(two);
+			Character character = new Character(170, 660, 250, name, damage, speed, maxhp, cd, imgCharacter, imgCard);
+			character.setTarget(GameLogic.getC2());
+			character.setOwner(two);
 			RenderableHolder.getInstance().getEntities().add(character);
 			cb.setReady(false);
 			cb.setVisible(true);
-			for(ButtonLane a:allbtn2) {a.setDisable(true); a.setReady(a.isReady()+1);}
-			one.setDisable(true);two.setDisable(true);three.setDisable(true);four.setDisable(true);five.setDisable(true);
-			one.setReady(one.isReady()+1);two.setReady(two.isReady()+1);three.setReady(three.isReady()+1);four.setReady(four.isReady()+1);five.setReady(five.isReady()+1);
-			cb.update(one,two,three,four,five,allbtn2,all,cd,"two");
+			for(ButtonLane a:allbtn2) {
+				a.setDisable(true); 
+				a.setReady(a.isReady() + 1);
+			}
+			one.setDisable(true);
+			two.setDisable(true);
+			three.setDisable(true);
+			four.setDisable(true);
+			five.setDisable(true);
+			one.setReady(one.isReady() + 1);
+			two.setReady(two.isReady() + 1);
+			three.setReady(three.isReady() + 1);
+			four.setReady(four.isReady() + 1);
+			five.setReady(five.isReady() + 1);
+			cb.update(one, two, three,four, five, allbtn2, all, cd, "two");
 		});
 		three = new ButtonLane("Yorn",3,name);allbtn3.add(three);all.add(three);
 		three.setOnAction(e->{

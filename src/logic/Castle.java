@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Drawing.Drawable;
-import Drawing.Eraseable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 
-public class Castle extends Entity implements Drawable,Eraseable{
+public class Castle extends Entity implements Drawable {
 	
 	private int hp;
 	private int maxhp;
@@ -36,8 +34,8 @@ public class Castle extends Entity implements Drawable,Eraseable{
 		setDead(false);
 		setDestroyed(false);
 		hpbar = new HPBar();
-		hpbar.setLayoutX(x+5);
-		hpbar.setLayoutY(y+140);
+		hpbar.setLayoutX(x + 5);
+		hpbar.setLayoutY(y + 140);
 		allCastle.add(this);
 		setName("Castle");
 	}
@@ -55,11 +53,6 @@ public class Castle extends Entity implements Drawable,Eraseable{
 		gc.drawImage(img, x, y);	
 	}
 
-	@Override
-	public void erase(GraphicsContext gc) {
-		gc.clearRect(x, y, width, height);
-		
-	}
 	public Image getImg() {
 		return img;
 	}
