@@ -7,6 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import logic.ButtonLane;
 import logic.CharacterCard;
 import sharedObject.RenderableHolder;
@@ -23,6 +24,7 @@ public class GamePane extends Pane {
 	private static CharacterPane cp;
 	private HPPane hp = new HPPane();
 	private GameScreen gs;
+	private static Text md = new Text("EASY");
 	
 	public GamePane() {
 		super();
@@ -33,6 +35,11 @@ public class GamePane extends Pane {
 		this.getChildren().add(canvas);
 		this.getChildren().add(hp);
 		this.getChildren().add(cp);
+		this.getChildren().add(md);
+		md.setX(30);
+		md.setY(60);
+		md.setFill(Color.WHITESMOKE);
+		md.setFont(new Font(40));
 		cp.setLayoutX(10);
 		cp.setLayoutY(667);
 	}
@@ -124,5 +131,13 @@ public class GamePane extends Pane {
 
 	public static void setWin(boolean win) {
 		GamePane.win = win;
+	}
+
+	public Text getMd() {
+		return md;
+	}
+
+	public static void setMd(String d) {
+		md.setText(d);
 	}	
 }

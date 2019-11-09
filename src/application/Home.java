@@ -15,6 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import logic.ButtonLane;
+import logic.CharacterCard;
 import logic.GameLogic;
 import sharedObject.RenderableHolder;
 
@@ -81,6 +83,7 @@ public class Home extends Application {
 			back.setDisable(true);
 		});
 		easy.setOnAction(e -> {
+			GamePane.setMd("EASY");
 			GameLogic.setGameMode(1);
 			easy.setDisable(true);
 			medium.setDisable(false);
@@ -89,6 +92,7 @@ public class Home extends Application {
 			setting.setVisible(false);
 		});
 		medium.setOnAction(e -> {
+			GamePane.setMd("MEDIUM");
 			GameLogic.setGameMode(2);
 			easy.setDisable(false);
 			medium.setDisable(true);
@@ -97,6 +101,7 @@ public class Home extends Application {
 			setting.setVisible(false);
 		});
 		hard.setOnAction(e -> {
+			GamePane.setMd("HARD");
 			GameLogic.setGameMode(3);
 			easy.setDisable(false);
 			medium.setDisable(false);
@@ -123,15 +128,17 @@ public class Home extends Application {
 			AnimationTimer animation = new AnimationTimer() {
 				public void handle(long now) {
 					if(GamePane.isTimeOut()) {
+						primaryStage.close();
 						Platform.runLater(() -> {
 							Alert alert = new Alert(AlertType.INFORMATION);
 							alert.setContentText("So sad that you can't destroy King Tower!");
-							alert.setHeaderText("You are DEFEATED!");
+							alert.setHeaderText("TIME OUT!");
 							alert.setTitle("Game Result");
 							alert.show();
 						});
 						stop();
 					}else if(GamePane.isWin()) {
+						primaryStage.close();
 						Platform.runLater(() -> {
 							Alert alert = new Alert(AlertType.INFORMATION);
 							alert.setContentText("Congratulations! King Tower is destroyed!");
