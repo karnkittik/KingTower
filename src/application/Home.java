@@ -128,6 +128,7 @@ public class Home extends Application {
 			AnimationTimer animation = new AnimationTimer() {
 				public void handle(long now) {
 					if(GamePane.isTimeOut()) {
+						RenderableHolder.getGamesound().stop();
 						primaryStage.close();
 						Platform.runLater(() -> {
 							Alert alert = new Alert(AlertType.INFORMATION);
@@ -138,6 +139,7 @@ public class Home extends Application {
 						});
 						stop();
 					}else if(GamePane.isWin()) {
+						RenderableHolder.getGamesound().stop();
 						primaryStage.close();
 						Platform.runLater(() -> {
 							Alert alert = new Alert(AlertType.INFORMATION);
@@ -146,7 +148,7 @@ public class Home extends Application {
 							alert.setTitle("Game Result");
 							alert.show();
 						});
-						RenderableHolder.getGamesound().stop();
+						//RenderableHolder.getGamesound().stop();
 						stop();
 					}else {
 						gamepane.getGs().paintComponent();
