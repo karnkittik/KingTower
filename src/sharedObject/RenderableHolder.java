@@ -141,7 +141,7 @@ public class RenderableHolder {
 		main = new Image(ClassLoader.getSystemResource("mainmenu.jpeg").toString());
 		homesound = new AudioClip(ClassLoader.getSystemResource("homesong.mp3").toString());
 		//gamesound = new AudioClip(ClassLoader.getSystemResource("gamesong.mp3").toString());
-		gamesound = new AudioClip(ClassLoader.getSystemResource("ReadyForIt.m4a").toString());
+		gamesound = new AudioClip(ClassLoader.getSystemResource("ReadyForIt.mp3").toString());
 	}
 	public void add(IRenderable entity) {
 		entities.add(entity);
