@@ -12,9 +12,9 @@ public class CharacterPane extends HBox {
 		
 		//String name, int damage, double speed, int maxhp, int cd, String imgCharacter,String imgCard)
 		if (GameLogic.getGameMode() == 1) {
-			CharacterCard a = new CharacterCard("Grey", 250, 5, 100, 2, RenderableHolder.getGreyBomb(), RenderableHolder.getGrey());
-			CharacterCard b = new CharacterCard("Red", 300, 4.5,100, 4, RenderableHolder.getRedBomb(), RenderableHolder.getRed());
-			CharacterCard c = new CharacterCard("Blue", 350, 4, 100, 9,RenderableHolder.getBlueBomb(), RenderableHolder.getBlue());
+			CharacterCard a = new CharacterCard("Grey", 250, 6, 100, 2, RenderableHolder.getGreyBomb(), RenderableHolder.getGrey());
+			CharacterCard b = new CharacterCard("Red", 300, 5.5,100, 4, RenderableHolder.getRedBomb(), RenderableHolder.getRed());
+			CharacterCard c = new CharacterCard("Blue", 350, 5, 100, 9,RenderableHolder.getBlueBomb(), RenderableHolder.getBlue());
 			a.getCb().setStyle("-fx-accent : dimgrey");
 			b.getCb().setStyle("-fx-accent : firebrick");
 			c.getCb().setStyle("-fx-accent : royalblue");
